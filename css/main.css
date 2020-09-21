@@ -275,14 +275,19 @@ table {
 .ai-center, .module-questions__step, .step-success__step-success-row {
   align-items: center; }
 
-* {
-  box-sizing: border-box; }
-
 html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   font-size: "16px";
   min-height: 100%;
   max-width: 100%;
   overflow-x: hidden; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
 
 a {
   text-decoration: none;
@@ -443,6 +448,22 @@ header {
 .container-input {
   margin-bottom: 1.125rem; }
 
+.container-input__inner {
+  position: relative; }
+
+.input-select__arrow-down {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #2874FF;
+  height: 100%;
+  width: 43px;
+  z-index: 2;
+  border-radius: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .section-heading__right {
   display: none; }
 
@@ -454,6 +475,13 @@ header {
   padding-top: 1.875rem; }
 
 .input-style-primary {
+  border-radius: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   height: 2.6875rem;
   width: 100%;
   font-family: Roboto, sans-serif;
@@ -464,11 +492,12 @@ header {
   padding-right: 0.9375rem;
   border-radius: 0.3125rem;
   box-shadow: none;
-  border: none;
-  background-color: #EEE; }
+  border: 0.0625rem solid transparent;
+  background-color: #EEE;
+  position: relative; }
   .input-style-primary:focus {
     outline: none !important;
-    border: none;
+    border: 0.0625rem solid #2874FF;
     box-shadow: none; }
 
 .container-input-phone-number__input {
@@ -570,6 +599,7 @@ header {
 .section__content {
   display: flex;
   flex: 0 50%;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between; }
 
@@ -605,12 +635,12 @@ header {
 
 .img__business-academy {
   background-image: url("../img/partners/business-academy.jpg");
-  height: 55px;
+  height: 30px;
   width: 98px; }
 
 .img__tambov {
   background-image: url("../img/partners/tambov.jpg");
-  height: 69px;
+  height: 35px;
   width: 102px; }
 
 .img__ipe {
@@ -1239,7 +1269,13 @@ header {
     display: none; }
   .btn-primary {
     min-width: 19.0625rem;
-    max-width: 19.0625rem; } }
+    max-width: 19.0625rem; }
+  .content__img-group {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between; }
+  .img-group__img-wrapper {
+    flex: initial; } }
 
 @media only screen and (max-width: 1230px) {
   .container {
@@ -1263,4 +1299,9 @@ header {
     font-size: 1rem; }
   .img-wrapper__img--trust-boost {
     width: 6.375rem;
-    height: 6.375rem; } }
+    height: 6.375rem; }
+  .content__img-wrapper {
+    width: 44%;
+    margin-right: 0.625rem; }
+  .img-wrapper__img {
+    min-width: 40%; } }

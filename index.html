@@ -231,7 +231,12 @@
 
                 <!-- Input one -->
                 <div class="container-input">
-                  <div class="input-select-choose-uni">
+                  <div class="container-input__inner input-select-choose-uni">
+                    <div class="input-select__arrow-down">
+                      <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.3295 0L13.0013 10.8095L1.67047 0L0 1.59398L11.3282 12.406L13.0013 14L14.6718 12.406L26 1.59398L24.3295 0Z" fill="white"/>
+                        </svg>                        
+                    </div>
                     <select class="input-style-primary">
                       <option value="val-choose-uni">Выберите ВУЗ</option>
                       <option value="val-MOI">Московский Открытый Институт
@@ -247,16 +252,23 @@
 
                 <!-- Input two -->
                 <div class="container-input">
-                  <select class="input-style-primary">
-                    <option value="val-choose-uni">Выберите ВУЗ</option>
-                    <option value="val-MOI">Московский Открытый Институт
-                      (МОИ)</option>
-                    <option value="val-IPE">Институт профессионального образования (ИПО)</option>
-                    <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
-                    <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
-                    <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
-                    <option value="val-Synergy">Синергия</option>
-                  </select>
+                  <div class="container-input__inner input-select-choose-programm">
+                    <div class="input-select__arrow-down">
+                      <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.3295 0L13.0013 10.8095L1.67047 0L0 1.59398L11.3282 12.406L13.0013 14L14.6718 12.406L26 1.59398L24.3295 0Z" fill="white"/>
+                        </svg>                        
+                    </div>
+                    <select class="input-style-primary">
+                      <option value="val-choose-uni">Подберите направление</option>
+                      <option value="val-MOI">Московский Открытый Институт
+                        (МОИ)</option>
+                      <option value="val-IPE">Институт профессионального образования (ИПО)</option>
+                      <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
+                      <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
+                      <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
+                      <option value="val-Synergy">Синергия</option>
+                    </select>
+                  </div>
                 </div>
 
                 <!-- Input three -->
@@ -491,7 +503,7 @@
           </div>
         </div>
       </section>
-      <section class="section-ask-questions">
+      <section id="section-ask-questions" class="section-ask-questions">
         <div class="container">
           <div class="section-ask-questions__inner">
             <p class="inner__text">Задать вопрос</p>
@@ -903,28 +915,28 @@
               </div>
             </div>
             <div class="content__img-wrapper">
-              <div class="img-wrapper__img img__sinergy">
-                
+              <div class="img-wrapper__img">
+                <div class="img__sinergy"></div>
               </div>
             </div>
             <div class="content__img-wrapper">
-              <div class="img-wrapper__img img__business-academy">
-                
+              <div class="img-wrapper__img">
+                <div class="img__business-academy"></div>
               </div>
             </div>
             <div class="content__img-wrapper">
-              <div class="img-wrapper__img img__tambov">
-                
+              <div class="img-wrapper__img">
+                <div class="img__tambov"></div>
               </div>
             </div>
             <div class="content__img-wrapper">
-              <div class="img-wrapper__img img__ipe">
-                
+              <div class="img-wrapper__img">
+                <div class="img__ipe"></div>
               </div>
             </div>
             <div class="content__img-wrapper">
-              <div class="img-wrapper__img img__roc-hoy">
-                
+              <div class="img-wrapper__img">
+                <div class="img__roc-hoy"></div>
               </div>
             </div>
           </div>
@@ -1009,6 +1021,8 @@
                 </div>
               </div> -->
             </div>
+          
+          </div>
           <div class="section__section-nav">
             <div class="section-nav__arrow-left">
               <a href="#!" class="arrow-left__link">
@@ -1106,7 +1120,7 @@
       </section>
 
       <!-- Question module -->
-      <!-- <section class="module module-questions">
+      <section id="module-questions" class="module module-questions">
         <div class="container container--module">
           <div class="module-questions__step module-questions__step-one">
             <svg class="btn-horizontal-line" width="48" height="4" viewBox="0 0 48 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1240,7 +1254,7 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
     </main>
 
