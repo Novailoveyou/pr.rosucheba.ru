@@ -129,7 +129,7 @@ table {
   border-spacing: 0; }
 
 .area-outside-of-menu {
-  background: transparent;
+  background: #000;
   position: fixed;
   top: 0;
   left: 0;
@@ -945,10 +945,10 @@ header {
   left: 2rem; }
 
 .step-two-row__input-group {
-  width: 50%;
   display: flex;
   align-items: center;
   position: relative;
+  margin: 0 auto;
   margin-bottom: 2.0625rem; }
 
 .square-radio-check {
@@ -978,6 +978,10 @@ header {
     color: #fff; }
   .square-radio:checked ~ .square-radio-check {
     display: block; }
+  .square-radio:checked ~ label {
+    color: #2874FF; }
+  .square-radio ~ label {
+    min-width: 5.125rem; }
 
 .input-group__input-phone-number {
   margin-top: 0.6875rem;
