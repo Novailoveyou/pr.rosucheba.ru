@@ -19,7 +19,7 @@
       integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css"/>
     <title>Институт Профессионального Образования</title>
   </head>
   <body id="bg-img">
@@ -44,8 +44,6 @@
                 <path d="M25.5181 0.271579L13.7315 12.0724L25.5181 23.8732L37.3047 12.0724L25.5181 0.271579Z" fill="#2874FF"/>
                 <path d="M31.0409 18.124V18.3453L31.6876 17.6978L25.7941 11.7971L25.2569 12.333L31.0409 18.124Z" fill="white"/>
               </svg>
-                
-
               <h2 class="logo-container__title text-highlight--color">
                 Дистанционное высшее образование
               </h2>
@@ -171,13 +169,13 @@
                   <nav class="side-panel-nav">
                     <ul class="side-panel-nav__side-panel-nav-items">
                       <li class="side-panel-nav-items__nav-item">
-                        <a href="" class="nav-item__link">О проекте</a>
+                        <a href="#about" class="nav-item__link">О проекте</a>
                       </li>
                       <li class="side-panel-nav-items__nav-item">
-                        <a href="" class="nav-item__link">Вузы-партнеры</a>
+                        <a href="#partners" class="nav-item__link">Вузы-партнеры</a>
                       </li>
                       <li class="side-panel-nav-items__nav-item">
-                        <a href="" class="nav-item__link">С Кем сотрудничаем</a>
+                        <a href="#trusted-by" class="nav-item__link">С Кем сотрудничаем</a>
                       </li>
                     </ul>
                   </nav>
@@ -185,7 +183,7 @@
               </div>
               <!-- This is area outside of menu is used to close the menu by click outside of it -->
               <label for="menu-toggle" class="area-outside-of-menu"></label>
-              <label for="menu-toggle" class="area-at-the-right-edge"></label>
+              <!-- <label for="menu-toggle" class="area-at-the-right-edge"></label> -->
             </div>
             <hr class="header-wrapper__menu__line border-highlight--color"/>
             <nav class="menu__menu-items-container">
@@ -226,6 +224,55 @@
                 </span>
                 Менеджер расскажет о ВУЗе и подберет программу обучения
               </h5>
+            </div>
+            
+            <div class="left__left-inputs">
+              <div class="left-inputs__left-inputs-inner">
+
+                <!-- Input one -->
+                <div class="container-input">
+                  <div class="input-select-choose-uni">
+                    <select class="input-style-primary">
+                      <option value="val-choose-uni">Выберите ВУЗ</option>
+                      <option value="val-MOI">Московский Открытый Институт
+                        (МОИ)</option>
+                      <option value="val-IPE">Институт профессионального образования (ИПО)</option>
+                      <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
+                      <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
+                      <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
+                      <option value="val-Synergy">Синергия</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Input two -->
+                <div class="container-input">
+                  <select class="input-style-primary">
+                    <option value="val-choose-uni">Выберите ВУЗ</option>
+                    <option value="val-MOI">Московский Открытый Институт
+                      (МОИ)</option>
+                    <option value="val-IPE">Институт профессионального образования (ИПО)</option>
+                    <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
+                    <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
+                    <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
+                    <option value="val-Synergy">Синергия</option>
+                  </select>
+                </div>
+
+                <!-- Input three -->
+                <div class="container-input">
+                  <label for="phone-number">
+                    <p class="text-highlight--font-12 text-highlight--bold">
+                      <span class="text-highlight--color-red">
+                        *
+                      </span>
+                      Напишите свой номер:
+                    </p>
+                  </label>
+                  <input type="tel" class="container-input-phone-number__input input-style-primary" name="phone-number" id="phone-number" placeholder="Номер телефона">
+                </div>
+
+              </div>
             </div>
   
             <div class="left__call-to-action">
@@ -767,10 +814,10 @@
       </section> -->
 
       <hr class="hr-between-sections">
-      <section class="section-about">
+      <section id="about" class="section-about">
         <div class="container">
           <div class="section__title">
-            <h2 class="h1 h1--padding-bottom text-highlight--color text-highlight--bold">
+            <h2 class="h1 h1--padding-bottom text-highlight--color">
               О проекте
             </h2>
           </div>
@@ -783,24 +830,30 @@
             <div class="content__showing-off-numbers">
               <div class="showing-off-numbers__showing-off-number">
                 <div class="showing-off-number__number">
-                  6
+                  <p class="text-highlight--font-60 text-highlight--color text-highlight--bold">
+                    6
+                  </p>
                 </div>
                 <div class="showing-off-number__line">
 
                 </div>
                 <div class="showing-off-number__description">
-                  Вузов-партнеров
+                  <p class="text-highlight--fw-700">Вузов-партнеров</p>
                 </div>
               </div>
               <div class="showing-off-numbers__showing-off-number">
                 <div class="showing-off-number__number">
-                  30+
+                  <p class="text-highlight--font-60 text-highlight--color text-highlight--bold">
+                    30+
+                  </p>
                 </div>
                 <div class="showing-off-number__line">
 
                 </div>
                 <div class="showing-off-number__description">
-                  Программ обучения
+                  <p classs="text-highlight--fw-700">
+                    Программ обучения
+                  </p>
                 </div>
               </div>
             </div>
@@ -808,10 +861,10 @@
         </div>
       </section>
 
-      <section class="section-partners">
+      <section id="partners" class="section-partners">
         <div class="container">
           <div class="section__title">
-            <h2 class="h1 h1--padding-bottom text-highlight--color text-highlight--bold">
+            <h2 class="h1 h1--padding-bottom text-highlight--color">
               ВУЗы-партнеры
             </h2>
           </div>
@@ -878,10 +931,10 @@
         </div>
       </section>
 
-      <section class="section-trust-boost">
+      <section id="trusted-by" class="section-trust-boost">
         <div class="container">
           <div class="section__title">
-            <h2 class="h1 h1--padding-bottom text-highlight--color text-highlight--bold">
+            <h2 class="h1 h1--padding-bottom text-highlight--color">
               С нами сотрудничают
             </h2>
           </div>
@@ -889,72 +942,72 @@
             <div class="content__img-group">
               <!-- Block of 4 logos one -->
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__hh">
+                <div class="img-wrapper__img--trust-boost img__hh">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__rosseti">
+                <div class="img-wrapper__img--trust-boost img__rosseti">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__rzhd">
+                <div class="img-wrapper__img--trust-boost img__rzhd">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__rosneft">
+                <div class="img-wrapper__img--trust-boost img__rosneft">
                   
                 </div>
               </div>
 
               <!-- Block of 4 logos two -->
-              <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__tomc">
+              <!-- <div class="img-group__img-wrapper">
+                <div class="img-wrapper__img--trust-boost img__tomc">
                   
                 </div>
               </div>
 
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__greenworks">
+                <div class="img-wrapper__img--trust-boost img__greenworks">
                   
                 </div>
               </div>
 
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__tatehepro">
+                <div class="img-wrapper__img--trust-boost img__tatehepro">
                   
                 </div>
               </div>
               
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__business-partner">
+                <div class="img-wrapper__img--trust-boost img__business-partner">
                   
                 </div>
-              </div>
+              </div> -->
 
               <!-- Block of 4 logos three -->
-              <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__ramport">
+              <!-- <div class="img-group__img-wrapper">
+                <div class="img-wrapper__img--trust-boost img__ramport">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__sberbank">
+                <div class="img-wrapper__img--trust-boost img__sberbank">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__mtcrob">
+                <div class="img-wrapper__img--trust-boost img__mtcrob">
                   
                 </div>
               </div>
               <div class="img-group__img-wrapper">
-                <div class="img-wrapper__img img__qayar">
+                <div class="img-wrapper__img--trust-boost img__qayar">
                   
                 </div>
-              </div>
+              </div> -->
             </div>
           <div class="section__section-nav">
             <div class="section-nav__arrow-left">
@@ -977,7 +1030,7 @@
         </div>
       </section>
 
-      <section>
+      <section class="section-call-to-action--bottom">
         <div class="container">
           <div class="left__call-to-action">
             <div class="call-to-action__btn-group">
@@ -1053,7 +1106,7 @@
       </section>
 
       <!-- Question module -->
-      <section class="module module-questions">
+      <!-- <section class="module module-questions">
         <div class="container container--module">
           <div class="module-questions__step module-questions__step-one">
             <svg class="btn-horizontal-line" width="48" height="4" viewBox="0 0 48 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1119,7 +1172,7 @@
             
           <div class="row step-two__step-two-row">
             <div class="step-two-row__step-two-row-title">
-              <svg width="20" height="35" viewBox="0 0 20 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="arrow-step-back" width="20" height="35" viewBox="0 0 20 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="icon_path__counter" d="M19.3105 31.0156L5.68185 17.5L19.3105 3.98439C20.2298 3.07273 20.2298 1.5954 19.3105 0.683744C18.3913 -0.227915 16.9016 -0.227915 15.9823 0.683744L0.689464 15.8497C-0.229821 16.7613 -0.229821 18.2387 0.689464 19.1503L15.9823 34.3163C16.9016 35.2279 18.3913 35.2279 19.3105 34.3163C20.2298 33.4046 20.2298 31.9273 19.3105 31.0156Z" fill="#2874FF"/>
               </svg>                    
               <p class="text-highlight--color">Telegram</p>
@@ -1129,11 +1182,21 @@
             <div class="row row--center step-two__step-two-row">
               <div class="step-two-row__input-group">
                 <input class="square-radio" type="radio" name="question-module__radio-call-message" id="js-input-radio-call" value="Позвонить">
+                <svg class="square-radio-check" width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3.27393" y="7.78162" width="14.3784" height="3.59459" rx="1" transform="rotate(48.3458 3.27393 7.78162)" fill="white"/>
+                  <rect x="7.7771" y="18.6627" width="23.3648" height="3.59459" rx="1" transform="rotate(-50.6589 7.7771 18.6627)" fill="white"/>
+                  </svg>
+                  
                 <label for="js-input-radio-call">Позвонить</label>
               </div>
               
               <div class="step-two-row__input-group">
                 <input class="square-radio" type="radio" name="question-module__radio-call-message" id="js-input-radio-message" value="Написать">
+                <svg class="square-radio-check" width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3.27393" y="7.78162" width="14.3784" height="3.59459" rx="1" transform="rotate(48.3458 3.27393 7.78162)" fill="white"/>
+                  <rect x="7.7771" y="18.6627" width="23.3648" height="3.59459" rx="1" transform="rotate(-50.6589 7.7771 18.6627)" fill="white"/>
+                  </svg>
+                  
                 <label for="js-input-radio-message">Написать</label>
               </div>
             </div>
@@ -1146,18 +1209,18 @@
           
           <div class="row step-three__step-three-row">
             <div class="step-two-row__step-two-row-title">
-              <svg width="20" height="35" viewBox="0 0 20 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="arrow-step-back" width="20" height="35" viewBox="0 0 20 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="icon_path__counter" d="M19.3105 31.0156L5.68185 17.5L19.3105 3.98439C20.2298 3.07273 20.2298 1.5954 19.3105 0.683744C18.3913 -0.227915 16.9016 -0.227915 15.9823 0.683744L0.689464 15.8497C-0.229821 16.7613 -0.229821 18.2387 0.689464 19.1503L15.9823 34.3163C16.9016 35.2279 18.3913 35.2279 19.3105 34.3163C20.2298 33.4046 20.2298 31.9273 19.3105 31.0156Z" fill="#2874FF"/>
               </svg>                    
               <p class="text-highlight--color">Telegram/Написать</p>
             </div>
           </div>
           <div class="container container--module">
-            <div class="row step-three__step-three-row">
+            <div class="row step-three-row__row">
               <div class="step-three-row__input-group">
-                <label for="js-text-input-enter-phone-number">Напишите свой номер:</label>
-                <input type="text" name="question-module__text-enter-phone-number" id="js-text-input-enter-phone-number">
-                <input type="submit" value="Отправить">
+                <label for="js-text-input-enter-phone-number text-highlight--font-12">Напишите свой номер:</label>
+                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="input-group__input-phone-number" name="question-module__text-enter-phone-number" id="js-text-input-enter-phone-number" placeholder="123-456-7890">
+                <input class="btn btn--secondary btn-questions-module" type="submit" value="Отправить">
               </div>
             </div>
           </div>
@@ -1168,19 +1231,19 @@
           </svg>   
           <div class="container container--module">         
             <div class="row step-success__step-success-row">
-              <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="success-check-icon" width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle class="icon_path__counter" cx="34" cy="34" r="34" fill="#2874FF"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M29.2073 41.736C29.2535 41.9487 29.3691 42.1479 29.5505 42.2967L30.1248 42.7674L30.4799 43.1666C30.6603 43.3694 30.9046 43.4814 31.1555 43.4994C31.524 43.5993 31.9334 43.4825 32.1911 43.1681L32.7517 42.4842L33.0831 42.1893C33.2302 42.0585 33.3296 41.894 33.3799 41.7177L45.735 26.6448C46.0851 26.2177 46.0227 25.5876 45.5956 25.2375L44.3623 24.2266C43.9352 23.8765 43.3051 23.939 42.955 24.3661L31.2594 38.6345L24.9386 31.5288C24.5715 31.1161 23.9395 31.0792 23.5268 31.4463L22.3354 32.5061C21.9227 32.8731 21.8858 33.5052 22.2528 33.9179L29.2073 41.736Z" fill="white"/>
               </svg>
-              <p class="text-highlight--color text-highlight--bold">Спасибо за заявку!</p>
-              <p class="text-highlight--color">Менеджер свяжется с Вами в ближайшее время</p>
+              <p class="step-success-row__p text-highlight--font-22 text-highlight--color text-highlight--bold">Спасибо за заявку!</p>
+              <p class="step-success-row__p text-highlight--font-12 text-highlight--color text-highlight--fw-300">Менеджер свяжется с Вами в ближайшее время</p>
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
     </main>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" async></script>
   </body>
 </html>
