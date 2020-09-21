@@ -129,7 +129,7 @@ table {
   border-spacing: 0; }
 
 .area-outside-of-menu {
-  background: #000;
+  background: transparent;
   position: fixed;
   top: 0;
   left: 0;

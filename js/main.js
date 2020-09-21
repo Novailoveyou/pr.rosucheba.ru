@@ -1,8 +1,8 @@
 const btnAskQuestion = document.getElementById('section-ask-questions');
-module-questions__step-one
-module-questions__step-two
-module-questions__step-three
-module-questions__step-success
+const moduleStepOne = document.getElementById('module-questions__step-one');
+const moduleStepTwo = document.getElementById('module-questions__step-two');
+const moduleStepThree = document.getElementById('module-questions__step-three');
+const moduleStepSuccess = document.getElementById('module-questions__step-success');
 
 const PageState = function () {
   let currentState = new homeState(this);
@@ -17,7 +17,7 @@ const PageState = function () {
 };
 
 // Home State
-const homeState = function (page) {
+const moduleStepOneState = function (page) {
   btnAskQuestion.id = 'module-questions';
   btnAskQuestion.innerHTML = `
     some html
@@ -25,7 +25,21 @@ const homeState = function (page) {
 };
 
 // About State
-const homeState = function (page) {
+const moduleStepTwoState = function (page) {
+  btnAskQuestion.id = 'module-questions';
+  btnAskQuestion.innerHTML = `
+    some html
+  `;
+};
+
+const moduleStepThreeState = function (page) {
+  btnAskQuestion.id = 'module-questions';
+  btnAskQuestion.innerHTML = `
+    some html
+  `;
+};
+
+const moduleStepSuccessState = function (page) {
   btnAskQuestion.id = 'module-questions';
   btnAskQuestion.innerHTML = `
     some html
@@ -35,39 +49,35 @@ const homeState = function (page) {
 // Instantiate pageState
 const page = new PageState();
 
-// Init the first state
-page.init();
-
 // Home
-home.addEventListener('click', (e) => {
+moduleStepOne.addEventListener('click', (e) => {
   page.change(new homeState());
 
   e.preventDefault();
 });
 
 // About
-about.addEventListener('click', (e) => {
+moduleStepTwo.addEventListener('click', (e) => {
   page.change(new aboutState());
 
   e.preventDefault();
 });
 
 // Work
-work.addEventListener('click', (e) => {
+moduleStepThree.addEventListener('click', (e) => {
   page.change(new workState());
 
   e.preventDefault();
 });
 
 // Contact
-contact.addEventListener('click', (e) => {
+moduleStepSuccess.addEventListener('click', (e) => {
   page.change(new contactState());
 
   e.preventDefault();
 });
 
 // Init On DOM Load
-document.addEventListener('DOMContentLoaded', init);
 
 btnAskQuestion.addEventListener('click', () =>{
   
