@@ -1,9 +1,14 @@
 const btnAskQuestion = document.getElementById('section-ask-questions');
 const moduleQuestions = document.getElementById('module-questions');
-const body = document.getElementById('body');
 const moduleQuestionTextarea = document.getElementById('js-text-input-ask-anything');
 
 const sectionAskQuestionsInner = document.getElementById('section-ask-questions__inner');
+
+const oneMoreQuestionText = document.getElementById('one-more-question');
+
+const moduleHorizontalCloseBtn = document.getElementById('js-btn-horizontal-line-close');
+
+const menuToggler = document.getElementById('menu-toggle');
 
 // Module Ask Question -> Steps
 const moduleStepOne = document.getElementById('module-questions__step-one');
@@ -33,21 +38,50 @@ const moduleStepThreeArrowBack = document.getElementById('step-three-arrow-step-
 
 // Module Ask Question -> Step 3 -> Contact input
 const moduleLabelEnterContactInfo = document.getElementById('module-label-enter-contact-info');
+const moduleInputContactInfo = document.getElementById('module-input-contact-info');
 
 // Module Ask Question -> Step Success -> Submit
 const moduleBtnSubmit = document.getElementById('module_questions-submit-btn');
 
+const carouselBtnLeft = document.getElementById('carrousel-arrow-left-btn');
+const carouselBtnRight = document.getElementById('carrousel-arrow-right-btn');
+
+const carouselImgGroupOne = document.getElementById('content__img-group--1');
+const carouselImgGroupTwo = document.getElementById('content__img-group--2');
+const carouselImgGroupThree = document.getElementById('content__img-group--3');
+
 // Ask question clicked
-btnAskQuestion.addEventListener('click', (e) =>{
+btnAskQuestion.addEventListener('click', (e) => {
 
   btnAskQuestion.classList.add('hidden');
   moduleQuestions.classList.remove('hidden');
   moduleStepOne.classList.remove('hidden');
-  body.classList.add('dark-overlay');
+  document.body.classList.add('dark-overlay');
   moduleQuestionTextarea.focus();
 
+  document.body.addEventListener('click', function closeQuestionModule(e) {
+    // moduleHorizontalCloseBtn
+    if (
+      (!btnAskQuestion.contains(e.target) &&
+        e.target !== btnAskQuestion &&
+        !moduleQuestions.contains(e.target) &&
+        e.target !== moduleQuestions) ||
+      (e.target === btnAskQuestion &&
+        btnAskQuestion.contains(e.target))
+    ) {
+      // Close question module
+      btnAskQuestion.classList.remove('hidden');
+      moduleQuestions.classList.add('hidden');
+      moduleStepOne.classList.add('hidden');
+      document.body.classList.remove('dark-overlay');
+      document.body.removeEventListener('click', closeQuestionModule);
+    }
+
+    e.preventDefault();
+  })
+
   // Telegram clicked
-  telegramBtn.addEventListener('click', (e) =>{
+  telegramBtn.addEventListener('click', (e) => {
 
     moduleStepOne.classList.add('hidden');
     moduleStepTwo.classList.remove('hidden');
@@ -60,6 +94,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Telegram / Позвонить'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
@@ -71,12 +106,13 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Telegram / Написать'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+    moduleStepTwoArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
 
@@ -84,7 +120,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepTwo.classList.remove('hidden');
       moduleStepOne.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -95,8 +131,8 @@ btnAskQuestion.addEventListener('click', (e) =>{
   })
 
   // Whatsapp clicked
-  whatsappBtn.addEventListener('click', (e) =>{
-    
+  whatsappBtn.addEventListener('click', (e) => {
+
     moduleStepOne.classList.add('hidden');
     moduleStepTwo.classList.remove('hidden');
     moduleStepTwoTitle.innerHTML = 'Whats App';
@@ -108,6 +144,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Whatsapp / Позвонить'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
@@ -119,12 +156,13 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Whatsapp / Написать'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+    moduleStepTwoArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
 
@@ -132,7 +170,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepTwo.classList.remove('hidden');
       moduleStepOne.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -143,8 +181,8 @@ btnAskQuestion.addEventListener('click', (e) =>{
   })
 
 
-  viberBtn.addEventListener('click', (e) =>{
-    
+  viberBtn.addEventListener('click', (e) => {
+
     moduleStepOne.classList.add('hidden');
     moduleStepTwo.classList.remove('hidden');
     moduleStepTwoTitle.innerHTML = 'Viber';
@@ -156,6 +194,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Viber / Позвонить'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
@@ -167,12 +206,13 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'Viber / Написать'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+    moduleStepTwoArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
 
@@ -180,7 +220,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepTwo.classList.remove('hidden');
       moduleStepOne.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -190,8 +230,8 @@ btnAskQuestion.addEventListener('click', (e) =>{
     e.preventDefault();
   })
 
-  vkBtn.addEventListener('click', (e) =>{
-    
+  vkBtn.addEventListener('click', (e) => {
+
     moduleStepOne.classList.add('hidden');
     moduleStepTwo.classList.remove('hidden');
     moduleStepTwoTitle.innerHTML = 'VK';
@@ -203,6 +243,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'VK / Позвонить'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
@@ -214,12 +255,13 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
       moduleStepThreeTitle.innerHTML = 'VK / Написать'
       moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+      moduleInputContactInfo.focus();
 
       e.preventDefault();
     });
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+    moduleStepTwoArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
 
@@ -227,7 +269,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepTwo.classList.remove('hidden');
       moduleStepOne.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -238,15 +280,16 @@ btnAskQuestion.addEventListener('click', (e) =>{
   })
 
   // Phone button clicked
-  phoneBtn.addEventListener('click', (e) =>{
-    
+  phoneBtn.addEventListener('click', (e) => {
+
     moduleStepOne.classList.add('hidden');
     moduleStepThree.classList.remove('hidden');
     moduleStepThreeTitle.innerHTML = 'Позвонить'
     moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+    moduleInputContactInfo.focus();
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -257,15 +300,17 @@ btnAskQuestion.addEventListener('click', (e) =>{
   })
 
   // Email button clicked
-  emailBtn.addEventListener('click', (e) =>{
-    
+  emailBtn.addEventListener('click', (e) => {
+
     moduleStepOne.classList.add('hidden');
     moduleStepThree.classList.remove('hidden');
     moduleStepThreeTitle.innerHTML = 'Написать'
     moduleLabelEnterContactInfo.innerHTML = 'Напишите свой e-mail'
+    moduleInputContactInfo.placeholder = 'example@gmail.com';
+    moduleInputContactInfo.focus();
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+    moduleStepThreeArrowBack.addEventListener('click', (e) => {
       moduleStepOne.classList.remove('hidden');
       moduleStepTwo.classList.add('hidden');
       moduleStepThree.classList.add('hidden');
@@ -277,7 +322,7 @@ btnAskQuestion.addEventListener('click', (e) =>{
   })
 
   // Submit btn clicked
-  moduleBtnSubmit.addEventListener('click', (e) => {
+  moduleBtnSubmit.addEventListener('click', function submitQuestionModule(e) {
 
     moduleStepThree.classList.add('hidden');
     moduleStepTwo.classList.add('hidden');
@@ -287,10 +332,20 @@ btnAskQuestion.addEventListener('click', (e) =>{
     setTimeout(() => {
       moduleStepSuccess.classList.add('hidden');
       btnAskQuestion.classList.remove('hidden');
-      sectionAskQuestionsInner.innerHTML = 'Спасибо! Вы с вами свяжемся!'
+
+      // console.log(sectionAskQuestionsInner.innerHTM);
+      oneMoreQuestionText.innerText = 'ещё один';
+      const sectionAskQuestionInnerSaver = sectionAskQuestionsInner.innerHTML;
+      // console.log(sectionAskQuestionInnerSaver);
+      sectionAskQuestionsInner.innerHTML = 'Спасибо! Мы с вами свяжемся!'
+      setTimeout(() => {
+        sectionAskQuestionsInner.innerHTML = sectionAskQuestionInnerSaver;
+      }, 3000);
+
       moduleQuestions.classList.add('hidden');
-      // moduleStepOne.classList.add('hidden');
-      body.classList.remove('dark-overlay');
+      document.body.classList.remove('dark-overlay');
+      document.body.removeEventListener('click', closeQuestionModule);
+      moduleBtnSubmit.removeEventListener('click', submitQuestionModule);
     }, 3000);
 
     e.preventDefault();
@@ -298,3 +353,33 @@ btnAskQuestion.addEventListener('click', (e) =>{
 
   e.preventDefault();
 })
+
+// Carousel
+const carouselItems = [carouselImgGroupOne, carouselImgGroupTwo, carouselImgGroupThree];
+
+// Terrible solution for carousel, it works tho
+let i = 0;
+carouselBtnRight.addEventListener('click', (e) => {
+  i > 2 ? i = 0 : i;
+  i < 0 ? i = 2 : i;
+
+  carouselItems[i].classList.add('hidden');
+  carouselItems[i + 1 > 2 ? 0 : i + 1].classList.remove('hidden');
+  carouselItems[i - 1 < 0 ? 2 : i - 1].classList.add('hidden');
+
+  i++;
+
+  e.preventDefault();
+});
+
+// Don't look below
+carouselBtnLeft.addEventListener('click', (e) => {
+  i < 0 ? i = 2 : i;
+  i > 2 ? i = 0 : i;
+  carouselItems[i].classList.add('hidden');
+  carouselItems[i + 1 > 2 ? 0 : i + 1].classList.add('hidden');
+  carouselItems[i - 1 < 0 ? 2 : i - 1].classList.remove('hidden');
+  i--;
+
+  e.preventDefault();
+});

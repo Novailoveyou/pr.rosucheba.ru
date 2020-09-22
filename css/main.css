@@ -284,7 +284,9 @@ html {
   max-width: 100%;
   overflow-x: hidden; }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit; }
@@ -543,7 +545,7 @@ header {
 .section-testimonials__testimonials {
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   max-width: 38.875rem;
   margin: 0 auto; }
@@ -622,8 +624,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 139px;
+  width: 48%;
   height: 90px;
+  padding: 0.3125rem;
   background-color: #fff;
   border-radius: 0.3125rem;
   margin-bottom: 1.0625rem; }
@@ -632,8 +635,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 129px;
-  min-height: 70px;
+  width: 100%;
+  height: 100%;
   background-color: #fff;
   border: 0.0625rem solid #EFEFEF;
   border-radius: 0.3125rem;
@@ -644,29 +647,34 @@ header {
   height: 6.375rem; }
 
 .img__sinergy {
+  background-position: center;
   background-image: url("../img/partners/sinergy.jpg");
   height: 18px;
-  width: 97px; }
+  width: 85%; }
 
 .img__business-academy {
+  background-position: center;
   background-image: url("../img/partners/business-academy.jpg");
   height: 30px;
-  width: 98px; }
+  width: 85%; }
 
 .img__tambov {
+  background-position: center;
   background-image: url("../img/partners/tambov.jpg");
   height: 35px;
-  width: 102px; }
+  width: 85%; }
 
 .img__ipe {
+  background-position: center;
   background-image: url("../img/partners/ipe.jpg");
   height: 32px;
-  width: 106px; }
+  width: 85%; }
 
 .img__roc-hoy {
+  background-position: center;
   background-image: url("../img/partners/roc-hoy.jpg");
   height: 45px;
-  width: 72px; }
+  width: 85%; }
 
 .section-trust-boost {
   padding-top: 4.25rem;
@@ -727,10 +735,26 @@ header {
 .section-nav__arrow-left {
   margin-right: 2.0625rem; }
 
+.arrow-left__link:hover, .arrow-left__link:focus,
+.arrow-right__link:hover,
+.arrow-right__link:focus {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; }
+
 .section-ask-questions {
+  transition: all 0.4s ease-in-out;
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 4.1875rem;
   background-color: #1BC100;
   color: #fff;
   z-index: 98;
