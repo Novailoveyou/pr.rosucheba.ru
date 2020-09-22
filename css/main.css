@@ -872,6 +872,12 @@ header {
 .section-call-to-action--bottom {
   padding-bottom: 4.25rem; }
 
+.module-questions {
+  min-width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 99; }
+
 .module-questions__step {
   position: relative;
   min-height: 18.1875rem; }
