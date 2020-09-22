@@ -164,7 +164,7 @@ table {
   margin: 0;
   padding: 0;
   opacity: 0;
-  z-index: 99; }
+  z-index: 90; }
   .menu-mobile__toggler:checked {
     position: fixed; }
   .menu-mobile__toggler:checked ~ .menu-mobile__menu-panel {
@@ -176,7 +176,7 @@ table {
 
 .menu-mobile__hamburder {
   cursor: pointer;
-  z-index: 98; }
+  z-index: 93; }
 
 .menu-mobile__hamburder--panel {
   position: absolute;
@@ -201,7 +201,7 @@ table {
   height: 0.3125rem;
   margin-bottom: 0.4375rem;
   border-radius: 0.15625rem;
-  z-index: 98;
+  z-index: 95;
   background: #2874FF; }
 
 .menu-mobile__menu-panel {
@@ -310,12 +310,15 @@ body.dark-overlay:after {
   right: 0;
   width: 100%;
   min-height: 100%;
-  z-index: 10;
+  z-index: 97;
   background: rgba(0, 0, 0, 0.4); }
 
 main {
   min-height: 100%;
   padding-bottom: 12.02375rem; }
+
+.hidden {
+  display: none; }
 
 .container {
   width: 100%;
@@ -889,7 +892,10 @@ header {
   max-height: 226px;
   background-color: #fff;
   border-radius: 10px 10px 0px 0px;
-  z-index: 99; }
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
 
 .module-questions__step {
   position: relative;
@@ -919,17 +925,18 @@ header {
 
 .sm-icons {
   align-items: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-between; }
 
 .sm-icons__link {
   align-items: center;
   justify-content: center;
-  min-width: 32%;
+  min-width: 31.5%;
   max-width: 33.33%;
   min-height: 2.5625rem;
   max-height: 2.5625rem;
   margin-right: 0.25rem;
-  margin-bottom: 0.25rem; }
+  margin-bottom: 0.3rem; }
 
 .sm-icons__link--telegram {
   background-color: #00A3FF; }
@@ -969,7 +976,6 @@ header {
   display: flex;
   align-items: center;
   position: relative;
-  margin: 0 auto;
   margin-bottom: 0.5625rem; }
 
 .square-radio-check {

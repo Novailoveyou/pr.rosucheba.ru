@@ -1,161 +1,300 @@
 const btnAskQuestion = document.getElementById('section-ask-questions');
 const moduleQuestions = document.getElementById('module-questions');
 const body = document.getElementById('body');
-// const moduleStepOne = document.getElementById('module-questions__step-one');
-// const moduleStepTwo = document.getElementById('module-questions__step-two');
-// const moduleStepThree = document.getElementById('module-questions__step-three');
-// const moduleStepSuccess = document.getElementById('module-questions__step-success');
+const moduleQuestionTextarea = document.getElementById('js-text-input-ask-anything');
 
-const PageState = function () {
-  let currentState;
+const sectionAskQuestionsInner = document.getElementById('section-ask-questions__inner');
 
-  this.init = function () {
-    this.change(new homeState());
-  };
+// Module Ask Question -> Steps
+const moduleStepOne = document.getElementById('module-questions__step-one');
+const moduleStepTwo = document.getElementById('module-questions__step-two');
+const moduleStepThree = document.getElementById('module-questions__step-three');
+const moduleStepSuccess = document.getElementById('module-questions__step-success');
 
-  this.change = function (state) {
-    currentState = state;
-  };
-};
+// Module Ask Question -> Step 1 -> SM Buttons
+const telegramBtn = document.getElementById('sm-icons__link--telegram');
+const whatsappBtn = document.getElementById('sm-icons__link--whatsapp');
+const viberBtn = document.getElementById('sm-icons__link--viber');
+const vkBtn = document.getElementById('sm-icons__link--vk');
+const phoneBtn = document.getElementById('sm-icons__link--phone');
+const emailBtn = document.getElementById('sm-icons__link--email');
 
-// Module Step One
-const moduleStepOneState = function (page) {
-  btnAskQuestion.style.bottom = '-5rem';
-  moduleQuestions.id = 'module-questions--step-one';
-  moduleQuestions.style.position = 'fixed';
-  moduleQuestions.style.bottom = '0';
-  moduleQuestions.style.left = '0';
-  moduleQuestions.innerHTML = `
-  <div class="container container--module">
-  <div id="module-questions__step-one" class="module-questions__step module-questions__step-one">
-    <svg id="js-btn-horizontal-line-close" class="btn-horizontal-line" width="48" height="4" viewBox="0 0 48 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="48" height="4" rx="2" fill="#EEEEEE"/>
-    </svg>
-      
-    <div class="row step-one__step-one-row">
-      <textarea class="step-one-row__input-ask-anything" type="text" name="question-module__text-ask-anything" id="js-text-input-ask-anything"
-      placeholder="Напишите вопрос..."></textarea>
-    </div>
-    <div class="row step-one__step-one-row">
-      <div class="step-one-row__row mt-18">
-        <p>Куда ответить:</p>
-      </div>
-      <div class="step-one-row__row mt-11">
-        <div class="sm-icons">
-          <a href="#!" class="sm-icons__link sm-icons__link--telegram">
-            <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17 0.67988C16.9273 1.06049 16.854 1.44668 16.7796 1.83221C16.2865 4.38898 15.7927 6.94607 15.2996 9.50283C14.9873 11.1217 14.6767 12.7408 14.3627 14.3597C14.2432 14.9753 13.7372 15.1802 13.2108 14.8281C11.8698 13.9305 10.5277 13.0339 9.19134 12.1298C9.06159 12.0419 8.98459 12.0507 8.86313 12.1386C8.18548 12.6297 7.50118 13.1116 6.81788 13.5952C6.32275 13.9456 5.82396 13.7722 5.66899 13.1946C5.30527 11.8393 4.94122 10.4844 4.58347 9.12747C4.55294 9.01207 4.49653 8.95765 4.38834 8.91732C3.10238 8.43541 1.81776 7.94956 0.533127 7.46404C0.117307 7.30701 -0.0662118 7.01459 0.0213992 6.64807C0.0831251 6.38908 0.266975 6.24615 0.505582 6.15239C1.74806 5.66523 2.98955 5.17577 4.2317 4.68796C8.14864 3.14944 12.0662 1.61453 15.9795 0.0681449C16.5059 -0.139701 16.8981 0.163872 16.9715 0.494983C16.9844 0.553009 16.99 0.613002 17 0.67988ZM15.2528 2.63802C15.2418 2.63278 15.2312 2.62753 15.2202 2.62229C12.7675 4.95285 10.3147 7.28341 7.84665 9.62839C9.63803 10.8279 11.4138 12.0173 13.2098 13.2201C13.8945 9.67396 14.5738 6.15599 15.2528 2.63802ZM13.3286 2.57705C13.3213 2.56951 13.3137 2.56164 13.3064 2.5541C9.72265 3.96214 6.1389 5.37018 2.52628 6.78936C2.61953 6.82641 2.68026 6.85132 2.74165 6.8746C3.57196 7.18866 4.40029 7.50797 5.23359 7.81417C5.52927 7.92268 5.7118 8.10594 5.78281 8.41213C5.85947 8.74161 5.95505 9.06649 6.04332 9.39334C6.05958 9.45333 6.08016 9.51234 6.09045 9.54512C6.19996 9.41006 6.29487 9.26253 6.41866 9.14418C8.64411 7.02442 10.8732 4.90859 13.1013 2.79178C13.1776 2.71998 13.2533 2.64851 13.3286 2.57705ZM6.24974 10.1621C6.41667 10.7856 6.57795 11.3879 6.74487 12.0111C7.11988 11.7442 7.47364 11.4928 7.84001 11.2321C7.29808 10.8676 6.7837 10.5214 6.24974 10.1621Z" fill="white"/>
-          </svg>
-                
-          </a>
-          <a href="#!" class="sm-icons__link sm-icons__link--whatsapp">
-          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 17C0.210858 16.4151 0.414118 15.851 0.61765 15.2869C0.877356 14.5667 1.13489 13.8457 1.4003 13.1277C1.44344 13.0113 1.4372 12.9265 1.36909 12.8193C0.804084 11.9282 0.407605 10.9671 0.205431 9.93179C0.052104 9.1468 0.0227955 8.35586 0.106922 7.5579C0.255093 6.1556 0.719958 4.86915 1.52024 3.70853C2.67576 2.03322 4.23616 0.90231 6.19793 0.328212C7.06633 0.0741074 7.9559 -0.0312069 8.85904 0.00794842C10.5996 0.0832886 12.1804 0.627142 13.5755 1.6684C15.1571 2.84873 16.2125 4.3928 16.7216 6.29656C16.9588 7.18336 17.05 8.08717 16.9737 9.0053C16.7428 11.781 15.4478 13.9391 13.1381 15.4913C12.0887 16.1964 10.9174 16.6044 9.66095 16.7807C8.08399 17.0022 6.59197 16.73 5.16291 16.0578C4.9838 15.9736 4.81067 15.8761 4.62966 15.7956C4.57077 15.7694 4.49044 15.7584 4.42965 15.7751C2.99137 16.1726 1.55416 16.575 0.116691 16.976C0.0871114 16.9843 0.056446 16.9887 0 17ZM2.08742 15.0606C2.10913 15.0652 2.11835 15.0703 2.12568 15.0682C2.90507 14.8505 3.685 14.6339 4.46331 14.4125C4.54797 14.3885 4.61175 14.3923 4.68855 14.4398C5.62615 15.0239 6.63946 15.3909 7.74396 15.5134C8.69513 15.619 9.62812 15.541 10.5421 15.2712C12.1807 14.7879 13.4871 13.8427 14.4556 12.4391C15.146 11.4389 15.5381 10.3296 15.663 9.12735C15.7354 8.43093 15.6958 7.73721 15.5596 7.04888C15.3175 5.82508 14.7959 4.73332 13.9745 3.79359C12.6697 2.30137 11.0222 1.47344 9.03516 1.32087C7.95563 1.23797 6.91084 1.39567 5.90811 1.79073C4.36073 2.40074 3.16315 3.42823 2.32351 4.85916C1.77208 5.79915 1.46732 6.81638 1.38483 7.90301C1.33055 8.61698 1.38727 9.32016 1.54521 10.0166C1.77181 11.0154 2.21035 11.9163 2.82393 12.7348C2.87685 12.8053 2.88309 12.8644 2.85432 12.943C2.69014 13.3883 2.52922 13.8346 2.36775 14.2807C2.27358 14.5397 2.18104 14.7992 2.08742 15.0606Z" fill="white"/>
-            <path d="M5.60753 4.0061C5.62975 4.0061 5.65223 4.0061 5.67445 4.0061C6.05833 4.00663 6.16327 4.08067 6.29926 4.43616C6.52252 5.01939 6.73882 5.60555 6.97626 6.18316C7.09753 6.47825 6.96609 6.70384 6.82073 6.92595C6.69947 7.11118 6.55089 7.27931 6.40767 7.44957C6.26178 7.62331 6.24277 7.72408 6.35012 7.92027C6.90265 8.93035 7.63427 9.77578 8.63572 10.366C8.89137 10.5167 9.16202 10.6429 9.43052 10.7704C9.60532 10.8535 9.71562 10.8246 9.82939 10.6765C10.0676 10.3662 10.3035 10.0538 10.5348 9.73809C10.6625 9.56355 10.7671 9.51598 10.9684 9.60552C11.2648 9.73729 11.5558 9.88189 11.8443 10.03C12.1723 10.1984 12.4946 10.378 12.8206 10.5501C12.9497 10.6183 13 10.7214 13 10.8652C12.9997 11.2026 12.9392 11.5295 12.8198 11.8419C12.6793 12.2094 12.376 12.4342 12.0593 12.6387C11.419 13.0519 10.7251 13.0853 10.0213 12.867C9.04905 12.5655 8.13138 12.1466 7.33043 11.5011C6.71365 11.0042 6.14854 10.4539 5.67686 9.81988C5.27424 9.27863 4.88742 8.7216 4.54316 8.14212C4.18337 7.53644 3.97644 6.87036 4.00214 6.15162C4.02918 5.39252 4.32204 4.74916 4.86226 4.21752C5.07052 4.01278 5.33287 3.98445 5.60753 4.0061Z" fill="white"/>
-          </svg>
-          
-          </a>
-          <a href="#!" class="sm-icons__link sm-icons__link--viber">
-          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.49044 0C9.87005 0.0222163 11.2342 0.158412 12.5838 0.406655C13.5627 0.5868 14.3657 1.11178 15.0722 1.7633C15.8097 2.44331 16.4173 3.21991 16.6332 4.21095C16.971 5.76175 17.1019 7.328 16.9135 8.90777C16.8396 9.52886 16.7571 10.1514 16.6302 10.7638C16.4293 11.7317 15.8392 12.4933 15.1262 13.1622C14.4386 13.8074 13.6636 14.3503 12.7032 14.5343C11.9152 14.6855 11.1132 14.798 10.3123 14.8516C9.37636 14.9144 8.43447 14.8902 7.49558 14.9168C7.37915 14.9202 7.23624 14.9776 7.1543 15.0573C6.59716 15.6002 6.0565 16.1585 5.50436 16.7062C5.11961 17.0882 4.57446 17.1051 4.29514 16.7134C4.17322 16.5424 4.12675 16.2971 4.11425 16.0817C4.08777 15.6325 4.09926 15.1805 4.10926 14.7299C4.11326 14.5584 4.0493 14.4865 3.8834 14.4189C2.22547 13.7417 0.980275 12.6445 0.437125 10.9584C0.198278 10.2166 0.130822 9.41439 0.0558702 8.63344C-0.085039 7.15944 0.0498741 5.6951 0.356177 4.24621C0.501083 3.56137 0.84836 2.96877 1.29757 2.43123C2.01661 1.57108 2.87006 0.867884 3.97534 0.532708C4.53299 0.363671 5.1241 0.275289 5.70773 0.212987C6.63213 0.114945 7.56253 0.0685807 8.49044 0ZM4.77533 14.6463C4.77533 15.1129 4.77033 15.5799 4.78033 16.046C4.78183 16.1223 4.83279 16.2193 4.89425 16.2638C4.92473 16.286 5.03866 16.2208 5.10062 16.1764C5.17357 16.1247 5.23104 16.0527 5.29499 15.9895C6.09648 15.194 6.89396 14.3952 7.70344 13.6075C7.79738 13.5162 7.95528 13.437 8.0842 13.4365C9.35838 13.4326 10.6241 13.3486 11.8822 13.1462C13.3973 12.9028 14.3991 12.0224 14.9937 10.715C15.2146 10.2292 15.2536 9.65684 15.3255 9.11786C15.5114 7.72064 15.4445 6.32826 15.1856 4.94216C14.9048 3.44111 13.9369 2.46263 12.5173 1.99367C11.6389 1.70341 10.66 1.65994 9.71964 1.59329C8.29106 1.49187 6.86498 1.58364 5.4419 1.76571C4.52649 1.88259 3.728 2.19458 3.06143 2.81422C2.4963 3.34017 2.0221 3.9149 1.8667 4.68957C1.60387 5.99888 1.49095 7.31785 1.63036 8.64552C1.69981 9.30621 1.75378 9.98864 1.97214 10.6097C2.38137 11.7756 3.2758 12.5464 4.45304 12.9956C4.69088 13.0864 4.79831 13.1815 4.78232 13.4399C4.75684 13.8407 4.77483 14.244 4.77533 14.6463Z" fill="white"/>
-            <path d="M8.89566 9.76449C8.98303 9.71761 9.10239 9.67452 9.19405 9.59827C9.29622 9.5135 9.37214 9.39795 9.46141 9.29708C9.72973 8.99447 10.0415 8.92297 10.3733 9.13986C10.8374 9.44294 11.29 9.76544 11.7302 10.1026C12.0424 10.3418 12.071 10.5852 11.881 10.9361C11.617 11.4234 11.2613 11.815 10.7066 11.9765C10.6077 12.0054 10.4826 12.0101 10.3871 11.9765C8.21532 11.2084 6.3777 9.99417 5.17076 7.99383C4.76494 7.32089 4.45891 6.58875 4.10466 5.88503C3.92562 5.52891 3.98817 5.19978 4.20206 4.88202C4.44268 4.52495 4.76351 4.26117 5.15214 4.07885C5.42714 3.94956 5.65058 3.9704 5.83773 4.20766C6.19914 4.66607 6.55196 5.13443 6.86468 5.62646C7.09719 5.99253 6.99549 6.3245 6.64936 6.60201C6.5935 6.64653 6.53573 6.68868 6.48178 6.73509C6.24784 6.93446 6.19914 7.07605 6.30513 7.36019C6.71524 8.45745 7.42661 9.27198 8.55669 9.68399C8.65122 9.71761 8.75434 9.73134 8.89566 9.76449Z" fill="white"/>
-            <path d="M12.981 7.47581C12.9859 7.54473 12.9946 7.61365 12.9957 7.68205C12.9978 7.84579 12.9408 7.97948 12.7503 7.99813C12.5619 8.01627 12.4648 7.9002 12.4414 7.73853C12.404 7.48307 12.3747 7.22553 12.3568 6.968C12.2558 5.52332 11.0415 4.10507 9.56336 3.74131C9.1557 3.6413 8.73121 3.60244 8.31377 3.5387C8.14061 3.51227 7.98536 3.46875 8.0011 3.2594C8.01739 3.04125 8.19435 2.99565 8.37077 3.00031C10.085 3.04229 11.7493 3.87292 12.5386 5.54612C12.6819 5.84977 12.7823 6.17674 12.8594 6.50216C12.9349 6.8198 12.9555 7.14884 13 7.47322C12.994 7.47426 12.9875 7.47529 12.981 7.47581Z" fill="white"/>
-            <path d="M12 7.60417C11.9968 7.61942 12.0057 7.72003 11.9576 7.77308C11.8695 7.87004 11.7461 8.00359 11.6416 7.99993C11.5409 7.99627 11.3889 7.85297 11.3604 7.74625C11.2958 7.50356 11.3122 7.24196 11.2622 6.99377C11.0026 5.70711 10.002 4.82719 8.64293 4.67474C8.5283 4.66193 8.41494 4.63754 8.30032 4.61986C8.08816 4.58693 7.97354 4.4668 8.0052 4.26252C8.03814 4.05458 8.20152 3.98873 8.40354 4.00153C9.17679 4.0497 9.88924 4.26801 10.5225 4.70767C11.5257 5.40344 11.9322 6.38947 12 7.60417Z" fill="white"/>
-            <path d="M10.6785 7.32641C10.6231 7.32172 10.5 7.3452 10.3848 7.29403C10.2096 7.2161 10.1549 7.09402 10.1735 6.99839C10.1819 6.95625 10.1891 6.91379 10.1943 6.87018C10.231 6.58893 10.0725 6.36025 9.62624 6.0529C9.57992 6.02087 9.50904 5.99135 9.48669 5.96127C9.41542 5.86575 9.29625 5.73633 9.31652 5.6838C9.35015 5.59648 9.51719 5.64484 9.69144 5.74619C10.4784 6.20196 10.9319 6.88414 10.6785 7.32641Z" fill="white"/>
-          </svg>
+// Module Ask Question -> Step 2 -> Btns
+const moduleBtnCall = document.getElementById('question-module__radio-call');
+const moduleBtnMessage = document.getElementById('question-module__radio-message');
 
-          </a>
-          <a href="#!" class="sm-icons__link sm-icons__link--vk">
-          <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.1098 3.00992C12.1098 3.7738 12.1115 4.53769 12.1089 5.30199C12.108 5.52953 12.1505 5.74206 12.3793 5.85375C12.6015 5.96252 12.8294 5.88376 12.9871 5.73915C13.3745 5.38409 13.7768 5.03277 14.0989 4.62687C15.0911 3.37457 15.8891 2.01224 16.5233 0.564074C16.7121 0.132749 16.8958 0.0173119 17.3914 0.0168951C18.1438 0.0164784 18.8959 0.0135612 19.6483 0.0198123C19.7842 0.0210625 19.9279 0.0389824 20.0541 0.084407C20.3951 0.206512 20.5432 0.561157 20.4213 0.910385C20.1396 1.72094 19.6965 2.45774 19.2254 3.17411C18.6798 4.00301 18.0842 4.80232 17.5141 5.61663C17.4094 5.76665 17.3125 5.92293 17.2266 6.08337C17.0824 6.35175 17.1074 6.60263 17.3322 6.82934C17.6377 7.13773 17.9436 7.4457 18.2394 7.76242C18.9129 8.48338 19.6027 9.19267 20.2404 9.94197C20.53 10.2824 20.7312 10.6967 20.9358 11.0943C21.1427 11.4968 20.8232 11.9861 20.3525 11.9923C19.3521 12.0057 18.3516 11.9977 17.3511 11.9969C17.1118 11.9965 16.9374 11.8877 16.8077 11.6998C16.0333 10.5796 15.0262 9.66525 13.9434 8.82469C13.7234 8.65382 13.4477 8.5313 13.1778 8.43879C12.7869 8.30501 12.5103 8.50505 12.5042 8.90095C12.4954 9.45646 12.4783 10.0132 12.5073 10.5675C12.5419 11.2239 12.0585 11.9736 11.0054 11.989C9.44444 12.0119 8.05743 11.5227 6.76595 10.7375C5.60682 10.0328 4.64314 9.12682 3.84819 8.06539C2.59615 6.39343 1.47865 4.64437 0.673175 2.7332C0.410234 2.11101 0.223984 1.45923 0.0285318 0.814118C-0.0989945 0.392378 0.215658 0.0110608 0.679749 0.00605991C1.50494 -0.00310836 2.33014 -0.000607921 3.15534 0.00522643C3.51075 0.00772687 3.6913 0.161921 3.83854 0.516566C4.26933 1.55466 4.67601 2.60276 5.15106 3.62253C5.602 4.59061 6.20764 5.4791 6.96053 6.26424C7.15204 6.46386 7.40183 6.62764 7.65382 6.75599C7.88871 6.8756 8.08679 6.77641 8.16348 6.53012C8.2244 6.333 8.26778 6.12213 8.26735 5.91793C8.26472 4.85649 8.26165 3.79464 8.22528 2.73362C8.20599 2.16644 8.05962 1.62384 7.66477 1.16585C7.5035 0.97873 7.35669 0.775778 7.23443 0.564074C7.17483 0.46114 7.131 0.289443 7.18228 0.205261C7.24012 0.109828 7.41191 0.0756554 7.53637 0.0189788C7.56003 0.00814361 7.59422 0.0173119 7.62314 0.0173119C8.84275 0.0173119 10.0624 0.0168951 11.282 0.0173119C11.8543 0.0177286 12.1089 0.259438 12.1094 0.801616C12.1102 1.53758 12.1098 2.27354 12.1098 3.00992Z" fill="white"/>
-          </svg>
-          
-          </a>
-          <a href="#!" class="sm-icons__link sm-icons__link--phone">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.59735 5.56254C3.7342 7.61619 5.26748 9.24824 7.36045 10.3304C7.83462 9.85442 8.3088 9.39395 8.76548 8.91794C9.07058 8.59931 9.4165 8.49633 9.83431 8.63622C10.6233 8.9024 11.4395 9.00343 12.2674 9.03257C12.7571 9.05006 13 9.31041 13 9.80391C13 10.6102 13 11.4165 13 12.2228C13 12.728 12.726 13.0019 12.2168 13C11.2471 12.9942 10.291 12.8756 9.34848 12.6464C7.74134 12.2578 6.27413 11.5681 4.95266 10.583C3.32221 9.37258 2.06682 7.84157 1.18649 6.01135C0.667619 4.93498 0.311989 3.80227 0.146806 2.61904C0.0593561 1.99731 0.0302061 1.36586 0.00105618 0.736362C-0.0203205 0.28755 0.284783 0.00194291 0.735635 0C1.55961 0 2.38358 0 3.20755 0C3.68173 0 3.94408 0.237035 3.96351 0.71499C3.99655 1.53101 4.09177 2.33537 4.29971 3.12419C4.30554 3.14557 4.30748 3.16888 4.31719 3.18831C4.5057 3.54192 4.35412 3.81004 4.10537 4.05873C3.60205 4.55612 3.10456 5.05544 2.59735 5.56254Z" fill="white"/>
-            <path d="M7 1.32355C7 0.878602 7 0.44086 7 0.00311826C10.0519 -0.103165 13.0462 2.51968 12.9995 6C12.5622 6 12.1249 6 11.675 6C11.6516 4.7228 11.2198 3.60593 10.311 2.69442C9.4041 1.78471 8.29382 1.34877 7 1.32355Z" fill="white"/>
-            <path d="M7 3.58748C7 3.04968 7 2.52485 7 2.00001C9.09164 1.99569 10.959 3.59396 11 6C10.4717 6 9.94124 6 9.41294 6C9.31806 4.47517 8.28733 3.64795 7 3.58748Z" fill="white"/>
-          </svg>
-          
-          </a>
-          <a href="#!" class="sm-icons__link sm-icons__link--email">
-          <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.50306 0.00159638C10.8256 0.00159638 13.147 0.000374151 15.4695 0.00159638C16.1895 0.00159638 16.7494 0.412265 16.9389 1.07838C16.9768 1.2116 16.9963 1.3546 16.9963 1.49394C17 4.80495 16.9988 8.11597 17 11.4258C17 12.3669 16.3778 12.9988 15.4402 12.9988C11.9001 12.9988 8.36003 12.9975 4.81872 12.9975C3.73078 12.9975 2.64284 12.9975 1.55368 13C0.640541 13.0024 0 12.3644 0 11.4514C0 8.13064 0.00122241 4.80862 0.00122241 1.48783C0.00122241 0.665266 0.642986 0.00892975 1.47422 0.00404084C2.76997 -0.00329253 4.06694 0.00159638 5.36392 0.00159638C6.4103 0.00159638 7.45668 0.00281861 8.50306 0.00159638ZM8.49939 1.00505C8.49939 1.00382 8.49939 1.00382 8.49939 1.0026C7.27576 1.0026 6.05335 1.0026 4.82973 1.0026C3.73078 1.0026 2.63306 1.00382 1.53412 1.00382C1.37154 1.00382 1.22485 1.0356 1.11483 1.17005C1.04393 1.2556 1.01949 1.32038 1.1185 1.41816C1.99863 2.28961 2.87143 3.16717 3.7479 4.0435C4.8554 5.15084 5.9629 6.25818 7.06917 7.36674C7.28554 7.58308 7.52758 7.76274 7.81606 7.86419C8.6473 8.15875 9.37341 7.96808 9.99072 7.35452C11.1826 6.16896 12.3683 4.97851 13.5565 3.78928C14.329 3.01683 15.1004 2.24194 15.8778 1.47438C15.9964 1.35827 15.9695 1.27271 15.8827 1.17005C15.7641 1.02949 15.6052 1.0026 15.4317 1.0026C13.1213 1.00505 10.8097 1.00505 8.49939 1.00505ZM11.5285 7.15285C11.2192 7.46941 10.9295 7.76641 10.6398 8.06341C9.50176 9.2282 7.60214 9.24775 6.4543 8.10375C6.14503 7.79575 5.84555 7.47919 5.53994 7.16507C5.48127 7.21885 5.44949 7.24452 5.42015 7.27385C4.40555 8.28953 3.39095 9.3052 2.37636 10.3221C1.9534 10.745 1.5329 11.1715 1.10505 11.5895C1.02315 11.669 1.0366 11.7277 1.09161 11.8022C1.20407 11.9562 1.36298 11.999 1.5439 11.999C3.3445 11.9978 5.14633 11.999 6.94693 11.999C9.76336 11.999 12.5798 11.999 15.3962 11.9978C15.494 11.9978 15.5955 11.9917 15.6884 11.9648C15.9585 11.889 16.0172 11.6604 15.8228 11.4661C14.697 10.3404 13.5699 9.21475 12.4453 8.08786C12.1458 7.78474 11.85 7.47919 11.5285 7.15285ZM1.04882 2.71005C1.03782 2.71983 1.02682 2.72961 1.01582 2.74061C1.01582 5.24251 1.01582 7.74563 1.01582 10.2121C2.2639 8.96786 3.52297 7.71386 4.74171 6.49774C3.51564 5.24007 2.28223 3.97506 1.04882 2.71005ZM12.3109 6.48307C13.5174 7.69186 14.7557 8.93242 15.9854 10.1644C15.9854 7.7163 15.9854 5.24984 15.9854 2.78217C15.9732 2.77361 15.9597 2.76505 15.9475 2.75528C14.7288 4.00562 13.51 5.25473 12.3109 6.48307Z" fill="white"/>
-          </svg>
-          
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  `;
+// Module Ask Question -> Step 2, Step 3 -> Titles
+const moduleStepTwoTitle = document.getElementById('module-step-two-title');
+const moduleStepThreeTitle = document.getElementById('module-step-three-title');
+
+// Module Ask Question -> Step 2, Step 3 -> Arrows Back
+const moduleStepTwoArrowBack = document.getElementById('step-two-arrow-step-back');
+const moduleStepThreeArrowBack = document.getElementById('step-three-arrow-step-back');
+
+// Module Ask Question -> Step 3 -> Contact input
+const moduleLabelEnterContactInfo = document.getElementById('module-label-enter-contact-info');
+
+// Module Ask Question -> Step Success -> Submit
+const moduleBtnSubmit = document.getElementById('module_questions-submit-btn');
+
+// Ask question clicked
+btnAskQuestion.addEventListener('click', (e) =>{
+
+  btnAskQuestion.classList.add('hidden');
+  moduleQuestions.classList.remove('hidden');
+  moduleStepOne.classList.remove('hidden');
   body.classList.add('dark-overlay');
-  // js-btn-horizontal-line-close
-  const moduleQuestionTextarea = document.getElementById('js-text-input-ask-anything');
-  // const btnHorizontalLineClose = document.getElementById('js-btn-horizontal-line-close');
   moduleQuestionTextarea.focus();
-};
 
-// Module Step Two
-const moduleStepTwoState = function (page) {
-  moduleQuestions.id = 'module-questions';
-  moduleQuestions.innerHTML = `
-    test 2
-  `;
-};
+  // Telegram clicked
+  telegramBtn.addEventListener('click', (e) =>{
 
-// Module Step Three
-const moduleStepThreeState = function (page) {
-  moduleQuestions.id = 'module-questions';
-  moduleQuestions.innerHTML = `
-    test 3
-  `;
-};
+    moduleStepOne.classList.add('hidden');
+    moduleStepTwo.classList.remove('hidden');
+    moduleStepTwoTitle.innerHTML = 'Telegram';
 
-// Module Step Success
-const moduleStepSuccessState = function (page) {
-  moduleQuestions.id = 'module-questions';
-  moduleQuestions.innerHTML = `
-    success 4
-  `;
-};
+    // Telegram -> Call clicked
+    moduleBtnCall.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
 
-// Instantiate pageState
-const page = new PageState();
+      moduleStepThreeTitle.innerHTML = 'Telegram / Позвонить'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
 
-// Close module
-// btnHorizontalLineClose.addEventListener('click', (e) =>{
-//   page.change(new clearModuleState());
+      e.preventDefault();
+    });
 
-//   e.preventDefault();
-// });
+    // Telegram -> Message clicked
+    moduleBtnMessage.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
 
-// Module Step One
-btnAskQuestion.addEventListener('click', (e) => {
-  page.change(new moduleStepOneState());
+      moduleStepThreeTitle.innerHTML = 'Telegram / Написать'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Step 2 -> Arrow back
+    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      e.preventDefault();
+    })
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepTwo.classList.remove('hidden');
+      moduleStepOne.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+  // Whatsapp clicked
+  whatsappBtn.addEventListener('click', (e) =>{
+    
+    moduleStepOne.classList.add('hidden');
+    moduleStepTwo.classList.remove('hidden');
+    moduleStepTwoTitle.innerHTML = 'Whats App';
+
+    // Whatsapp -> Call clicked
+    moduleBtnCall.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'Whatsapp / Позвонить'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Whatsapp -> Message clicked
+    moduleBtnMessage.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'Whatsapp / Написать'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Step 2 -> Arrow back
+    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      e.preventDefault();
+    })
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepTwo.classList.remove('hidden');
+      moduleStepOne.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+
+  viberBtn.addEventListener('click', (e) =>{
+    
+    moduleStepOne.classList.add('hidden');
+    moduleStepTwo.classList.remove('hidden');
+    moduleStepTwoTitle.innerHTML = 'Viber';
+
+    // Viber -> Call clicked
+    moduleBtnCall.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'Viber / Позвонить'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Viber -> Message clicked
+    moduleBtnMessage.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'Viber / Написать'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Step 2 -> Arrow back
+    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      e.preventDefault();
+    })
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepTwo.classList.remove('hidden');
+      moduleStepOne.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+  vkBtn.addEventListener('click', (e) =>{
+    
+    moduleStepOne.classList.add('hidden');
+    moduleStepTwo.classList.remove('hidden');
+    moduleStepTwoTitle.innerHTML = 'VK';
+
+    // VK -> Call clicked
+    moduleBtnCall.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'VK / Позвонить'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // VK -> Message clicked
+    moduleBtnMessage.addEventListener('click', (e) => {
+      moduleStepThree.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      moduleStepThreeTitle.innerHTML = 'VK / Написать'
+      moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+      e.preventDefault();
+    });
+
+    // Step 2 -> Arrow back
+    moduleStepTwoArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+
+      e.preventDefault();
+    })
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepTwo.classList.remove('hidden');
+      moduleStepOne.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+  // Phone button clicked
+  phoneBtn.addEventListener('click', (e) =>{
+    
+    moduleStepOne.classList.add('hidden');
+    moduleStepThree.classList.remove('hidden');
+    moduleStepThreeTitle.innerHTML = 'Позвонить'
+    moduleLabelEnterContactInfo.innerHTML = 'Напишите свой номер'
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+  // Email button clicked
+  emailBtn.addEventListener('click', (e) =>{
+    
+    moduleStepOne.classList.add('hidden');
+    moduleStepThree.classList.remove('hidden');
+    moduleStepThreeTitle.innerHTML = 'Написать'
+    moduleLabelEnterContactInfo.innerHTML = 'Напишите свой e-mail'
+
+    // Step 3 -> Arrow Back
+    moduleStepThreeArrowBack.addEventListener('click', (e) =>{
+      moduleStepOne.classList.remove('hidden');
+      moduleStepTwo.classList.add('hidden');
+      moduleStepThree.classList.add('hidden');
+
+      e.preventDefault();
+    })
+
+    e.preventDefault();
+  })
+
+  // Submit btn clicked
+  moduleBtnSubmit.addEventListener('click', (e) => {
+
+    moduleStepThree.classList.add('hidden');
+    moduleStepTwo.classList.add('hidden');
+    moduleStepOne.classList.add('hidden');
+    moduleStepSuccess.classList.remove('hidden');
+
+    setTimeout(() => {
+      moduleStepSuccess.classList.add('hidden');
+      btnAskQuestion.classList.remove('hidden');
+      sectionAskQuestionsInner.innerHTML = 'Спасибо! Вы с вами свяжемся!'
+      moduleQuestions.classList.add('hidden');
+      // moduleStepOne.classList.add('hidden');
+      body.classList.remove('dark-overlay');
+    }, 3000);
+
+    e.preventDefault();
+  })
 
   e.preventDefault();
-});
-
-// Module Step Two
-// moduleStepTwo.addEventListener('click', (e) => {
-//   page.change(new moduleStepTwoState());
-
-//   e.preventDefault();
-// });
-
-// Module Step Three
-// moduleStepThree.addEventListener('click', (e) => {
-//   page.change(new moduleStepThreeState());
-
-//   e.preventDefault();
-// });
-
-// Module Step Success
-// moduleStepSuccess.addEventListener('click', (e) => {
-//   page.change(new moduleStepSuccessState());
-
-//   e.preventDefault();
-// });
+})
