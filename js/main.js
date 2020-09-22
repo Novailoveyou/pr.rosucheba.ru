@@ -1,5 +1,6 @@
 const btnAskQuestion = document.getElementById('section-ask-questions');
 const moduleQuestions = document.getElementById('module-questions');
+const body = document.getElementById('body');
 // const moduleStepOne = document.getElementById('module-questions__step-one');
 // const moduleStepTwo = document.getElementById('module-questions__step-two');
 // const moduleStepThree = document.getElementById('module-questions__step-three');
@@ -90,6 +91,7 @@ const moduleStepOneState = function (page) {
   </div>
 </div>
   `;
+  body.classList.add('dark-overlay');
   // js-btn-horizontal-line-close
   const moduleQuestionTextarea = document.getElementById('js-text-input-ask-anything');
   // const btnHorizontalLineClose = document.getElementById('js-btn-horizontal-line-close');
