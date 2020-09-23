@@ -12,6 +12,16 @@ const menuToggler = document.getElementById('menu-toggle');
 
 const inputSelectChooseUni = document.getElementById('input-select-choose-uni');
 
+const inputSelectChooseUniInnerText = document.getElementById('input-select-choose-uni-inner-text');
+
+const inputSelectChooseProgramm = document.getElementById('input-select-choose-programm');
+
+const inputSelectChooseProgrammInnerText = document.getElementById('input-select-choose-programm-inner-text');
+
+const inputSelectChooseUniDropdown = document.getElementById('input-select-choose-uni-dropdown');
+
+const inputSelectChooseProgrammDropdown = document.getElementById('input-select-choose-programm-dropdown');
+
 // Module Ask Question -> Steps
 const moduleStepOne = document.getElementById('module-questions__step-one');
 const moduleStepTwo = document.getElementById('module-questions__step-two');
@@ -52,11 +62,39 @@ const carouselImgGroupOne = document.getElementById('content__img-group--1');
 const carouselImgGroupTwo = document.getElementById('content__img-group--2');
 const carouselImgGroupThree = document.getElementById('content__img-group--3');
 
-// Select
+// Select Dropdown Uni
 inputSelectChooseUni.addEventListener('click', (e) => {
-  console.log('test');
+
+  inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
+  e.preventDefault();
+})
+
+// Dropdown Uni
+inputSelectChooseUniDropdown.addEventListener('click', (e) => {
+
+  inputSelectChooseUniInnerText.innerText = e.target.innerText;
+
+  inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
+
+  e.preventDefault()
+})
+
+// Select Dropdown Programm
+inputSelectChooseProgramm.addEventListener('click', (e) => {
+
+  inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
 
   e.preventDefault();
+})
+
+// Dropdown Programm
+inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
+
+  inputSelectChooseProgrammInnerText.innerText = e.target.innerText;
+
+  inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
+
+  e.preventDefault()
 })
 
 // Ask question clicked

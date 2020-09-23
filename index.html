@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1.0" /> -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="theme-color" content="#FF6600" />
   <meta name="description" content="Высшее образование дистанционно без ЕНТ и ЕГЭ" />
@@ -14,7 +15,7 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" /> -->
   <link rel="stylesheet" href="css/main.css" />
-  <title>Институт Профессионального Образования</title>
+  <title>Дистанционное образование</title>
 </head>
 
 <body>
@@ -196,10 +197,10 @@
                     <p>Номер приемной комиссии:</p>
                   </div>
                   <div class="number-wrapper__number">
-                    <a href="#">+7 (495) 648-62-26</a>
+                    <a href="tel:+1-555-555-1212">+7 (495) 648-62-26</a>
                   </div>
                   <div class="number-wrapper__btn">
-                    <a href="#" class="btn btn-tertiary">
+                    <a href="tel:+1-555-555-1212" class="btn btn-tertiary">
                       НАБРАТЬ
                     </a>
                   </div>
@@ -279,25 +280,54 @@
                         fill="white" />
                     </svg>
                   </div>
-                  <div class="input-style-primary input-style-select-primary">
-                    Выберите ВУЗе
+                  <div id="input-select-choose-uni-inner-text" class="input-style-primary input-style-select-primary">
+                    Выберите ВУЗ
                   </div>
                 </div>
-                <div class="test">
-                  <option value="val-choose-uni">Выберите ВУЗ</option>
-                  <option value="val-MOI">Московский Открытый Институт
-                    (МОИ)</option>
-                  <option value="val-IPE">Институт профессионального образования (ИПО)</option>
-                  <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
-                  <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
-                  <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
-                  <option value="val-Synergy">Синергия</option>
+                <div id="input-select-choose-uni-dropdown"
+                  class="container-input__inner-dropdown input-select-choose-uni-dropdown">
+                  <ul class="inner-dropdown__inner-dropdown-items">
+                    <li class="inner-dropdown-items__item" data-uni="consultation-is-needed">
+                      <p>Определюсь после консультации</p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="moi">
+                      <p>
+                        Московский Открытый Институт
+                        (МОИ)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="IPO">
+                      <p>
+                        Институт профессионального образования (ИПО)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="PocHOY">
+                      <p>
+                        Российский Новый Университет (РосНОУ)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="CBA">
+                      <p>
+                        Столичная Бизнес Академия (СБА)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="TGY">
+                      <p>
+                        Тамбовский государственный университет (ТГУ)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item" data-uni="Synergy">
+                      <p>
+                        Синергия
+                      </p>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
               <!-- Input two -->
               <div class="container-input">
-                <div class="container-input__inner input-select-choose-programm">
+                <div id="input-select-choose-programm" class="container-input__inner input-select-choose-programm">
                   <div class="input-select__arrow-down">
                     <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -305,17 +335,63 @@
                         fill="white" />
                     </svg>
                   </div>
-                  <div class="input-style-primary input-style-select-primary">
+                  <div id="input-select-choose-programm-inner-text"
+                    class="input-style-primary input-style-select-primary">
                     Подберите направление
-                    <!-- <option value="val-choose-uni">Подберите направление</option>
-                    <option value="val-MOI">Московский Открытый Институт
-                      (МОИ)</option>
-                    <option value="val-IPE">Институт профессионального образования (ИПО)</option>
-                    <option value="val-RosHOY">Российский Новый Университет (РосНОУ)</option>
-                    <option value="val-CBA">Столичная Бизнес Академия (СБА)</option>
-                    <option value="val-TGU">Тамбовский государственный университет (ТГУ)</option>
-                    <option value="val-Synergy">Синергия</option> -->
                   </div>
+                </div>
+                <div id="input-select-choose-programm-dropdown"
+                  class="container-input__inner-dropdown input-select-choose-programm-dropdown">
+                  <ul class="inner-dropdown__inner-dropdown-items">
+                    <li class="inner-dropdown-items__item">
+                      <p>Колледж</p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Бакалавриат
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Специалитет
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Российский Новый Университет (РосНОУ)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Столичная Бизнес Академия (СБА)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Магистратура
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Профессиональная переподготовка
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Повышение квалификации
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Master of Business Administration (МВА)
+                      </p>
+                    </li>
+                    <li class="inner-dropdown-items__item">
+                      <p>
+                        Определюсь после консультации
+                      </p>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -330,7 +406,7 @@
                   </p>
                 </label>
                 <input type="tel" class="container-input-phone-number__input input-style-primary" name="phone-number"
-                  id="phone-number" placeholder="Номер телефона">
+                  id="phone-number" placeholder="+7 (777)-777-33">
               </div>
 
             </div>

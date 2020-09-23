@@ -286,6 +286,7 @@ a {
   color: #000; }
 
 body {
+  background-color: #fff;
   color: #000;
   min-height: 100%;
   font-family: Roboto, sans-serif;
@@ -476,6 +477,32 @@ header {
   justify-content: center;
   align-items: center; }
 
+.container-input__inner-dropdown {
+  height: 0;
+  visibility: hidden;
+  width: 100%;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 0.3125rem; }
+  .container-input__inner-dropdown.show-dropdown {
+    height: 100%;
+    visibility: visible; }
+
+.inner-dropdown__inner-dropdown-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.inner-dropdown-items__item {
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 0.0625rem solid #EFEFEF; }
+  .inner-dropdown-items__item p {
+    padding-left: 3.4375rem;
+    padding-right: 3.4375rem; }
+
 .section-heading__right {
   display: none; }
 
@@ -498,7 +525,7 @@ header {
   height: 2.6875rem;
   width: 100%;
   font-family: Roboto, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.9375rem;
@@ -517,6 +544,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 88%;
   color: #858585; }
 
 .container-input-phone-number__input {
@@ -1382,7 +1410,8 @@ header {
   .testimonials__testimonial {
     margin-right: 0;
     padding-top: 1.9375rem;
-    max-width: 8rem; }
+    width: 8rem;
+    max-width: 47%; }
     .testimonials__testimonial:nth-child(odd) {
       margin-right: 0.5rem; }
     .testimonials__testimonial:nth-child(1), .testimonials__testimonial:nth-child(2) {
@@ -1399,3 +1428,16 @@ header {
     margin-right: 0.625rem; }
   .img-wrapper__img {
     min-width: 40%; } }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+    background: #fff; } }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px; } }
