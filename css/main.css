@@ -240,6 +240,7 @@ table {
   margin-bottom: 2.25rem; }
 
 .nav-item__link {
+  position: relative;
   color: #fff; }
 
 .c-fff_bgr-norepeat_bgs-contain, .img-wrapper__img, .img-wrapper__img--trust-boost, .img__sinergy, .img__business-academy, .img__tambov, .img__ipe, .img__roc-hoy {
@@ -374,7 +375,8 @@ main {
   font-weight: 300; }
 
 .text-highlight--color,
-.text-highlight--color.menu-item__link {
+.text-highlight--color.menu-item__link,
+.text-highlight--color.input-style-select-primary {
   color: #2874FF; }
 
 .text-highlight--color-dimmer {
@@ -485,7 +487,9 @@ header {
   border-radius: 0.3125rem; }
   .container-input__inner-dropdown.show-dropdown {
     height: 100%;
-    visibility: visible; }
+    visibility: visible;
+    -webkit-animation: 2s linear 0s infinite normal shine;
+    animation: 2s linear 0s infinite normal shine; }
 
 .inner-dropdown__inner-dropdown-items {
   display: flex;
@@ -544,7 +548,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 88%;
+  padding-right: 2.6875rem;
   color: #858585; }
 
 .container-input-phone-number__input {
@@ -774,17 +778,6 @@ header {
 
 .section-nav__arrow-left {
   margin-right: 2.0625rem; }
-
-.arrow-left__link:hover, .arrow-left__link:focus,
-.arrow-right__link:hover,
-.arrow-right__link:focus {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent; }
 
 .section-ask-questions {
   transition: all 0.4s ease-in-out;
@@ -1286,7 +1279,7 @@ header {
     font-size: 0.875rem;
     line-height: 1.0625rem; }
   .section-heading {
-    height: 39.029375rem;
+    min-height: 39.029375rem;
     padding-top: 3.6875rem; }
   .section-heading__left {
     align-items: start; }
