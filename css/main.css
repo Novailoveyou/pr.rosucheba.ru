@@ -138,16 +138,6 @@ table {
   z-index: 100;
   visibility: hidden; }
 
-.area-at-the-right-edge {
-  background: transparent;
-  position: fixed;
-  top: 10;
-  right: 0;
-  width: 10%;
-  height: 78%;
-  z-index: -10;
-  visibility: visible; }
-
 .header-wrapper__menu {
   z-index: 99; }
 
@@ -257,22 +247,22 @@ table {
   background-repeat: no-repeat;
   background-size: contain; }
 
-.d-flex, .container-flex, .header-wrapper, .header-items__logo-container, .section-heading__left, .left__text-headings, .call-to-action__discount, .section-testimonials__testimonials, .content__img-group, .section__section-nav, .section-ask-questions__inner, .section-sm__blocks, .sm-block__icon, .section-cards__cards, .card__card-content, .card-content__card-content-row, .card-content-row__content-row-time, .module-questions__step, .step-three-row__input-group, .sm-icons, .sm-icons__link, .step_two-row__step-row-title, .step-success__step-success-row {
+.d-flex {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex; }
 
-.fd-column, .module-questions__step, .step-three-row__input-group, .step-success__step-success-row {
+.fd-column {
   flex-direction: -webkit-column;
   flex-direction: -moz-column;
   flex-direction: column; }
 
-.jc-center, .step-success__step-success-row {
+.jc-center {
   justify-content: center; }
 
-.ai-center, .module-questions__step, .step-success__step-success-row {
+.ai-center {
   align-items: center; }
 
 html {
@@ -329,6 +319,7 @@ main {
   margin: 0 auto; }
 
 .container-flex {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left; }
@@ -429,11 +420,13 @@ header {
   padding-bottom: 1.25rem; }
 
 .header-wrapper {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 99; }
 
 .header-items__logo-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
@@ -456,6 +449,7 @@ header {
   padding-top: 4.0625rem; }
 
 .section-heading__left {
+  display: flex;
   flex-direction: column;
   justify-content: center; }
 
@@ -463,7 +457,8 @@ header {
   margin-top: 5.25rem; }
 
 .container-input {
-  margin-bottom: 1.125rem; }
+  margin-bottom: 1.125rem;
+  max-width: 100%; }
 
 .container-input__inner {
   position: relative; }
@@ -485,6 +480,7 @@ header {
   display: none; }
 
 .left__text-headings {
+  display: flex;
   flex-direction: column;
   justify-content: center; }
 
@@ -517,8 +513,17 @@ header {
     border: 0.0625rem solid #2874FF;
     box-shadow: none; }
 
+.input-style-select-primary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #858585; }
+
 .container-input-phone-number__input {
   margin-top: 0.6875rem; }
+  .container-input-phone-number__input:focus {
+    color: #2874FF;
+    background-color: #fff; }
 
 .left__call-to-action {
   padding-top: 1.25rem; }
@@ -532,6 +537,7 @@ header {
 
 .call-to-action__discount {
   padding-top: 1.125rem;
+  display: flex;
   max-width: 100%; }
 
 .discount__text-container {
@@ -543,6 +549,7 @@ header {
   padding-bottom: 4.25rem; }
 
 .section-testimonials__testimonials {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -637,6 +644,7 @@ header {
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: .5rem;
   background-color: #fff;
   border: 0.0625rem solid #EFEFEF;
   border-radius: 0.3125rem;
@@ -681,8 +689,11 @@ header {
   padding-bottom: 4.25rem; }
 
 .content__img-group {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
+  .content__img-group.hidden {
+    display: none; }
 
 .img-group__img-wrapper {
   flex: 0 50%;
@@ -727,6 +738,7 @@ header {
   background-image: url("../img/trusted_by/qayar.jpg"); }
 
 .section__section-nav {
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
@@ -761,6 +773,7 @@ header {
   box-shadow: 0px 4px 15px 15px rgba(0, 0, 0, 0.08); }
 
 .section-ask-questions__inner {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -780,6 +793,7 @@ header {
   z-index: 98; }
 
 .section-sm__blocks {
+  display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center; }
@@ -791,6 +805,7 @@ header {
 .sm-block__icon {
   width: 100%;
   height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center; }
 
@@ -812,6 +827,7 @@ header {
 
 .section-cards__cards {
   margin-top: 1.875rem;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center; }
 
@@ -873,6 +889,7 @@ header {
   background-image: url("../img/learning_programs/economic_security.jpg"); }
 
 .card__card-content {
+  display: flex;
   flex-direction: column;
   max-height: 14.6875rem;
   margin-top: 2.25rem;
@@ -880,6 +897,7 @@ header {
   margin-right: 2.25rem; }
 
 .card-content__card-content-row {
+  display: flex;
   align-items: center; }
 
 .card-content-row__content-row-tag {
@@ -893,6 +911,7 @@ header {
   color: #fff; }
 
 .card-content-row__content-row-time {
+  display: flex;
   margin-left: 0.9375rem; }
 
 .content-row-time__text {
@@ -913,6 +932,7 @@ header {
 
 .module-questions {
   min-width: 100%;
+  max-width: 100%;
   max-height: 226px;
   background-color: #fff;
   border-radius: 10px 10px 0px 0px;
@@ -922,11 +942,20 @@ header {
   left: 0; }
 
 .module-questions__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   min-height: 14.125rem; }
+  .module-questions__step.hidden {
+    display: none; }
 
 .module-questions__step-one {
   padding-top: 1.6875rem; }
+
+.step-three-row__input-group {
+  display: flex;
+  flex-direction: column; }
 
 .btn-horizontal-line {
   position: absolute;
@@ -948,11 +977,13 @@ header {
     box-shadow: none; }
 
 .sm-icons {
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between; }
 
 .sm-icons__link {
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 31.5%;
@@ -981,6 +1012,7 @@ header {
   background-color: #FF6600; }
 
 .step_two-row__step-row-title {
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(40, 116, 255, 0.2);
@@ -1052,6 +1084,12 @@ header {
     outline: none !important;
     border: 0.0625rem solid #2874FF;
     box-shadow: none; }
+
+.step-success__step-success-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
 .step-success-row__p {
   margin-bottom: 0.5rem;

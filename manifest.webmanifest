@@ -2,21 +2,20 @@
   "short_name": "ИПО",
   "name": "Институт Профессионального Образования",
   "description": "Высшее образование дистанционно без ЕНТ и ЕГЭ",
-  "icons": [
-    {
-      "src": "/img/icons-192.png",
+  "icons": [{
+      "src": "./img/icons-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/icons-512.png",
+      "src": "./img/icons-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": "/",
-  "background_color": "#FF6600",
+  "background_color": "#0075FF",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#FF6600"
+  "theme_color": "#0075FF"
 }
