@@ -39,17 +39,20 @@ navItemLinks.forEach(item => {
     // console.log(window.location.href);
     // window.location.href.includes('#about') ? window.location.toString().split('#')[0] : window.location += '#about';
 
+    console.log(window.location.href.split('#')[0]);
     window.location += '#about';
 
-    setTimeout(() => {
-      // remove fragment as much as it can go without adding an entry in browser history:
-      window.location.replace("#");
+    window.location.href = window.location.href.split('#')[0]
 
-      // slice off the remaining '#' in HTML5:    
-      if (typeof window.history.replaceState == 'function') {
-        history.replaceState({}, '', window.location.href.slice(0, -1));
-      }
-    }, 300);
+    // setTimeout(() => {
+    //   // remove fragment as much as it can go without adding an entry in browser history:
+    // window.location.replace("#", '');
+
+    //   // slice off the remaining '#' in HTML5:    
+    //   if (typeof window.history.replaceState == 'function') {
+    //     history.replaceState({}, '', window.location.href.slice(0, -1));
+    //   }
+    // }, 300);
 
 
     e.preventDefault()
