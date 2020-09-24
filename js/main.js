@@ -22,6 +22,8 @@ const inputSelectChooseUniDropdown = document.getElementById('input-select-choos
 
 const inputSelectChooseProgrammDropdown = document.getElementById('input-select-choose-programm-dropdown');
 
+const inputSelectChooseProgrammDropdownStepTwo = document.getElementById('input-select-choose-programm-dropdown--step-two');
+
 const dropDownUniItems = document.querySelectorAll('.input-select-choose-uni-dropdown .inner-dropdown__inner-dropdown-items .inner-dropdown-items__item');
 
 const dropDownUniItemsP = document.querySelectorAll('.input-select-choose-uni-dropdown .inner-dropdown__inner-dropdown-items .inner-dropdown-items__item p');
@@ -30,35 +32,20 @@ const dropDownProgrammItems = document.querySelectorAll('.input-select-choose-pr
 
 const dropDownProgrammItemsP = document.querySelectorAll('.input-select-choose-programm-dropdown .inner-dropdown__inner-dropdown-items .inner-dropdown-items__item p');
 
+const dropDownProgrammItemsStepTwo = document.querySelectorAll('.input-select-choose-programm-dropdown--step-two .inner-dropdown__inner-dropdown-items .inner-dropdown-items__item')
+
+const dropDownProgrammItemsPStepTwo = document.querySelectorAll('.input-select-choose-programm-dropdown--step-two .inner-dropdown__inner-dropdown-items .inner-dropdown-items__item p')
+
+const selectedItemFromTheFirstStep = document.getElementById('inner-dropdown-items__item--selected');
+
 const navItemLinks = document.querySelectorAll('.nav-item__link');
 const navItemLinksArr = Array.from(navItemLinks);
 
-navItemLinks.forEach(item => {
-  item.addEventListener('click', function closeMobileMenu(e) {
-    menuToggler.checked = false;
-    // console.log(window.location.href);
-    // window.location.href.includes('#about') ? window.location.toString().split('#')[0] : window.location += '#about';
+const dropDownItemUniIcons = document.querySelectorAll('.inner-dropdown-items__item-uni__icon');
+const dropDownItemUniIconsArr = Array.from(dropDownItemUniIcons);
 
-    console.log(window.location.href.split('#')[0]);
-    window.location += '#about';
-
-    window.location.href = window.location.href.split('#')[0]
-
-    // setTimeout(() => {
-    //   // remove fragment as much as it can go without adding an entry in browser history:
-    // window.location.replace("#", '');
-
-    //   // slice off the remaining '#' in HTML5:    
-    //   if (typeof window.history.replaceState == 'function') {
-    //     history.replaceState({}, '', window.location.href.slice(0, -1));
-    //   }
-    // }, 300);
-
-
-    e.preventDefault()
-  })
-})
-// menuToggler
+const dropDownItemProgrammIcons = document.querySelectorAll('.inner-dropdown-items__item-programm__icon');
+const dropDownItemProgrammIconsArr = Array.from(dropDownItemProgrammIcons);
 
 // Module Ask Question -> Steps
 const moduleStepOne = document.getElementById('module-questions__step-one');
@@ -100,6 +87,33 @@ const carouselImgGroupOne = document.getElementById('content__img-group--1');
 const carouselImgGroupTwo = document.getElementById('content__img-group--2');
 const carouselImgGroupThree = document.getElementById('content__img-group--3');
 
+
+function insertAfter(newNode, referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+// Menu
+navItemLinks[0].addEventListener('click', (e) => {
+  window.location = '#about';
+  menuToggler.checked = false;
+  e.preventDefault()
+});
+
+navItemLinks[1].addEventListener('click', (e) => {
+  window.location = '#partners';
+  menuToggler.checked = false;
+  e.preventDefault()
+});
+
+navItemLinks[2].addEventListener('click', (e) => {
+  window.location = '#trusted-by';
+  menuToggler.checked = false;
+  e.preventDefault()
+});
+
+
+
+
 // Select Dropdown Uni
 inputSelectChooseUni.addEventListener('click', (e) => {
 
@@ -118,8 +132,6 @@ inputSelectChooseUni.addEventListener('click', (e) => {
     }
   });
 
-
-
   e.preventDefault();
 })
 
@@ -130,12 +142,6 @@ inputSelectChooseUniDropdown.addEventListener('click', (e) => {
   const dropDownUniItemsArr = Array.from(dropDownUniItems);
   const dropDownUniItemsArrP = Array.from(dropDownUniItemsP);
 
-  // Change the inner text of the select to the selected text
-  inputSelectChooseUniInnerText.innerText = e.target.innerText;
-
-  // Add the color to the selected text in the input
-  inputSelectChooseUniInnerText.classList.add('text-highlight--color');
-
   // Add the color to the selected text in the dropdown and clean the colors from other elements
   dropDownUniItemsArr.forEach(item => {
     item.classList.remove('text-highlight--color');
@@ -143,7 +149,21 @@ inputSelectChooseUniDropdown.addEventListener('click', (e) => {
   dropDownUniItemsArrP.forEach(item => {
     item.classList.remove('text-highlight--color');
   });
-  e.target.classList.add('text-highlight--color');
+
+  // Change the inner text of the select to the selected text
+  if (e.target.tagName === "svg") {
+    inputSelectChooseUniInnerText.innerText = e.target.parentElement.innerText;
+    e.target.parentElement.classList.add('text-highlight--color');
+  } else if (e.target.tagName == "path") {
+    inputSelectChooseUniInnerText.innerText = e.target.parentElement.parentElement.innerText;
+    e.target.parentElement.parentElement.classList.add('text-highlight--color');
+  } else {
+    inputSelectChooseUniInnerText.innerText = e.target.innerText;
+    e.target.classList.add('text-highlight--color');
+  }
+
+  // Add the color to the selected text in the input
+  inputSelectChooseUniInnerText.classList.add('text-highlight--color');
 
   // On select hide the module
   inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
@@ -154,17 +174,23 @@ inputSelectChooseUniDropdown.addEventListener('click', (e) => {
 // Select Dropdown Programm
 inputSelectChooseProgramm.addEventListener('click', (e) => {
 
+  inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
   inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
 
   document.body.addEventListener('click', function closeInputProgrammDropDown(e) {
     if (
-      inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') &&
+      (inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') || inputSelectChooseProgrammDropdownStepTwo.classList.contains('show-dropdown')) &&
       !inputSelectChooseProgrammDropdown.contains(e.target) &&
       e.target !== inputSelectChooseProgrammDropdown &&
       !inputSelectChooseProgramm.contains(e.target) &&
-      e.target !== inputSelectChooseProgramm) {
+      e.target !== inputSelectChooseProgrammDropdownStepTwo &&
+      !inputSelectChooseProgrammDropdownStepTwo.contains(e.target) &&
+      e.target !== inputSelectChooseProgramm &&
+      !selectedItemFromTheFirstStep.contains(e.target) &&
+      e.target !== selectedItemFromTheFirstStep) {
       // Close question module
-      inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
+      inputSelectChooseProgrammDropdown.classList.remove('show-dropdown');
+      inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
       document.body.removeEventListener('click', closeInputProgrammDropDown);
     }
   });
@@ -178,21 +204,127 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
   const dropDownProgrammItemsArr = Array.from(dropDownProgrammItems);
   const dropDownProgrammItemsArrP = Array.from(dropDownProgrammItemsP);
 
-  inputSelectChooseProgrammInnerText.innerText = e.target.innerText;
-  inputSelectChooseProgrammInnerText.classList.add('text-highlight--color');
-
   dropDownProgrammItemsArr.forEach(item => {
     item.classList.remove('text-highlight--color');
   });
   dropDownProgrammItemsArrP.forEach(item => {
     item.classList.remove('text-highlight--color');
   });
-  e.target.classList.add('text-highlight--color');
 
+  // Change the inner text of the select to the selected text
+  if (e.target.tagName === "svg") {
+    inputSelectChooseProgrammInnerText.innerText = e.target.parentElement.innerText;
+    e.target.parentElement.classList.add('text-highlight--color');
+  } else if (e.target.tagName == "path") {
+    inputSelectChooseProgrammInnerText.innerText = e.target.parentElement.parentElement.innerText;
+    e.target.parentElement.parentElement.classList.add('text-highlight--color');
+  } else {
+    inputSelectChooseProgrammInnerText.innerText = e.target.innerText;
+    e.target.classList.add('text-highlight--color');
+  }
+
+  // Add the color to the selected text in the input
+  inputSelectChooseProgrammInnerText.classList.add('text-highlight--color');
+
+  // Dropdown Programm Step 2
+  if (inputSelectChooseProgrammInnerText.innerText === 'Определюсь после консультации') {
+    inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+  } else {
+    inputSelectChooseProgrammDropdownStepTwo.classList.add('show-dropdown');
+
+    const selectedItemFromTheFirstStepText = document.getElementById('programm-dropdown-step-two-selected-step-one-item');
+
+    selectedItemFromTheFirstStepText.innerText = inputSelectChooseProgrammInnerText.innerText;
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Колледж') {
+
+      // const el = document.createElement("li")
+      // el.innerHTML = 'test'
+      // insertAfter(selectedItemFromTheFirstStep, el);
+      console.log('Колледж');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Бакалавриат') {
+      console.log('Бакалавриат');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Специалитет') {
+      console.log('Специалитет');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Магистратура') {
+      console.log('Магистратура');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Профессиональная переподготовка') {
+      console.log('Профессиональная переподготовка');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Повышение квалификации') {
+      console.log('Повышение квалификации');
+    }
+
+    if (selectedItemFromTheFirstStepText.innerText === 'Master of Business Administration (МВА)') {
+      console.log('Master of Business Administration (МВА)');
+    }
+
+    selectedItemFromTheFirstStep.addEventListener('click', (e) => {
+
+      inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+      inputSelectChooseProgrammDropdown.classList.add('show-dropdown');
+
+      e.preventDefault();
+    })
+
+    inputSelectChooseProgrammDropdownStepTwo.addEventListener('click', (e) => {
+
+      const dropDownProgrammItemsStepTwoArr = Array.from(dropDownProgrammItemsStepTwo);
+      const dropDownProgrammItemsPStepTwoArr = Array.from(dropDownProgrammItemsPStepTwo);
+
+      dropDownProgrammItemsStepTwoArr.forEach(item => {
+        item.classList.remove('text-highlight--color');
+      });
+      dropDownProgrammItemsPStepTwoArr.forEach(item => {
+        item.classList.remove('text-highlight--color');
+      });
+
+      // Change the inner text of the select to the selected text
+      if (e.target.tagName === "svg") {
+        inputSelectChooseProgrammInnerText.innerText += `, ${e.target.parentElement.innerText}`;
+        e.target.parentElement.classList.add('text-highlight--color');
+      } else if (e.target.tagName == "path") {
+        inputSelectChooseProgrammInnerText.innerText += `, ${e.target.parentElement.parentElement.innerText}`;
+        e.target.parentElement.parentElement.classList.add('text-highlight--color');
+      } else {
+        inputSelectChooseProgrammInnerText.innerText += `, ${e.target.innerText}`;
+        e.target.classList.add('text-highlight--color');
+      }
+
+      inputSelectChooseProgrammInnerText.innerHTML = inputSelectChooseProgrammInnerText.innerHTML.replace(/,\s*$/, "");
+
+      inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+
+    })
+  }
+
+  // On select hide the module
   inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
 
   e.preventDefault()
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Ask question clicked
 btnAskQuestion.addEventListener('click', (e) => {
@@ -497,6 +629,12 @@ btnAskQuestion.addEventListener('click', (e) => {
 
   e.preventDefault();
 })
+
+
+
+
+
+
 
 // Carousel
 const carouselItems = [carouselImgGroupOne, carouselImgGroupTwo, carouselImgGroupThree];
