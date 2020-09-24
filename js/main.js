@@ -35,9 +35,22 @@ const navItemLinksArr = Array.from(navItemLinks);
 
 navItemLinks.forEach(item => {
   item.addEventListener('click', function closeMobileMenu(e) {
+    menuToggler.checked = false;
+    // console.log(window.location.href);
+    // window.location.href.includes('#about') ? window.location.toString().split('#')[0] : window.location += '#about';
+
+    window.location += '#about';
+
     setTimeout(() => {
-      menuToggler.checked = false;
+      // remove fragment as much as it can go without adding an entry in browser history:
+      window.location.replace("#");
+
+      // slice off the remaining '#' in HTML5:    
+      if (typeof window.history.replaceState == 'function') {
+        history.replaceState({}, '', window.location.href.slice(0, -1));
+      }
     }, 300);
+
 
     e.preventDefault()
   })
