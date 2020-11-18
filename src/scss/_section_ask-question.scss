@@ -68,5 +68,13 @@
 }
 
 .section-call-to-action--bottom {
+  background-color: $secondary-color--dim;
   padding-bottom: $sections-bottom-padding;
+  padding-top: $sections-top-padding;
+  & .section__subtitle{
+    & *{
+      text-align: center;
+    }
+    margin-bottom: 52px;
+  }
 }

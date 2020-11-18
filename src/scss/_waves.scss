@@ -1,0 +1,19 @@
+.section__waves{
+  position: absolute;
+  width: 100%;
+  & path{
+    fill: $secondary-color--dim;
+  }
+}
+.section__waves--top{
+  top: -24px;
+  left: 0;
+  &.desktop-only{
+    top: -91px;
+  }
+}
+
+.section__waves--bottom{
+  bottom: -24px;
+  left: 0;
+}

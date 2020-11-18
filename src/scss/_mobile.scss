@@ -77,6 +77,10 @@
     width: 100%;
   }
 
+  .section__title > * {
+    text-align: left;
+  }
+
   .header-wrapper {
     align-items: initial;
     flex-direction: column;
@@ -119,9 +123,47 @@
     padding-bottom: 0;
   }
 
-  // main {
-  //     margin-top: 9.28125rem;
-  // }
+  main {
+    // margin-top: 9.28125rem;
+    display: flex;
+    flex-direction: column;
+    & .section-heading{
+      order: 1;
+    }
+    & .section-testimonials{
+      order: 2;
+    }
+    & .section-about{
+      order: 3;
+    }
+    & .section-choose-from-many{
+      order: 4;
+    }
+    & .section-how-it-works{
+      order: 5;
+    }
+    & .section-edu-levels{
+      order: 6;
+    }
+    & .section-partners{
+      order: 7;
+    }
+    & .section-needed-docs{
+      order: 8;
+    }
+    & .section-what-to-do{
+      order: 9;
+    }
+    & .section-price-info{
+      order: 10;
+    }
+    & .hr-between-sections{
+      order: 11;
+    }
+    & .section-trust-boost{
+      order: 12;
+    }
+  }
 
   .circles-mobile {
     display: none;
@@ -443,17 +485,20 @@
   }
 
   .section-about {
+    
     // padding-left: 3.1875rem;
     // padding-right: 3.1875rem;
     padding-top: 8.75rem;
     padding-bottom: 8.75rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    & .mark__check-icon{
+      margin-right: $_18px;
+    }
   }
 
   .container--about {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 79px;
     // margin-left: 3.1875rem;
     // margin-right: 3.1875rem;
     background-color: $secondary-color;
@@ -479,22 +524,38 @@
       align-items: center;
       max-width: 100%;
       position: relative;
-    }
-  }
-
-  .content__info {
-    &.h1--padding-bottom {
-      padding-bottom: 0;
-    }
-    width: 28.3125rem;
-    max-width: 45%;
-    p {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 25px;
-      line-height: 29px;
-      & .text-highlight--fw-400 {
-        font-weight: 300;
+      & .content__info{
+        & .info__check-marks{
+          display: flex;
+          flex-wrap: wrap;
+          & p.check-marks__mark{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: $_15px;
+            line-height: $_18px;
+            margin-top: $_28px;
+            &:nth-child(1){
+              margin-right: $_33px;
+            }
+          }
+        }
+        &.h1--padding-bottom {
+          padding-bottom: 0;
+        }
+        // width: 28.3125rem;
+        max-width: 49%;
+        p {
+          font-style: normal;
+          font-weight: bold;
+          // font-size: 25px;
+          line-height: 29px;
+          & .text-highlight--fw-400 {
+            font-weight: 300;
+          }
+          font-size: 20px;
+        }
       }
     }
   }
@@ -634,23 +695,45 @@
 
   .section-partners {
     padding-bottom: 6.0625rem;
+    margin-top: 91px;
+    margin-bottom: 0;
   }
 
   .section-needed-docs {
     display: block;
     background-color: $secondary-color;
-    height: 43.625rem;
+    // height: 43.625rem;
+    padding-bottom: 100px;
+    margin-bottom: 90px;
+    margin-top: 53px;
 
+    & svg{
+      &.desktop-only.section__waves--top{
+        top: -90px;
+        & path{
+          fill: $secondary-color;
+        }
+      }
+      &.desktop-only.section__waves--bottom{
+        bottom: -90px;
+        & path{
+          fill: $secondary-color;
+        }
+      }
+    }
     & .container {
       position: relative;
-      padding-top: 14.375rem;
+      padding-top: 158px;
     }
   }
 
   .section-price-info {
     padding-top: 8.75rem;
     height: 100%;
-    padding-bottom: 8.75rem;
+    // margin-top: 8.75rem;
+    // margin-bottom: 8.75rem;
+    padding-bottom: 8.75rem;;
+    margin-bottom: 90px;
   }
 
   .section__learn-more {
@@ -664,9 +747,16 @@
     color: $secondary-color;
     position: absolute;
     width: calc(100% - 48px);
-    top: -6rem;
+    top: -9rem;
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .learn-more-btn {
+    &.btn-primary {
+      min-width: auto;
+      max-width: 15.5rem;
+    }
   }
 
   .learn-more__learn-more-text {
@@ -792,7 +882,7 @@
   .card__bg-icon {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
   }
   .card__title {
     font-size: 25px;
@@ -828,7 +918,7 @@
   }
 
   .section-trust-boost {
-    padding-top: 0;
+    padding-top: $sections-bottom-padding;
     & .section__title {
       & .h1 {
         padding-bottom: 6.625rem;

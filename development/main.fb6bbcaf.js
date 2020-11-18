@@ -14716,7 +14716,7 @@ $jscomp.polyfill = function (e, r, p, m) {
   Range.init($('input[type=range]'));
 })(cash, M.anime);
 
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -14748,7 +14748,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -14783,12 +14783,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/main.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/bundle-url.js"}],"scss/main.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\partners\\sinergy.jpg":[["sinergy.47ab2eed.jpg","img/partners/sinergy.jpg"],"img/partners/sinergy.jpg"],"./..\\img\\partners\\business-academy.jpg":[["business-academy.77f9e9ab.jpg","img/partners/business-academy.jpg"],"img/partners/business-academy.jpg"],"./..\\img\\partners\\tambov.jpg":[["tambov.ee86e65f.jpg","img/partners/tambov.jpg"],"img/partners/tambov.jpg"],"./..\\img\\partners\\ipe.jpg":[["ipe.2097cc5c.jpg","img/partners/ipe.jpg"],"img/partners/ipe.jpg"],"./..\\img\\partners\\roc-hoy.jpg":[["roc-hoy.dfc01d0c.jpg","img/partners/roc-hoy.jpg"],"img/partners/roc-hoy.jpg"],"./..\\img\\trusted_by\\hh.jpg":[["hh.bbfd7cda.jpg","img/trusted_by/hh.jpg"],"img/trusted_by/hh.jpg"],"./..\\img\\trusted_by\\rosseti.jpg":[["rosseti.263da7e4.jpg","img/trusted_by/rosseti.jpg"],"img/trusted_by/rosseti.jpg"],"./..\\img\\trusted_by\\rzhd.jpg":[["rzhd.fe64d6a5.jpg","img/trusted_by/rzhd.jpg"],"img/trusted_by/rzhd.jpg"],"./..\\img\\trusted_by\\rosneft.jpg":[["rosneft.afdbc676.jpg","img/trusted_by/rosneft.jpg"],"img/trusted_by/rosneft.jpg"],"./..\\img\\trusted_by\\tomc.jpg":[["tomc.d8e8b077.jpg","img/trusted_by/tomc.jpg"],"img/trusted_by/tomc.jpg"],"./..\\img\\trusted_by\\greenworks.jpg":[["greenworks.5ab122ce.jpg","img/trusted_by/greenworks.jpg"],"img/trusted_by/greenworks.jpg"],"./..\\img\\trusted_by\\tatehepro.jpg":[["tatehepro.7336df25.jpg","img/trusted_by/tatehepro.jpg"],"img/trusted_by/tatehepro.jpg"],"./..\\img\\trusted_by\\business-partner.jpg":[["business-partner.72800be2.jpg","img/trusted_by/business-partner.jpg"],"img/trusted_by/business-partner.jpg"],"./..\\img\\trusted_by\\ramport.jpg":[["ramport.43482636.jpg","img/trusted_by/ramport.jpg"],"img/trusted_by/ramport.jpg"],"./..\\img\\trusted_by\\sberbank.jpg":[["sberbank.0b6d4888.jpg","img/trusted_by/sberbank.jpg"],"img/trusted_by/sberbank.jpg"],"./..\\img\\trusted_by\\mtcrob.jpg":[["mtcrob.74a840a3.jpg","img/trusted_by/mtcrob.jpg"],"img/trusted_by/mtcrob.jpg"],"./..\\img\\trusted_by\\qayar.jpg":[["qayar.619a5c5e.jpg","img/trusted_by/qayar.jpg"],"img/trusted_by/qayar.jpg"],"./..\\img\\person-smiling_compressed.png":[["person-smiling_compressed.3fa47e1d.png","img/person-smiling_compressed.png"],"img/person-smiling_compressed.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/main.js":[function(require,module,exports) {
+},{"./..\\img\\partners\\sinergy.jpg":[["sinergy.47ab2eed.jpg","img/partners/sinergy.jpg"],"img/partners/sinergy.jpg"],"./..\\img\\partners\\business-academy.jpg":[["business-academy.77f9e9ab.jpg","img/partners/business-academy.jpg"],"img/partners/business-academy.jpg"],"./..\\img\\partners\\tambov.jpg":[["tambov.ee86e65f.jpg","img/partners/tambov.jpg"],"img/partners/tambov.jpg"],"./..\\img\\partners\\ipe.jpg":[["ipe.2097cc5c.jpg","img/partners/ipe.jpg"],"img/partners/ipe.jpg"],"./..\\img\\partners\\roc-hoy.jpg":[["roc-hoy.dfc01d0c.jpg","img/partners/roc-hoy.jpg"],"img/partners/roc-hoy.jpg"],"./..\\img\\trusted_by\\hh.jpg":[["hh.bbfd7cda.jpg","img/trusted_by/hh.jpg"],"img/trusted_by/hh.jpg"],"./..\\img\\trusted_by\\rosseti.jpg":[["rosseti.263da7e4.jpg","img/trusted_by/rosseti.jpg"],"img/trusted_by/rosseti.jpg"],"./..\\img\\trusted_by\\rzhd.jpg":[["rzhd.fe64d6a5.jpg","img/trusted_by/rzhd.jpg"],"img/trusted_by/rzhd.jpg"],"./..\\img\\trusted_by\\rosneft.jpg":[["rosneft.afdbc676.jpg","img/trusted_by/rosneft.jpg"],"img/trusted_by/rosneft.jpg"],"./..\\img\\trusted_by\\tomc.jpg":[["tomc.d8e8b077.jpg","img/trusted_by/tomc.jpg"],"img/trusted_by/tomc.jpg"],"./..\\img\\trusted_by\\greenworks.jpg":[["greenworks.5ab122ce.jpg","img/trusted_by/greenworks.jpg"],"img/trusted_by/greenworks.jpg"],"./..\\img\\trusted_by\\tatehepro.jpg":[["tatehepro.7336df25.jpg","img/trusted_by/tatehepro.jpg"],"img/trusted_by/tatehepro.jpg"],"./..\\img\\trusted_by\\business-partner.jpg":[["business-partner.72800be2.jpg","img/trusted_by/business-partner.jpg"],"img/trusted_by/business-partner.jpg"],"./..\\img\\trusted_by\\ramport.jpg":[["ramport.43482636.jpg","img/trusted_by/ramport.jpg"],"img/trusted_by/ramport.jpg"],"./..\\img\\trusted_by\\sberbank.jpg":[["sberbank.0b6d4888.jpg","img/trusted_by/sberbank.jpg"],"img/trusted_by/sberbank.jpg"],"./..\\img\\trusted_by\\mtcrob.jpg":[["mtcrob.74a840a3.jpg","img/trusted_by/mtcrob.jpg"],"img/trusted_by/mtcrob.jpg"],"./..\\img\\trusted_by\\qayar.jpg":[["qayar.619a5c5e.jpg","img/trusted_by/qayar.jpg"],"img/trusted_by/qayar.jpg"],"./..\\img\\person-smiling_compressed.png":[["person-smiling_compressed.3fa47e1d.png","img/person-smiling_compressed.png"],"img/person-smiling_compressed.png"],"_css_loader":"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/css-loader.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime-corejs2/regenerator"));
@@ -14922,11 +14922,11 @@ fetch(locationUrlAPI).then(function (data) {
 
 
   changeLocationDependedHeading(locationDependedHeading, 'дистанционно в вузах Москвы', 'дистанционно в вузах Москвы без ЕГЭ', 'дистанционно в вузах Москвы без ЕНТ и ЕГЭ', 'дистанционно в вузах Москвы без ЕНТ и ЕГЭ');
-  changeCustomizedCountryText('— мы помогаем абитуриентам выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам из Казахстана выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам из Узбекистана выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам выбирать образование, а Московским учебным заведениям — находить своих студентов!');
+  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', '');
 }).catch(function (error) {
   // `Can't access ${locationUrlAPI} :(`;
   changeLocationDependedHeading(locationDependedHeading, 'дистанционно в вузах Москвы', 'дистанционно в вузах Москвы без ЕГЭ', 'дистанционно в вузах Москвы без ЕНТ и ЕГЭ', 'дистанционно в вузах Москвы без ЕНТ и ЕГЭ');
-  changeCustomizedCountryText('— мы помогаем абитуриентам выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам из Казахстана выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам из Узбекистана выбирать образование, а Московским учебным заведениям — находить своих студентов!', '— мы помогаем абитуриентам выбирать образование, а Московским учебным заведениям — находить своих студентов!');
+  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', '');
   return;
 });
 
@@ -16048,13 +16048,8 @@ function submitContactForm() {
   });
 }
 
-submitContactForm(); // Materialbox
-
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.collapsible');
-  var instances = M.Collapsible.init(elems, options);
-});
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","materialize-css":"../node_modules/materialize-css/dist/js/materialize.js","../scss/main.scss":"scss/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+submitContactForm();
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","materialize-css":"../node_modules/materialize-css/dist/js/materialize.js","../scss/main.scss":"scss/main.scss"}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -16082,7 +16077,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63079" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64657" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -16258,5 +16253,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/main.js"], null)
+},{}]},{},["../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js","js/main.js"], null)
 //# sourceMappingURL=/main.fb6bbcaf.js.map

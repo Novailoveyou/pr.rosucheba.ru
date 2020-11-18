@@ -1,0 +1,131 @@
+// Section trust-boost
+.section-trust-boost {
+  // padding-top: $sections-top-padding;
+  padding-bottom: $sections-top-padding;
+}
+
+.content__img-group {
+  @include d-flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  width: 100%;
+  animation-name: carouselSlide;
+  animation-duration: 0.8s;
+  // animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  @keyframes carouselSlide {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.img-group__img-wrapper {
+  // flex: 0 50%;
+  @include d-flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
+  border-radius: 5px;
+
+  padding: 13px 6px;
+  margin-right: $_17px;
+  max-width: 119px;
+  max-height: 97px;
+}
+
+.img-wrapper__img--trust-boost{
+  background-position: center;
+}
+
+.img__hh {
+  background-image: url("../img/trusted_by/hh.jpg");
+}
+
+.img__rosseti {
+  background-image: url("../img/trusted_by/rosseti.jpg");
+}
+
+.img__rzhd {
+  background-image: url("../img/trusted_by/rzhd.jpg");
+}
+
+.img__rosneft {
+  background-image: url("../img/trusted_by/rosneft.jpg");
+}
+
+.img__tomc {
+  background-image: url("../img/trusted_by/tomc.jpg");
+}
+
+.img__greenworks {
+  background-image: url("../img/trusted_by/greenworks.jpg");
+}
+
+.img__tatehepro {
+  background-image: url("../img/trusted_by/tatehepro.jpg");
+}
+
+.img__business-partner {
+  background-image: url("../img/trusted_by/business-partner.jpg");
+}
+
+.img__ramport {
+  background-image: url("../img/trusted_by/ramport.jpg");
+}
+
+.img__sberbank {
+  background-image: url("../img/trusted_by/sberbank.jpg");
+}
+
+.img__mtcrob {
+  background-image: url("../img/trusted_by/mtcrob.jpg");
+}
+
+.img__qayar {
+  background-image: url("../img/trusted_by/qayar.jpg");
+}
+
+.section__section-nav {
+  @include d-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+}
+
+.section-nav__arrow-left {
+  margin-right: 2.0625rem;
+}
+
+// .arrow-left__link,
+// .arrow-right__link {
+
+//   &:hover,
+//   &:focus {
+//     -webkit-touch-callout: none;
+//     -webkit-user-select: none;
+//     -khtml-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     -webkit-tap-highlight-color: transparent;
+
+//     -webkit-touch-callout: none;
+//     /* prevent callout to copy image, etc when tap to hold */
+//     -webkit-text-size-adjust: none;
+//     /* prevent webkit from resizing text to fit */
+//     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//     /* prevent tap highlight color / shadow */
+//     -webkit-user-select: none;
+//     /* prevent copy paste, to allow, change 'none' to 'text' */
+//   }
+// }

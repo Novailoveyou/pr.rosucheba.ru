@@ -1,0 +1,24 @@
+.section-what-to-do{
+  & .section__content{
+    display: flex;
+    flex-direction: column;
+  }
+  & .section__title{
+    & h2{
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+  & .content__icon{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 42px;
+  }
+}
+
+@include mediaMd {
+  .section-what-to-do{
+    padding-top: 8.75rem;
+    padding-bottom: 8.75rem;
+  }
+}

@@ -47,7 +47,9 @@
   align-items: center;
   // justify-content: center;
   // align-items: center;
-  min-height: 20.9375rem;
+  // min-height: 20.9375rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   max-width: 1137px;
   & .section__content {
     flex: auto;
@@ -56,5 +58,11 @@
     align-items: center;
     max-width: 100%;
     position: relative;
+    & .content__info{
+      & p{
+        font-weight: 300;
+        font-size: 14px;
+      }
+    }
   }
 }

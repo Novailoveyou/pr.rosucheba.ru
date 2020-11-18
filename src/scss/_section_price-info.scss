@@ -46,3 +46,46 @@
     }
   }
 }
+
+@include mediaMd {
+  .section-price-info{
+    background-color: $secondary-color--dim;
+    & .section__content{
+      & .content__card{
+        height: initial;
+        & .card__title{
+          margin-bottom: 47px;
+        }
+        & .card__subtitle{
+          display: flex;
+          margin-bottom: $_19px;
+          font-weight: 300;
+          font-size: 25px;
+          line-height: 29px;
+          & .subtitle__number{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $secondary-color;
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 30px;
+            height: 30px;
+            margin-right: 26px;
+          }
+        }
+        & .card__subtitle--info{
+          margin-top: 42px;
+          font-weight: 300;
+          font-size: 25px;
+          line-height: 29px;
+        }
+      }
+    }
+    & .section__waves--bottom{
+      bottom: -90px;
+    }
+  }
+}
