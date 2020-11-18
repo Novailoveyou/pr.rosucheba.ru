@@ -1,0 +1,45 @@
+@media only screen and (max-width: 768px) {
+  .steps__step{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  
+    & .step__title{
+      background-color: $secondary-color;
+      border-radius: 5px;
+      flex-grow: 1;
+      min-height: 49px;
+      margin-right: auto;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding-right: 21px;
+      padding-left: 21px;
+      & .title__mobile-style{
+        color: #fff;
+        display: flex;
+        font-weight: 700;
+        & .mobile-style__number{
+          font-weight: 700;
+          background-color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          width: 17px;
+          height: 17px;
+          margin-right: 13px;
+          font-size: 12px;
+        }
+      }
+    }
+    & .step__text{
+      background: #F9FBFF;
+      border-radius: 0px 0px 5px 5px;
+      padding: 1rem;
+      & p{
+        font-weight: 300;
+      }
+    }
+  }
+}

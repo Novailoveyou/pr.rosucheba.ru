@@ -1,0 +1,38 @@
+@media only screen and (max-width: 768px) {
+  .section-edu-levels{
+    background: rgba(40, 116, 255, 0.03);
+    padding-top: 70px;
+    padding-bottom: 70px;
+    .section__content{
+      &.desktop-only{
+        display: none;
+      }
+      &.mobile-only{
+        justify-content: center;
+        align-items: center;
+        & .line-segment__line-items{
+          display: flex;
+          flex-wrap: wrap;
+          & .line-items__item{
+            & img{
+              margin-bottom: $_11px;
+            }
+            & p{
+              text-align: center;
+            }
+            flex: 0 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            &:nth-child(1),
+            &:nth-child(2){
+              margin-bottom: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,42 @@
+@media only screen and (max-width: 768px) {
+  .section-needed-docs{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    & .section-steps__title{
+      & h3{
+        color: $secondary-color;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: $_36px;
+      }
+    }
+    & .section-steps__steps{
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      & .steps__steps-step{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        & svg{
+          width: 4rem;
+          height: 4rem;
+        }
+        & p{
+          color: $secondary-color;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 14px;
+          text-align: center;
+          margin-top: $_18px;
+        }
+      }
+    }
+  }
+}

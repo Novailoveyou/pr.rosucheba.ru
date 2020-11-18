@@ -1,0 +1,48 @@
+@media only screen and (max-width: 768px) {
+  .section-price-info{
+    padding: 70px 0 70px 0;
+    & h2{
+      margin-bottom: $_39px;
+      padding: 0;
+    }
+    & .section__content{
+      
+      & .content__card{
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.07);
+        border-radius: 5px;
+        padding: $_25px;
+        & .card__bg-icon{
+          position: absolute;
+          top: 0;
+          right: 0;
+          & svg{
+            max-width: 60px;
+            max-height: 58px;
+          }
+        }
+        & .card__title{
+          margin-bottom: $_21px;
+        }
+        & .card__subtitle{
+          display: flex;
+          margin-bottom: $_19px;
+          & .subtitle__number{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $secondary-color;
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1rem;
+            min-width: 30px;
+            height: 30px;
+            margin-right: 26px;
+          }
+        }
+      }
+    }
+  }
+}

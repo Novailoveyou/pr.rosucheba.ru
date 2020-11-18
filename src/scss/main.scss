@@ -12,6 +12,10 @@
 @import 'section_testimonials';
 @import 'section_about';
 @import 'section_partners';
+@import 'section_how-it-works';
+@import 'section_edu-levels';
+@import 'section_price-info';
+@import 'section-needed-docs';
 // @import "section_sm";
 // @import "section_cards";
 @import 'section_ask-question';
@@ -22,9 +26,9 @@
   display: none;
 }
 
-.section-needed-docs {
-  display: none;
-}
+// .section-needed-docs {
+//   display: none;
+// }
 
 .step-success-row__back-to-main {
   border: $_1px solid $secondary-color;

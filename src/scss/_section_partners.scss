@@ -24,6 +24,7 @@
   background-color: #fff;
   border-radius: $_5px;
   margin-bottom: $_17px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.04);
 }
 
 .img-wrapper__img {
@@ -38,7 +39,7 @@
   height: 100%;
   padding: 0.5rem;
   background-color: #fff;
-  border: $_1px solid #efefef;
+  // border: $_1px solid #efefef;
   border-radius: $_5px;
   background-position: center;
 }

@@ -1,3 +1,4 @@
+import { Materialbox } from 'materialize-css';
 import '../scss/main.scss';
 
 // CTA btns
@@ -1065,7 +1066,7 @@ btnAskQuestion.addEventListener('click', (e) => {
       moduleInputContactInfo.focus();
 
       e.preventDefault();
-    });
+    }); 
 
     // Step 2 -> Arrow back
     moduleStepTwoArrowBack.addEventListener('click', (e) => {
@@ -1723,3 +1724,10 @@ function submitContactForm(){
 }
 
 submitContactForm();
+
+
+// Materialbox
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems, options);
+});
