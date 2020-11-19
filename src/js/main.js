@@ -1566,18 +1566,47 @@ phoneInputInnerText.addEventListener('click', (e) => {
 });
 
 
-// Learn more btn
-const learnMoreBtn = document.getElementById('learn-more-btn');
-learnMoreBtn.addEventListener('click', (e) => {
+// Pop up btns
+function showPopUp(button = ''){
+  const buttonSelected = document.getElementById(button);
+  buttonSelected.addEventListener('click', (e) => {
 
-  showPopUpContant();
+    const popupFormTitle = document.getElementById('pop-up-form-title');
+    const popupFormInfo = document.getElementById('popup-form-info');
 
-  submitPopUpForm();
+    switch(button){
+      case 'learn-more-btn':
+        // console.log('Узнайте подробнее о вузах');
+        popupFormTitle.innerHTML = 'Узнайте подробнее о вузах';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, консультант приемной комиссии подробно расскажет Вам о вузах и подберет программу!';
+      break;
+      case 'js-popup-choose-from-many':
+        // console.log('Узнайте о наличии своего направления');
+        popupFormTitle.innerHTML = 'Узнайте о наличии своего направления';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет на какие направления сейчас идет набор';
+      break;
+      case 'js-popup-what-to-do':
+        // console.log('Узнайте что делать если нет ЕГЭ');
+        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет как можно поступить без ЕГЭ и диплома колледжа';
+      break;
+      default:
+        return;
+    }
 
-  closePopUpContant();
+    showPopUpContant();
+  
+    submitPopUpForm();
+  
+    closePopUpContant();
+  
+    e.preventDefault();
+  })
+}
 
-  e.preventDefault();
-})
+showPopUp('learn-more-btn');
+showPopUp('js-popup-choose-from-many');
+showPopUp('js-popup-what-to-do');
 
 function showPopUpContant(){
   const moduleForm = document.getElementById('module-popup-form');
@@ -1588,8 +1617,12 @@ function closePopUpContant(){
   const moduleForm = document.getElementById('module-popup-form');
   const popUpForm = document.getElementById('pop-up-form');
   const learnMoreBtn = document.getElementById('learn-more-btn');
+  const learnMoreBtn2 = document.getElementById('js-popup-choose-from-many');
+  const learnMoreBtn3 = document.getElementById('js-popup-what-to-do');
   document.body.addEventListener('click', function closePopUpContactEvent(e){
-    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target)){
+    // console.log(e.target);
+    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target)){
+      // console.log(e.target);
       moduleForm.classList.remove('show');
       document.body.removeEventListener('click', closePopUpContactEvent);
     }
@@ -1617,7 +1650,6 @@ showMorePartnersDesktop();
 
 // Submit Data from Forms
 function submitPopUpForm(){
-  console.log('test');
   const popUpFormSubmit = document.getElementById('pop-up-form-submit');
   const moduleForm = document.getElementById('module-popup-form');
   popUpFormSubmit.addEventListener('click', (e) => {

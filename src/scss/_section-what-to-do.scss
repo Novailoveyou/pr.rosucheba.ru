@@ -20,5 +20,28 @@
   .section-what-to-do{
     padding-top: 8.75rem;
     padding-bottom: 8.75rem;
+
+    & .section__content{
+      display: grid;
+      gap: 0 79px;
+      grid-template-areas: 'icon title' 'icon btn';
+      grid-template-columns: 1fr;
+      & .content__icon{
+        grid-area: icon;
+        & img.desktop-only{
+          width: 100%;
+          max-width: 40vw;
+        }
+      }
+      & .content__title {
+        grid-area: title;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      & .content__btn{
+        grid-area: btn;
+      }
+    }
   }
 }

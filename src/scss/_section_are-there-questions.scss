@@ -1,0 +1,37 @@
+@include mediaMd {
+  .section-are-there-questions{
+    padding-top: $sections-top-padding;
+    padding-bottom: $sections-bottom-padding;
+    position: relative;
+    & .bg-icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    & .section__content{
+      flex-wrap: nowrap;
+      & .content__left{
+        flex: 0 55%;
+        margin-right: 2rem;
+        & h2{
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 37px;
+        }
+        & .left__p{
+          margin-top: 42px;
+          font-weight: 300;
+          font-size: 25px;
+          line-height: 29px;
+        }
+      }
+      & .content__right{
+        // flex: 0 40%;
+        & .contact-form__subtilte{
+          margin-bottom: $_22px;
+        }
+      }
+    }
+  }
+}

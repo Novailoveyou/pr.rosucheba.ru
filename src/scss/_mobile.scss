@@ -95,10 +95,27 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: 1304px) {
+    .menu-items__menu-item:nth-child(3){
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 1230px) {
+    .header-items__item-group-container:nth-child(2){
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 1054px) {
+    .menu-items__menu-item:nth-child(6){
+      display: none;
+    }
   }
 
   .menu-items__menu-item {
+    display: flex;
     margin-right: 4.791875rem;
     padding-top: 1.0625rem;
     border-top: 0.3125rem solid transparent;
@@ -112,6 +129,9 @@
     &:nth-last-child(1) {
       margin-right: 0;
     }
+    & a{
+      text-align: center;
+    }
   }
 
   // .menu-items__menu-item--highlight {
@@ -121,6 +141,12 @@
   header {
     // padding-bottom: $_20px;
     padding-bottom: 0;
+    background: none;
+    position: relative;
+    & .container{
+      // width: 100%;
+      max-width: 1440px;
+    }
   }
 
   main {
@@ -160,8 +186,11 @@
     & .hr-between-sections{
       order: 11;
     }
-    & .section-trust-boost{
+    & .section-are-there-questions{
       order: 12;
+    }
+    & .section-trust-boost{
+      order: 13;
     }
   }
 
@@ -215,8 +244,16 @@
     flex-direction: column;
     justify-content: center;
     // align-items: center;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    &.fd-row{
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      & *:nth-child(1){
+        margin-right: $_31px;
+      }
+    }
     &:nth-last-child(1) {
       margin-right: 0;
     }
@@ -247,6 +284,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    & .are-there-questions-p{
+      margin-top: 8px;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+    }
+    &.fd-column{
+      flex-direction: column;
+    }
   }
 
   .footer__left {
@@ -276,9 +323,27 @@
     }
   }
 
-  @media only screen and (max-width: 902px) {
+  .header-items__logo-container{
+    margin-right: 1.5rem;
+  }
+
+  @media only screen and (max-width: 968px) {
     .big-number {
       font-size: 2.3vw;
+    }
+    // .are-there-questions-p{
+    //   display: none;
+    // }
+    .header-items__item-group-container {
+      & img{
+        max-width: 14vw;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 808px) {
+    .big-number {
+      font-size: 2vw;
     }
   }
 
@@ -390,6 +455,17 @@
     );
     transform: matrix(1, 0, 0, -1, 0, 0);
     z-index: -1;
+  }
+
+  .rectangle-gradient-maker--header{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 324px;
+    z-index: -1;
+    background: linear-gradient(180deg, #FFFFFF 25.45%, rgba(255, 255, 255, 0) 125.29%);
   }
 
   .img-container__person {
@@ -827,10 +903,6 @@
     padding-bottom: 4.25rem;
   }
 
-  .section-ask-questions {
-    display: none;
-  }
-
   // .section-sm {
   //   display: none;
   // }
@@ -934,12 +1006,7 @@
 
   .footer {
     background-color: $secondary-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48.25rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    // height: 48.25rem;
     & .header-items__item-group-container:nth-child(4) {
       background-color: #fff;
       color: #000;
@@ -952,6 +1019,16 @@
     & .header-items__item-group-container {
       margin-left: 0;
     }
+  }
+
+  .footer__flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 140px;
+    padding-bottom: 140px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .footer__right {
@@ -980,6 +1057,38 @@
       text-align: center;
       &.bg-danger {
         background-color: rgba(221, 86, 86, 0.4);
+      }
+    }
+  }
+  .below-footer{
+    background-color: #fff;
+    margin-bottom: 36px;
+    height: 110px;
+    & .container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .below-footer__left{
+        color: $menu-items-colors;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 12px;
+        flex: 0 50%;
+        & a{
+          color: $menu-items-colors;
+          text-decoration: underline;
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      & .below-footer__right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & img:nth-child(1){
+          margin-right: 47px;
+        }
       }
     }
   }

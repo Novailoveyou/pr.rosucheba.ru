@@ -129,3 +129,12 @@
 //     /* prevent copy paste, to allow, change 'none' to 'text' */
 //   }
 // }
+
+@include mediaMd {
+  .section-trust-boost {
+    & .img-group__img-wrapper{
+      max-width: initial;
+      box-shadow: none;
+    }
+  }
+}

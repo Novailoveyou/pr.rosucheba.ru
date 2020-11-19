@@ -78,3 +78,30 @@
     margin-bottom: 52px;
   }
 }
+
+@include mediaMd {
+  .section-ask-questions {
+    right: 4rem;
+    min-height: initial;
+    // height: $_35px;
+    max-height: $_35px;
+    // padding: 1rem 1.4rem;
+    width: initial;
+    // max-width: 232px;
+    box-shadow: 0px 4px 15px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+    & .section-ask-questions__inner{
+      // padding: 0;
+      padding: 1rem 1.4rem;
+      & .inner__text{
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: normal;
+      }
+      & svg.desktop-only{
+        min-width: 1rem;
+      }
+    }
+  }
+}
