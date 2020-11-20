@@ -87,6 +87,7 @@ app.post('/email', (req, res) => {
 
 app.get('/', (req, res) => {
   res.set('Content-Encoding', 'br');
+
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
