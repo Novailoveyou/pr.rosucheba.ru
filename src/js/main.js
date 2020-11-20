@@ -605,6 +605,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
+
       dropDownStepTwoInsertItem('Информационные системы и программирование');
 
       dropDownStepTwoInsertItem('Гостиничное дело​');
@@ -616,6 +618,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
       dropDownStepTwoInsertItem('Право и организация социального обеспечения');
 
       dropDownStepTwoInsertItem('Коммерция по отраслям');
+      
     }
 
     if (selectedItemFromTheFirstStepText.innerText === 'Бакалавриат') {
@@ -628,6 +631,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
           item.remove();
         }
       });
+
+      dropDownStepTwoInsertItem('Другое');
 
       dropDownStepTwoInsertItem('Юриспруденция');
 
@@ -673,6 +678,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
+      
       dropDownStepTwoInsertItem('Экономическая безопасность');
     }
 
@@ -686,6 +693,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
           item.remove();
         }
       });
+
+      dropDownStepTwoInsertItem('Другое');
 
       dropDownStepTwoInsertItem('Юриспруденция');
 
@@ -719,6 +728,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
           item.remove();
         }
       });
+
+      dropDownStepTwoInsertItem('Другое');
 
       dropDownStepTwoInsertItem('Гуманитарные науки');
 
@@ -775,6 +786,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
           item.remove();
         }
       });
+
+      dropDownStepTwoInsertItem('Другое');
 
       dropDownStepTwoInsertItem('Гуманитарные науки');
 
@@ -834,6 +847,8 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
           item.remove();
         }
       });
+
+      dropDownStepTwoInsertItem('Другое');
 
       dropDownStepTwoInsertItem('MBA Industry');
 

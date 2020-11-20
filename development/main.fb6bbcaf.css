@@ -443,6 +443,46 @@ section {
   top: 0;
 }
 
+.module-popup-form {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.module-popup-form .p {
+  text-align: center;
+}
+.module-popup-form.show {
+  display: flex;
+}
+.module-popup-form .contact-form {
+  background-color: #fff;
+  padding: 59px;
+  min-width: 427px;
+  max-width: 33%;
+  border-radius: 10px;
+}
+.module-popup-form .contact-form .contact-form__title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2874ff;
+  text-align: center;
+  margin-bottom: 0.9375rem;
+}
+.module-popup-form .contact-form .contact-form__subtilte {
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .area-outside-of-menu {
   background: transparent;
   position: fixed;
@@ -636,6 +676,10 @@ header {
   display: none;
 }
 
+.edu-icons {
+  max-width: 146px;
+}
+
 .section__waves {
   position: absolute;
   width: 100%;
@@ -748,6 +792,7 @@ header {
 
 .container-input__inner {
   position: relative;
+  cursor: pointer;
   z-index: 2;
 }
 
@@ -798,6 +843,7 @@ header {
 }
 
 .inner-dropdown-items__item {
+  cursor: pointer;
   text-align: left;
   font-size: 0.75rem;
   line-height: 0.875rem;
@@ -3351,47 +3397,6 @@ input {
   }
   .below-footer .container .below-footer__right img:nth-child(1) {
     margin-right: 47px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .module-popup-form {
-    display: none;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .module-popup-form .p {
-    text-align: center;
-  }
-  .module-popup-form.show {
-    display: flex;
-  }
-  .module-popup-form .contact-form {
-    background-color: #fff;
-    padding: 59px;
-    min-width: 427px;
-    max-width: 33%;
-    border-radius: 10px;
-  }
-  .module-popup-form .contact-form .contact-form__title {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    color: #2874ff;
-    text-align: center;
-    margin-bottom: 0.9375rem;
-  }
-  .module-popup-form .contact-form .contact-form__subtilte {
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    margin-bottom: 2rem;
   }
 }
 @media only screen and (max-width: 1230px) {

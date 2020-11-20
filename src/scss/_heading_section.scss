@@ -85,6 +85,7 @@
 
 .container-input__inner {
   position: relative;
+  cursor: pointer;
 
   // @include easeOut;
   z-index: 2;
@@ -258,6 +259,7 @@
 // }
 
 .inner-dropdown-items__item {
+  cursor: pointer;
   text-align: left;
   font-size: $_12px;
   line-height: $_14px;

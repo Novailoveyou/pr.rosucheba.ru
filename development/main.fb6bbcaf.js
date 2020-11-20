@@ -2839,6 +2839,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
           item.remove();
         }
       });
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Информационные системы и программирование');
       dropDownStepTwoInsertItem('Гостиничное дело​');
       dropDownStepTwoInsertItem('Банковское дело​​');
@@ -2856,6 +2857,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Юриспруденция');
       dropDownStepTwoInsertItem('Дизайн​');
       dropDownStepTwoInsertItem('Лингвистика');
@@ -2883,6 +2885,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Экономическая безопасность');
     }
 
@@ -2895,6 +2898,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Юриспруденция');
       dropDownStepTwoInsertItem('Реклама и связи с общественностью');
       dropDownStepTwoInsertItem('Психология');
@@ -2915,6 +2919,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Гуманитарные науки');
       dropDownStepTwoInsertItem('Электроэнергетика');
       dropDownStepTwoInsertItem('Строительство');
@@ -2947,6 +2952,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('Гуманитарные науки');
       dropDownStepTwoInsertItem('Электроэнергетика');
       dropDownStepTwoInsertItem('Строительство');
@@ -2980,6 +2986,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', function (e) {
         }
       });
 
+      dropDownStepTwoInsertItem('Другое');
       dropDownStepTwoInsertItem('MBA Industry');
       dropDownStepTwoInsertItem('MBA Professional');
       dropDownStepTwoInsertItem('MBA Intensive');
@@ -3748,7 +3755,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54759" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58232" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1092,46 +1092,8 @@
       }
     }
   }
-
-  .module-popup-form {
-    display: none;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    & .p {
-      text-align: center;
-    }
-    &.show {
-      display: flex;
-    }
-    & .contact-form {
-      background-color: #fff;
-      padding: 59px;
-      min-width: 427px;
-      max-width: 33%;
-      border-radius: 10px;
-      & .contact-form__title {
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 19px;
-        color: $secondary-color;
-        text-align: center;
-        margin-bottom: $_15px;
-      }
-      & .contact-form__subtilte {
-        font-size: 14px;
-        line-height: 16px;
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-    }
-  }
+  
+  
 }
 
 @media only screen and (max-width: 1230px) {
