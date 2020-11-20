@@ -1297,6 +1297,13 @@ header {
     background-color: #70C900;
     border-radius: 5px;
   }
+
+  .section-partners .title__p {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+    padding-bottom: 46px;
+  }
 }
 .section-choose-from-many {
   padding-top: 4.25rem;
