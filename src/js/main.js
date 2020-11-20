@@ -233,9 +233,9 @@ fetch((locationUrlAPI))
     changeLocationDependedHeading(
       locationDependedHeading,
       'дистанционно в вузах Москвы',
+      'дистанционно в вузах Москвы без ЕГЭ и ЕНТ',
       'дистанционно в вузах Москвы без ЕГЭ',
-      'дистанционно в вузах Москвы без ЕНТ и ЕГЭ',
-      'дистанционно в вузах Москвы без ЕНТ и ЕГЭ'
+      'дистанционно в вузах Москвы'
     );
 
     changeCustomizedCountryText(
@@ -250,9 +250,9 @@ fetch((locationUrlAPI))
     changeLocationDependedHeading(
       locationDependedHeading,
       'дистанционно в вузах Москвы',
+      'дистанционно в вузах Москвы без ЕГЭ и ЕНТ',
       'дистанционно в вузах Москвы без ЕГЭ',
-      'дистанционно в вузах Москвы без ЕНТ и ЕГЭ',
-      'дистанционно в вузах Москвы без ЕНТ и ЕГЭ'
+      'дистанционно в вузах Москвы'
     );
 
     changeCustomizedCountryText(
