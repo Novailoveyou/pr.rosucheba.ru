@@ -7,6 +7,7 @@ const path = require('path');
 const expressip = require('express-ip');
 // const http = require('http');
 // const ngrok = require('ngrok');
+const compression = require('compression');
 
 // var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 //   console.log(ip);
@@ -17,6 +18,8 @@ const expressip = require('express-ip');
 const PORT = process.env.PORT || 80;
 
 app.use(expressip().getIpInfoMiddleware);
+
+app.use(compression());
 
 app.use(express.static(__dirname + '/dist'));
 
@@ -86,7 +89,7 @@ app.post('/email', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.set('Content-Encoding', 'br');
+  res.set('Content-Encoding', 'gzip');
 
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
