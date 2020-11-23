@@ -104,8 +104,10 @@
     }
   }
   @media only screen and (max-width: 1230px) {
-    .header-items__item-group-container:nth-child(2){
-      display: none;
+    header{
+      & .header-items__item-group-container:nth-child(2){
+        display: none;
+      }
     }
   }
   @media only screen and (max-width: 1054px) {
@@ -313,7 +315,7 @@
         font-weight: normal;
         font-size: 20px;
         line-height: 30px;
-        text-align: center;
+        text-align: left;
       }
     }
   }
@@ -1037,6 +1039,7 @@
     & .header-items__item-group-container {
       margin-left: 0;
     }
+    
   }
 
   .footer__flex{

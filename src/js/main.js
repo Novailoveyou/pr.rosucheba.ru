@@ -1678,21 +1678,26 @@ function showPopUp(button = ''){
     const popupFormTitle = document.getElementById('pop-up-form-title');
     const popupFormInfo = document.getElementById('popup-form-info');
 
+    const popUpFormSubmit = document.getElementById('pop-up-form-submit');
+
     switch(button){
       case 'learn-more-btn':
         // console.log('Узнайте подробнее о вузах');
         popupFormTitle.innerHTML = 'Узнайте больше о наших вузах-партнерах';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, консультант приемной комиссии подробно расскажет Вам о вузах и подберет программу!';
+        popUpFormSubmit.dataset.form = 'learn-more';
       break;
       case 'js-popup-choose-from-many':
         // console.log('Узнайте о наличии своего направления');
         popupFormTitle.innerHTML = `Узнайте о наличии <br />своего направления`;
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расcкажет на какие направления сейчас идет набор';
+        popUpFormSubmit.dataset.form = 'choose-from-many';
       break;
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
         popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        popUpFormSubmit.dataset.form = 'what-to-do';
       break;
       default:
         return;
@@ -1716,7 +1721,6 @@ function showPopUpContant(){
   const moduleForm = document.getElementById('module-popup-form');
   moduleForm.classList.add('show');
   btnAskQuestion.classList.add('hidden');
-  // Insert here
 }
 
 function closePopUpContant(){
@@ -1787,12 +1791,22 @@ function submitPopUpForm(){
     if(number !== '' && number !== null && number !== undefined && number.match(numValidation)){
 
       const appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more');
+      const popUpFormSubmit = document.getElementById('pop-up-form-submit');
+
+      if(popUpFormSubmit.dataset.form === 'choose-from-many'){
+        appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+      }else if(popUpFormSubmit.dataset.form === 'learn-more'){
+        appIsSumbitted.id = 'popup--is-submitted-learn-more';
+      }else if(popUpFormSubmit.dataset.form === 'what-to-do'){
+        appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+      }
 
     appIsSumbitted.classList.add('showed');
 
     document
       .getElementById('step-success-row__back-to-main--form-popup')
       .addEventListener('click', (e) => {
+        appIsSumbitted.id = 'js-app-is-submitted--learn-more';
         appIsSumbitted.classList.add('removing');
         setTimeout(() => {
           appIsSumbitted.classList.remove('showed');

@@ -3647,24 +3647,28 @@ function showPopUp() {
   buttonSelected.addEventListener('click', function (e) {
     var popupFormTitle = document.getElementById('pop-up-form-title');
     var popupFormInfo = document.getElementById('popup-form-info');
+    var popUpFormSubmit = document.getElementById('pop-up-form-submit');
 
     switch (button) {
       case 'learn-more-btn':
         // console.log('Узнайте подробнее о вузах');
         popupFormTitle.innerHTML = 'Узнайте больше о наших вузах-партнерах';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, консультант приемной комиссии подробно расскажет Вам о вузах и подберет программу!';
+        popUpFormSubmit.dataset.form = 'learn-more';
         break;
 
       case 'js-popup-choose-from-many':
         // console.log('Узнайте о наличии своего направления');
         popupFormTitle.innerHTML = "\u0423\u0437\u043D\u0430\u0439\u0442\u0435 \u043E \u043D\u0430\u043B\u0438\u0447\u0438\u0438 <br />\u0441\u0432\u043E\u0435\u0433\u043E \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F";
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расcкажет на какие направления сейчас идет набор';
+        popUpFormSubmit.dataset.form = 'choose-from-many';
         break;
 
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
         popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        popUpFormSubmit.dataset.form = 'what-to-do';
         break;
 
       default:
@@ -3685,7 +3689,7 @@ showPopUp('js-popup-what-to-do');
 function showPopUpContant() {
   var moduleForm = document.getElementById('module-popup-form');
   moduleForm.classList.add('show');
-  btnAskQuestion.classList.add('hidden'); // Insert here
+  btnAskQuestion.classList.add('hidden');
 }
 
 function closePopUpContant() {
@@ -3755,8 +3759,20 @@ function submitPopUpForm() {
 
     if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
       var appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more');
+
+      var _popUpFormSubmit = document.getElementById('pop-up-form-submit');
+
+      if (_popUpFormSubmit.dataset.form === 'choose-from-many') {
+        appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+      } else if (_popUpFormSubmit.dataset.form === 'learn-more') {
+        appIsSumbitted.id = 'popup--is-submitted-learn-more';
+      } else if (_popUpFormSubmit.dataset.form === 'what-to-do') {
+        appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+      }
+
       appIsSumbitted.classList.add('showed');
       document.getElementById('step-success-row__back-to-main--form-popup').addEventListener('click', function (e) {
+        appIsSumbitted.id = 'js-app-is-submitted--learn-more';
         appIsSumbitted.classList.add('removing');
         setTimeout(function () {
           appIsSumbitted.classList.remove('showed');
@@ -3910,7 +3926,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50718" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57611" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -25,6 +25,9 @@
       grid-template-areas: 'icon text' 'icon btn';
       & .content__icon{
         grid-area: icon;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         & img.desktop-only{
           width: 100%;
           min-width: 200px;
