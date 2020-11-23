@@ -1458,6 +1458,11 @@ header {
   padding-top: 4.25rem;
   padding-bottom: 4.25rem;
 }
+.section-choose-from-many .section__content .content__icon img {
+  max-width: 100%;
+  width: 189px;
+  height: auto;
+}
 .section-choose-from-many .section__content > * {
   margin: 0 auto;
   margin-bottom: 24px;
