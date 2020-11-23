@@ -1653,7 +1653,7 @@ phoneInputInnerText.addEventListener('input', (e) => {
   const number = phoneInputInnerText.value.trim();
   // Validate input number
   if (number !== '' && number.match(numValidation) && number.length >= 3) {
-    console.log(number.length);
+    // console.log(number.length);
     userNameInput.classList.add('showed');
   }
 });
