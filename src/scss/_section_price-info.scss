@@ -25,9 +25,13 @@
         & .card__title{
           margin-bottom: $_21px;
         }
+        & .card__subtitle--info{
+          font-weight: 300;
+        }
         & .card__subtitle{
           display: flex;
           margin-bottom: $_19px;
+          font-weight: 300;
           & .subtitle__number{
             display: flex;
             justify-content: center;

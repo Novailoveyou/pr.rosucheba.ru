@@ -2743,6 +2743,13 @@ function _sumbitData() {
   return _sumbitData.apply(this, arguments);
 }
 
+menuToggler.addEventListener('click', function () {
+  if (menuToggler.checked === true) {
+    btnAskQuestion.classList.add('hidden');
+  } else {
+    btnAskQuestion.classList.remove('hidden');
+  }
+});
 navItemLinks[0].addEventListener('click', function (e) {
   // window.location = "#about";
   var aboutSection = document.getElementById('about');
@@ -3656,7 +3663,7 @@ function showPopUp() {
 
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ и диплома колледжа';
+        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
         break;
 
@@ -3855,7 +3862,26 @@ function submitQuestionsForm() {
   });
 }
 
-submitQuestionsForm();
+submitQuestionsForm(); // Hide ask question on the top of the page and on the bottom of the page
+
+btnAskQuestion.classList.add('hidden');
+document.addEventListener('scroll', function (e) {
+  // moduleQuestions
+  // console.log(window.scrollY);
+  if (moduleQuestions.classList.contains('hidden')) {
+    // if (window.scrollY >= 300)
+    // {
+    //   btnAskQuestion.classList.remove('hidden');
+    // }else{
+    //   btnAskQuestion.classList.add('hidden');
+    // }
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 300) {
+      btnAskQuestion.classList.add('hidden');
+    } else {
+      btnAskQuestion.classList.remove('hidden');
+    }
+  }
+});
 },{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../scss/main.scss":"scss/main.scss"}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -3884,7 +3910,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49919" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50718" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

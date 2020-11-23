@@ -25,6 +25,11 @@
       grid-template-areas: 'icon text' 'icon btn';
       & .content__icon{
         grid-area: icon;
+        & img.desktop-only{
+          width: 100%;
+          min-width: 200px;
+          height: auto;
+        }
       }
       & .content__text{
         grid-area: text;
@@ -46,6 +51,7 @@
         align-items: flex-start;
         grid-area: btn;
         & p{
+          text-align: left;
           font-weight: bold;
           font-size: 25px;
           line-height: 29px;

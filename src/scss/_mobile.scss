@@ -112,6 +112,9 @@
     .menu-items__menu-item:nth-child(6){
       display: none;
     }
+    .menu-items__menu-item:nth-child(5){
+      margin-right: 0;
+    }
   }
 
   .menu-items__menu-item {
@@ -297,6 +300,13 @@
   }
 
   .footer__left {
+    & h4,
+    & p{
+      &::selection{
+        background: #fff;
+        color: $secondary-color;
+      }
+    }
     & .row-wrapper__text {
       & p {
         font-style: normal;
@@ -1005,6 +1015,14 @@
   }
 
   .footer {
+    & .section__waves{
+      top: -90px;
+      & path{
+        fill: $secondary-color;
+      }
+    }
+    margin-top: 91px;
+    position: relative;
     background-color: $secondary-color;
     // height: 48.25rem;
     & .header-items__item-group-container:nth-child(4) {

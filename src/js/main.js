@@ -333,7 +333,7 @@ fetch((locationUrlAPI))
       })
     }
     // /Docs needed
-    
+
     return;
   });
 
@@ -416,6 +416,14 @@ async function sumbitData(data) {
 }
 
 // Menu
+menuToggler.addEventListener('click', () => {
+  if(menuToggler.checked === true){
+    btnAskQuestion.classList.add('hidden');
+  }else{
+    btnAskQuestion.classList.remove('hidden');
+  }
+})
+
 navItemLinks[0].addEventListener('click', (e) => {
   // window.location = "#about";
   const aboutSection = document.getElementById('about');
@@ -1683,7 +1691,7 @@ function showPopUp(button = ''){
       break;
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ и диплома колледжа';
+        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
       break;
       default:
@@ -1901,3 +1909,26 @@ function submitQuestionsForm(){
 }
 
 submitQuestionsForm();
+
+
+// Hide ask question on the top of the page and on the bottom of the page
+btnAskQuestion.classList.add('hidden');
+document.addEventListener('scroll', (e) => {
+  // moduleQuestions
+  // console.log(window.scrollY);
+  if(moduleQuestions.classList.contains('hidden')){
+    // if (window.scrollY >= 300)
+    // {
+    //   btnAskQuestion.classList.remove('hidden');
+    // }else{
+    //   btnAskQuestion.classList.add('hidden');
+    // }
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300)
+    {
+      btnAskQuestion.classList.add('hidden');
+    }else{
+      btnAskQuestion.classList.remove('hidden');
+    }
+  }
+  
+})

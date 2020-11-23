@@ -6,8 +6,8 @@
 
 .content__img-group {
   @include d-flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   animation-name: carouselSlide;
   animation-duration: 0.8s;

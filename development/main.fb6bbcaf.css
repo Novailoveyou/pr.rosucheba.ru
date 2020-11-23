@@ -389,7 +389,6 @@ body.dark-overlay:after {
 
 main {
   min-height: 100%;
-  padding-bottom: 7.1875rem;
   display: flex;
   flex-direction: column;
 }
@@ -972,6 +971,7 @@ header {
 
 .text-headings__secondary {
   padding-top: 1.875rem;
+  font-weight: 300;
 }
 
 .input-style-primary {
@@ -1173,6 +1173,10 @@ header {
   padding-top: 4.25rem;
   padding-bottom: 4.25rem;
 }
+.section-about .section__content div p span::selection, .section-about .section__content div p::selection {
+  color: #2874ff;
+  background-color: #fff;
+}
 
 .content__showing-off-numbers {
   display: -webkit-box;
@@ -1190,7 +1194,7 @@ header {
 .showing-off-number__line {
   height: 0.1875rem;
   width: 2rem;
-  background-color: #c4c4c4;
+  background-color: #fff;
 }
 
 .showing-off-numbers__showing-off-number {
@@ -1430,6 +1434,11 @@ header {
   .section-choose-from-many .section__content .content__icon {
     grid-area: icon;
   }
+  .section-choose-from-many .section__content .content__icon img.desktop-only {
+    width: 100%;
+    min-width: 200px;
+    height: auto;
+  }
   .section-choose-from-many .section__content .content__text {
     grid-area: text;
     display: flex;
@@ -1451,6 +1460,7 @@ header {
     grid-area: btn;
   }
   .section-choose-from-many .section__content .content__btn p {
+    text-align: left;
     font-weight: bold;
     font-size: 25px;
     line-height: 29px;
@@ -1561,9 +1571,13 @@ header {
   .section-price-info .section__content .content__card .card__title {
     margin-bottom: 1.3125rem;
   }
+  .section-price-info .section__content .content__card .card__subtitle--info {
+    font-weight: 300;
+  }
   .section-price-info .section__content .content__card .card__subtitle {
     display: flex;
     margin-bottom: 1.1875rem;
+    font-weight: 300;
   }
   .section-price-info .section__content .content__card .card__subtitle .subtitle__number {
     display: flex;
@@ -1619,10 +1633,14 @@ header {
     bottom: -90px;
   }
 }
-.steps__steps-step.kz-uz-only, .steps__steps-step.ru-only {
+.section-needed-docs .section-steps__title p::selection, .section-needed-docs .section-steps__title h3::selection {
+  background: #fff;
+  color: #2874ff;
+}
+.section-needed-docs .section-steps__steps .steps__steps-step.kz-uz-only, .section-needed-docs .section-steps__steps .steps__steps-step.ru-only {
   display: none;
 }
-.steps__steps-step.kz-uz-only.show, .steps__steps-step.ru-only.show {
+.section-needed-docs .section-steps__steps .steps__steps-step.kz-uz-only.show, .section-needed-docs .section-steps__steps .steps__steps-step.ru-only.show {
   display: flex;
 }
 
@@ -1704,6 +1722,8 @@ header {
   .section-what-to-do .section__content .content__icon img.desktop-only {
     width: 100%;
     max-width: 411px;
+    min-width: 350px;
+    height: auto;
     margin-left: auto;
   }
   .section-what-to-do .section__content .content__title {
@@ -1860,6 +1880,8 @@ header {
   /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
   display: flex;
   /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   animation-name: carouselSlide;
   animation-duration: 0.8s;
@@ -2481,6 +2503,10 @@ input {
   .menu-items__menu-item:nth-child(6) {
     display: none;
   }
+
+  .menu-items__menu-item:nth-child(5) {
+    margin-right: 0;
+  }
 }
 @media only screen and (min-width: 768px) {
   .menu-items__menu-item {
@@ -2665,6 +2691,10 @@ input {
   }
 }
 @media only screen and (min-width: 768px) {
+  .footer__left h4::selection, .footer__left p::selection {
+    background: #fff;
+    color: #2874ff;
+  }
   .footer__left .row-wrapper__text p {
     font-style: normal;
     font-weight: normal;
@@ -3386,7 +3416,15 @@ input {
 }
 @media only screen and (min-width: 768px) {
   .footer {
+    margin-top: 91px;
+    position: relative;
     background-color: #2874ff;
+  }
+  .footer .section__waves {
+    top: -90px;
+  }
+  .footer .section__waves path {
+    fill: #2874ff;
   }
   .footer .header-items__item-group-container:nth-child(4) {
     background-color: #fff;

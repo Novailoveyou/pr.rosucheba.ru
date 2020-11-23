@@ -1,12 +1,24 @@
-.steps__steps-step{
-  &.kz-uz-only,
-  &.ru-only{
-    display: none;
-    &.show{
-      display: flex;
+.section-needed-docs{
+  & .section-steps__title p,
+  & .section-steps__title h3{
+    &::selection{
+      background: #fff;
+      color: $secondary-color;
+    }
+  }
+  & .section-steps__steps{
+    & .steps__steps-step{
+      &.kz-uz-only,
+      &.ru-only{
+        display: none;
+        &.show{
+          display: flex;
+        }
+      }
     }
   }
 }
+
 
 
 @media only screen and (max-width: 768px) {

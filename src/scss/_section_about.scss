@@ -2,6 +2,13 @@
 .section-about {
   padding-top: $sections-top-padding;
   padding-bottom: $sections-bottom-padding;
+  & .section__content div p span,
+  & .section__content div p{
+    &::selection{
+      color: $secondary-color;
+      background-color: #fff;
+    }
+  }
 }
 
 .content__showing-off-numbers {
@@ -13,7 +20,8 @@
 .showing-off-number__line {
   height: $_3px;
   width: $_32px;
-  background-color: #c4c4c4;
+  // background-color: #c4c4c4;
+  background-color: #fff;
 }
 
 .showing-off-numbers__showing-off-number {
