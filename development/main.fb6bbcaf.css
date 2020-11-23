@@ -780,6 +780,7 @@ header {
   top: 13.875rem;
   height: 5.625rem;
   width: 100%;
+  z-index: -1;
   background: linear-gradient(180deg, #ffffff 72.7%, rgba(255, 255, 255, 0) 125.29%);
 }
 
@@ -1107,6 +1108,50 @@ header {
   }
 }
 
+.numbers-in-the-header {
+  margin-top: 36px;
+}
+.numbers-in-the-header .content__showing-off-numbers {
+  border: 0.0625rem solid #2874FF;
+  border-radius: 0.3125rem;
+  padding: 1.3125rem;
+  max-width: 100%;
+  justify-content: space-around;
+}
+.numbers-in-the-header .content__showing-off-numbers .showing-off-numbers__showing-off-number:nth-last-child(1) {
+  margin-right: 0;
+}
+.numbers-in-the-header .content__showing-off-numbers .showing-off-number__line {
+  background-color: #2874ff;
+}
+.numbers-in-the-header .content__showing-off-numbers .showing-off-number__description p {
+  color: #2874ff;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+@media only screen and (min-width: 768px) {
+  .numbers-in-the-header .content__showing-off-numbers {
+    border: none;
+    padding-left: 0;
+    justify-content: space-between;
+  }
+  .numbers-in-the-header .content__showing-off-numbers .showing-off-number__line {
+    width: 66px;
+  }
+  .numbers-in-the-header .content__showing-off-numbers .showing-off-numbers__showing-off-number {
+    align-items: start;
+  }
+  .numbers-in-the-header .content__showing-off-numbers .showing-off-numbers__showing-off-number:nth-last-child(1) {
+    margin-right: 68px;
+  }
+  .numbers-in-the-header .content__showing-off-numbers .showing-off-number__description p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
 .section-testimonials {
   padding-top: 4.25rem;
   padding-bottom: 4.25rem;
@@ -1476,6 +1521,7 @@ header {
     margin-bottom: 1rem;
   }
   .steps__step .step__title {
+    width: 100%;
     background-color: #2874ff;
     border-radius: 5px;
     flex-grow: 1;
@@ -3424,7 +3470,7 @@ input {
     background-color: #2874ff;
   }
   .footer .section__waves {
-    top: -90px;
+    top: -89px;
   }
   .footer .section__waves path {
     fill: #2874ff;

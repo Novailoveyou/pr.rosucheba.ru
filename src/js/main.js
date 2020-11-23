@@ -376,18 +376,18 @@ function insertAfter(referenceNode, newNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function dropDownStepTwoInsertItem(text = '') {
-  let el;
-  el = document.createElement('li');
-  el.classList.add('inner-dropdown-items__item');
-  el.innerHTML = `
-        <p>
-          ${svgCheckMark}
-          ${text}
-        </p>
-      `;
-  insertAfter(insertAfterLiStepTwo, el);
-}
+// function dropDownStepTwoInsertItem(text = '') {
+//   let el;
+//   el = document.createElement('li');
+//   el.classList.add('inner-dropdown-items__item');
+//   el.innerHTML = `
+//         <p>
+//           ${svgCheckMark}
+//           ${text}
+//         </p>
+//       `;
+//   insertAfter(insertAfterLiStepTwo, el);
+// }
 
 let isSumbitted = false;
 
@@ -455,574 +455,574 @@ navItemLinks[2].addEventListener('click', (e) => {
 });
 
 // Select Dropdown Uni
-inputSelectChooseUni.addEventListener('click', (e) => {
-  inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
+// inputSelectChooseUni.addEventListener('click', (e) => {
+//   inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
 
-  // window.location = '#input-select-choose-uni';
-  if (
-    inputSelectChooseUniDropdown.classList.contains('show-dropdown') &&
-    document.body.clientWidth < 768
-  ) {
-    inputSelectChooseUni.scrollIntoView({
-      behavior: 'smooth',
-    });
-  }
+//   // window.location = '#input-select-choose-uni';
+//   if (
+//     inputSelectChooseUniDropdown.classList.contains('show-dropdown') &&
+//     document.body.clientWidth < 768
+//   ) {
+//     inputSelectChooseUni.scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   }
 
-  document.body.addEventListener('click', function closeInputUniDropDown(e) {
-    if (
-      inputSelectChooseUniDropdown.classList.contains('show-dropdown') &&
-      !inputSelectChooseUniDropdown.contains(e.target) &&
-      e.target !== inputSelectChooseUniDropdown &&
-      !inputSelectChooseUni.contains(e.target) &&
-      e.target !== inputSelectChooseUni
-    ) {
-      // Close question module
-      inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
-      document.body.removeEventListener('click', closeInputUniDropDown);
-    }
-  });
+//   document.body.addEventListener('click', function closeInputUniDropDown(e) {
+//     if (
+//       inputSelectChooseUniDropdown.classList.contains('show-dropdown') &&
+//       !inputSelectChooseUniDropdown.contains(e.target) &&
+//       e.target !== inputSelectChooseUniDropdown &&
+//       !inputSelectChooseUni.contains(e.target) &&
+//       e.target !== inputSelectChooseUni
+//     ) {
+//       // Close question module
+//       inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
+//       document.body.removeEventListener('click', closeInputUniDropDown);
+//     }
+//   });
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
-scrollToTheApplicationBtn.addEventListener('click', (e) => {
-  fillInTheFieldsBelow.classList.remove('hidden');
+// scrollToTheApplicationBtn.addEventListener('click', (e) => {
+//   fillInTheFieldsBelow.classList.remove('hidden');
 
-  if (document.body.clientWidth < 768) {
-    fillInTheFieldsBelow.scrollIntoView({
-      behavior: 'smooth',
-    });
-  } else {
-    const mainHeading = document.getElementById('js-section-heading');
-    mainHeading.scrollIntoView({
-      behavior: 'smooth',
-    });
-  }
+//   if (document.body.clientWidth < 768) {
+//     fillInTheFieldsBelow.scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   } else {
+//     const mainHeading = document.getElementById('js-section-heading');
+//     mainHeading.scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   }
 
-  setTimeout(() => {
-    fillInTheFieldsBelow.classList.add('hidden');
-  }, 3000);
+//   setTimeout(() => {
+//     fillInTheFieldsBelow.classList.add('hidden');
+//   }, 3000);
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
 // Dropdown Uni
-inputSelectChooseUniDropdown.addEventListener('mousedown', (e) => {
-  // Convert Dropdown Uni items into an array
-  const dropDownUniItemsArr = Array.from(dropDownUniItems);
-  const dropDownUniItemsArrP = Array.from(dropDownUniItemsP);
+// inputSelectChooseUniDropdown.addEventListener('mousedown', (e) => {
+//   // Convert Dropdown Uni items into an array
+//   const dropDownUniItemsArr = Array.from(dropDownUniItems);
+//   const dropDownUniItemsArrP = Array.from(dropDownUniItemsP);
 
-  // Add the color to the selected text in the dropdown and clean the colors from other elements
-  dropDownUniItemsArr.forEach((item) => {
-    item.classList.remove('text-highlight--color');
-  });
-  dropDownUniItemsArrP.forEach((item) => {
-    item.classList.remove('text-highlight--color');
-  });
+//   // Add the color to the selected text in the dropdown and clean the colors from other elements
+//   dropDownUniItemsArr.forEach((item) => {
+//     item.classList.remove('text-highlight--color');
+//   });
+//   dropDownUniItemsArrP.forEach((item) => {
+//     item.classList.remove('text-highlight--color');
+//   });
 
-  // Change the inner text of the select to the selected text
-  if (e.target.tagName === 'svg') {
-    inputSelectChooseUniInnerText.innerText = e.target.parentElement.innerText;
+//   // Change the inner text of the select to the selected text
+//   if (e.target.tagName === 'svg') {
+//     inputSelectChooseUniInnerText.innerText = e.target.parentElement.innerText;
 
-    if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
-      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
-      .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
-      .slice(0, -1);
-    }
+//     if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+//       inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+//       .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
+//       .slice(0, -1);
+//     }
     
 
-    e.target.parentElement.classList.add('text-highlight--color');
-  } else if (e.target.tagName == 'path') {
-    inputSelectChooseUniInnerText.innerText =
-      e.target.parentElement.parentElement.innerText;
+//     e.target.parentElement.classList.add('text-highlight--color');
+//   } else if (e.target.tagName == 'path') {
+//     inputSelectChooseUniInnerText.innerText =
+//       e.target.parentElement.parentElement.innerText;
 
-      if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
-        inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
-        .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
-        .slice(0, -1);
-      }
+//       if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+//         inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+//         .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
+//         .slice(0, -1);
+//       }
     
-    e.target.parentElement.parentElement.classList.add('text-highlight--color');
-  } else {
-    inputSelectChooseUniInnerText.innerText = e.target.innerText;
+//     e.target.parentElement.parentElement.classList.add('text-highlight--color');
+//   } else {
+//     inputSelectChooseUniInnerText.innerText = e.target.innerText;
 
-    if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
-      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
-      .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
-      .slice(0, -1);
-    }
+//     if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+//       inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+//       .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
+//       .slice(0, -1);
+//     }
     
-    e.target.classList.add('text-highlight--color');
-  }
+//     e.target.classList.add('text-highlight--color');
+//   }
 
-  // Add the color to the selected text in the input
-  inputSelectChooseUniInnerText.classList.add('text-highlight--color');
+//   // Add the color to the selected text in the input
+//   inputSelectChooseUniInnerText.classList.add('text-highlight--color');
 
-  // On select hide the module
-  inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
+//   // On select hide the module
+//   inputSelectChooseUniDropdown.classList.toggle('show-dropdown');
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
-// Select Dropdown Programm
-inputSelectChooseProgramm.addEventListener('click', (e) => {
-  if (
-    inputSelectChooseProgrammDropdownStepTwo.classList.contains('show-dropdown')
-  ) {
-    inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
-    inputSelectChooseProgrammDropdown.classList.remove('show-dropdown');
-  } else {
-    inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
-    inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
-  }
+// // Select Dropdown Programm
+// inputSelectChooseProgramm.addEventListener('click', (e) => {
+//   if (
+//     inputSelectChooseProgrammDropdownStepTwo.classList.contains('show-dropdown')
+//   ) {
+//     inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+//     inputSelectChooseProgrammDropdown.classList.remove('show-dropdown');
+//   } else {
+//     inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+//     inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
+//   }
 
-  // window.location = '#input-select-choose-uni';
-  if (
-    inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') &&
-    document.body.clientWidth < 768
-  ) {
-    inputSelectChooseProgrammInnerText.scrollIntoView({
-      behavior: 'smooth',
-    });
-  }
+//   // window.location = '#input-select-choose-uni';
+//   if (
+//     inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') &&
+//     document.body.clientWidth < 768
+//   ) {
+//     inputSelectChooseProgrammInnerText.scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   }
 
-  document.body.addEventListener('click', function closeInputProgrammDropDown(
-    e
-  ) {
-    if (
-      (inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') ||
-        inputSelectChooseProgrammDropdownStepTwo.classList.contains(
-          'show-dropdown'
-        )) &&
-      !inputSelectChooseProgrammDropdown.contains(e.target) &&
-      e.target !== inputSelectChooseProgrammDropdown &&
-      !inputSelectChooseProgramm.contains(e.target) &&
-      e.target !== inputSelectChooseProgrammDropdownStepTwo &&
-      !inputSelectChooseProgrammDropdownStepTwo.contains(e.target) &&
-      e.target !== inputSelectChooseProgramm &&
-      !selectedItemFromTheFirstStep.contains(e.target) &&
-      e.target !== selectedItemFromTheFirstStep
-    ) {
-      // Close question module
-      inputSelectChooseProgrammDropdown.classList.remove('show-dropdown');
-      inputSelectChooseProgrammDropdownStepTwo.classList.remove(
-        'show-dropdown'
-      );
-      document.body.removeEventListener('click', closeInputProgrammDropDown);
-    }
-  });
+//   document.body.addEventListener('click', function closeInputProgrammDropDown(
+//     e
+//   ) {
+//     if (
+//       (inputSelectChooseProgrammDropdown.classList.contains('show-dropdown') ||
+//         inputSelectChooseProgrammDropdownStepTwo.classList.contains(
+//           'show-dropdown'
+//         )) &&
+//       !inputSelectChooseProgrammDropdown.contains(e.target) &&
+//       e.target !== inputSelectChooseProgrammDropdown &&
+//       !inputSelectChooseProgramm.contains(e.target) &&
+//       e.target !== inputSelectChooseProgrammDropdownStepTwo &&
+//       !inputSelectChooseProgrammDropdownStepTwo.contains(e.target) &&
+//       e.target !== inputSelectChooseProgramm &&
+//       !selectedItemFromTheFirstStep.contains(e.target) &&
+//       e.target !== selectedItemFromTheFirstStep
+//     ) {
+//       // Close question module
+//       inputSelectChooseProgrammDropdown.classList.remove('show-dropdown');
+//       inputSelectChooseProgrammDropdownStepTwo.classList.remove(
+//         'show-dropdown'
+//       );
+//       document.body.removeEventListener('click', closeInputProgrammDropDown);
+//     }
+//   });
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
-// Dropdown Programm
-inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
-  const dropDownProgrammItemsArr = Array.from(dropDownProgrammItems);
-  const dropDownProgrammItemsArrP = Array.from(dropDownProgrammItemsP);
+// // Dropdown Programm
+// inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
+//   const dropDownProgrammItemsArr = Array.from(dropDownProgrammItems);
+//   const dropDownProgrammItemsArrP = Array.from(dropDownProgrammItemsP);
 
-  dropDownProgrammItemsArr.forEach((item) => {
-    item.classList.remove('text-highlight--color');
-  });
-  dropDownProgrammItemsArrP.forEach((item) => {
-    item.classList.remove('text-highlight--color');
-  });
+//   dropDownProgrammItemsArr.forEach((item) => {
+//     item.classList.remove('text-highlight--color');
+//   });
+//   dropDownProgrammItemsArrP.forEach((item) => {
+//     item.classList.remove('text-highlight--color');
+//   });
 
-  // Change the inner text of the select to the selected text
-  if (e.target.tagName === 'svg') {
-    inputSelectChooseProgrammInnerText.innerText =
-      e.target.parentElement.innerText;
-    e.target.parentElement.classList.add('text-highlight--color');
-  } else if (e.target.tagName == 'path') {
-    inputSelectChooseProgrammInnerText.innerText =
-      e.target.parentElement.parentElement.innerText;
-    e.target.parentElement.parentElement.classList.add('text-highlight--color');
-  } else {
-    inputSelectChooseProgrammInnerText.innerText = e.target.innerText;
-    e.target.classList.add('text-highlight--color');
-  }
+//   // Change the inner text of the select to the selected text
+//   if (e.target.tagName === 'svg') {
+//     inputSelectChooseProgrammInnerText.innerText =
+//       e.target.parentElement.innerText;
+//     e.target.parentElement.classList.add('text-highlight--color');
+//   } else if (e.target.tagName == 'path') {
+//     inputSelectChooseProgrammInnerText.innerText =
+//       e.target.parentElement.parentElement.innerText;
+//     e.target.parentElement.parentElement.classList.add('text-highlight--color');
+//   } else {
+//     inputSelectChooseProgrammInnerText.innerText = e.target.innerText;
+//     e.target.classList.add('text-highlight--color');
+//   }
 
-  // Add the color to the selected text in the input
-  inputSelectChooseProgrammInnerText.classList.add('text-highlight--color');
+//   // Add the color to the selected text in the input
+//   inputSelectChooseProgrammInnerText.classList.add('text-highlight--color');
 
-  // Dropdown Programm Step 2
+//   // Dropdown Programm Step 2
 
-  if (
-    inputSelectChooseProgrammInnerText.innerText ===
-    'Определюсь после консультации'
-  ) {
-    inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
-  } else {
-    inputSelectChooseProgrammDropdownStepTwo.classList.add('show-dropdown');
+//   if (
+//     inputSelectChooseProgrammInnerText.innerText ===
+//     'Определюсь после консультации'
+//   ) {
+//     inputSelectChooseProgrammDropdownStepTwo.classList.remove('show-dropdown');
+//   } else {
+//     inputSelectChooseProgrammDropdownStepTwo.classList.add('show-dropdown');
 
-    const selectedItemFromTheFirstStepText = document.getElementById(
-      'programm-dropdown-step-two-selected-step-one-item'
-    );
+//     const selectedItemFromTheFirstStepText = document.getElementById(
+//       'programm-dropdown-step-two-selected-step-one-item'
+//     );
 
-    const selectedItemFromTheFirstStep = document.getElementById(
-      'inner-dropdown-items__item--selected'
-    );
+//     const selectedItemFromTheFirstStep = document.getElementById(
+//       'inner-dropdown-items__item--selected'
+//     );
 
-    selectedItemFromTheFirstStepText.innerText =
-      inputSelectChooseProgrammInnerText.innerText;
+//     selectedItemFromTheFirstStepText.innerText =
+//       inputSelectChooseProgrammInnerText.innerText;
 
-    const listItemsStepTwo = document.getElementById(
-      'inner-dropdown-items--step-two'
-    );
+//     const listItemsStepTwo = document.getElementById(
+//       'inner-dropdown-items--step-two'
+//     );
 
-    const svgArrowBack = `<svg
-    width="9"
-    height="15"
-    viewBox="0 0 9 15"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M8.20471 13.2882L2.41412 7.49765L8.20471 1.70706C8.5953 1.31647 8.5953 0.683529 8.20471 0.292941C7.81412 -0.097647 7.18118 -0.097647 6.79059 0.292941L0.292941 6.79059C-0.0976471 7.18118 -0.0976471 7.81412 0.292941 8.2047L6.79059 14.7024C7.18118 15.0929 7.81412 15.0929 8.20471 14.7024C8.5953 14.3118 8.5953 13.6788 8.20471 13.2882Z"
-      fill="#2874FF"
-    />
-  </svg>`;
+//     const svgArrowBack = `<svg
+//     width="9"
+//     height="15"
+//     viewBox="0 0 9 15"
+//     fill="none"
+//     xmlns="http://www.w3.org/2000/svg"
+//   >
+//     <path
+//       d="M8.20471 13.2882L2.41412 7.49765L8.20471 1.70706C8.5953 1.31647 8.5953 0.683529 8.20471 0.292941C7.81412 -0.097647 7.18118 -0.097647 6.79059 0.292941L0.292941 6.79059C-0.0976471 7.18118 -0.0976471 7.81412 0.292941 8.2047L6.79059 14.7024C7.18118 15.0929 7.81412 15.0929 8.20471 14.7024C8.5953 14.3118 8.5953 13.6788 8.20471 13.2882Z"
+//       fill="#2874FF"
+//     />
+//   </svg>`;
 
-    if (selectedItemFromTheFirstStepText.innerText === 'Колледж') {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (selectedItemFromTheFirstStepText.innerText === 'Колледж') {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Информационные системы и программирование');
+//       dropDownStepTwoInsertItem('Информационные системы и программирование');
 
-      dropDownStepTwoInsertItem('Гостиничное дело​');
+//       dropDownStepTwoInsertItem('Гостиничное дело​');
 
-      dropDownStepTwoInsertItem('Банковское дело​​');
+//       dropDownStepTwoInsertItem('Банковское дело​​');
 
-      dropDownStepTwoInsertItem('Экономика и бухгалтерский учет по отраслям');
+//       dropDownStepTwoInsertItem('Экономика и бухгалтерский учет по отраслям');
 
-      dropDownStepTwoInsertItem('Право и организация социального обеспечения');
+//       dropDownStepTwoInsertItem('Право и организация социального обеспечения');
 
-      dropDownStepTwoInsertItem('Коммерция по отраслям');
+//       dropDownStepTwoInsertItem('Коммерция по отраслям');
       
-    }
+//     }
 
-    if (selectedItemFromTheFirstStepText.innerText === 'Бакалавриат') {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (selectedItemFromTheFirstStepText.innerText === 'Бакалавриат') {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Юриспруденция');
+//       dropDownStepTwoInsertItem('Юриспруденция');
 
-      dropDownStepTwoInsertItem('Дизайн​');
+//       dropDownStepTwoInsertItem('Дизайн​');
 
-      dropDownStepTwoInsertItem('Лингвистика');
+//       dropDownStepTwoInsertItem('Лингвистика');
 
-      dropDownStepTwoInsertItem('Информационные системы и технологии');
+//       dropDownStepTwoInsertItem('Информационные системы и технологии');
 
-      dropDownStepTwoInsertItem('Прикладная информатика');
+//       dropDownStepTwoInsertItem('Прикладная информатика');
 
-      dropDownStepTwoInsertItem('Реклама и связи с общественностью');
+//       dropDownStepTwoInsertItem('Реклама и связи с общественностью');
 
-      dropDownStepTwoInsertItem('Бизнес-информатика');
+//       dropDownStepTwoInsertItem('Бизнес-информатика');
 
-      dropDownStepTwoInsertItem('Государственное и муниципальное управление');
+//       dropDownStepTwoInsertItem('Государственное и муниципальное управление');
 
-      dropDownStepTwoInsertItem('Управление персоналом');
+//       dropDownStepTwoInsertItem('Управление персоналом');
 
-      dropDownStepTwoInsertItem('Теплоэнергетика и теплотехника');
+//       dropDownStepTwoInsertItem('Теплоэнергетика и теплотехника');
 
-      dropDownStepTwoInsertItem('Электроэнергетика и электротехника');
+//       dropDownStepTwoInsertItem('Электроэнергетика и электротехника');
 
-      dropDownStepTwoInsertItem('Строительство');
+//       dropDownStepTwoInsertItem('Строительство');
 
-      dropDownStepTwoInsertItem('Психолого-педагогическое образование');
+//       dropDownStepTwoInsertItem('Психолого-педагогическое образование');
 
-      dropDownStepTwoInsertItem('Психология');
+//       dropDownStepTwoInsertItem('Психология');
 
-      dropDownStepTwoInsertItem('Менеджмент');
+//       dropDownStepTwoInsertItem('Менеджмент');
 
-      dropDownStepTwoInsertItem('Экономика');
-    }
+//       dropDownStepTwoInsertItem('Экономика');
+//     }
 
-    if (selectedItemFromTheFirstStepText.innerText === 'Специалитет') {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (selectedItemFromTheFirstStepText.innerText === 'Специалитет') {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Экономическая безопасность');
-    }
+//       dropDownStepTwoInsertItem('Экономическая безопасность');
+//     }
 
-    if (selectedItemFromTheFirstStepText.innerText === 'Магистратура') {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (selectedItemFromTheFirstStepText.innerText === 'Магистратура') {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Юриспруденция');
+//       dropDownStepTwoInsertItem('Юриспруденция');
 
-      dropDownStepTwoInsertItem('Реклама и связи с общественностью');
+//       dropDownStepTwoInsertItem('Реклама и связи с общественностью');
 
-      dropDownStepTwoInsertItem('Психология');
+//       dropDownStepTwoInsertItem('Психология');
 
-      dropDownStepTwoInsertItem('Прикладная информатика');
+//       dropDownStepTwoInsertItem('Прикладная информатика');
 
-      dropDownStepTwoInsertItem('Государственное и муниципальное управление');
+//       dropDownStepTwoInsertItem('Государственное и муниципальное управление');
 
-      dropDownStepTwoInsertItem('Управление персоналом');
+//       dropDownStepTwoInsertItem('Управление персоналом');
 
-      dropDownStepTwoInsertItem('Менеджмент');
+//       dropDownStepTwoInsertItem('Менеджмент');
 
-      dropDownStepTwoInsertItem('Финансы и кредит');
+//       dropDownStepTwoInsertItem('Финансы и кредит');
 
-      dropDownStepTwoInsertItem('Экономика');
-    }
+//       dropDownStepTwoInsertItem('Экономика');
+//     }
 
-    if (
-      selectedItemFromTheFirstStepText.innerText ===
-      'Профессиональная переподготовка'
-    ) {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (
+//       selectedItemFromTheFirstStepText.innerText ===
+//       'Профессиональная переподготовка'
+//     ) {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Гуманитарные науки');
+//       dropDownStepTwoInsertItem('Гуманитарные науки');
 
-      dropDownStepTwoInsertItem('Электроэнергетика');
+//       dropDownStepTwoInsertItem('Электроэнергетика');
 
-      dropDownStepTwoInsertItem('Строительство');
+//       dropDownStepTwoInsertItem('Строительство');
 
-      dropDownStepTwoInsertItem('Теплоэнергетика');
+//       dropDownStepTwoInsertItem('Теплоэнергетика');
 
-      dropDownStepTwoInsertItem('Безопасность дорожного движения');
+//       dropDownStepTwoInsertItem('Безопасность дорожного движения');
 
-      dropDownStepTwoInsertItem('Продукты питания - технология производства');
+//       dropDownStepTwoInsertItem('Продукты питания - технология производства');
 
-      dropDownStepTwoInsertItem('Юриспруденция');
+//       dropDownStepTwoInsertItem('Юриспруденция');
 
-      dropDownStepTwoInsertItem('Охрана труда');
+//       dropDownStepTwoInsertItem('Охрана труда');
 
-      dropDownStepTwoInsertItem('Информатика и вычислительная техника');
+//       dropDownStepTwoInsertItem('Информатика и вычислительная техника');
 
-      dropDownStepTwoInsertItem('Реклама и PR');
+//       dropDownStepTwoInsertItem('Реклама и PR');
 
-      dropDownStepTwoInsertItem('Журналистика');
+//       dropDownStepTwoInsertItem('Журналистика');
 
-      dropDownStepTwoInsertItem('Дизайн');
+//       dropDownStepTwoInsertItem('Дизайн');
 
-      dropDownStepTwoInsertItem('Маркетинг');
+//       dropDownStepTwoInsertItem('Маркетинг');
 
-      dropDownStepTwoInsertItem('Туризм');
+//       dropDownStepTwoInsertItem('Туризм');
 
-      dropDownStepTwoInsertItem('Государственное и муниципальное управление');
+//       dropDownStepTwoInsertItem('Государственное и муниципальное управление');
 
-      dropDownStepTwoInsertItem('Логистика');
+//       dropDownStepTwoInsertItem('Логистика');
 
-      dropDownStepTwoInsertItem('Социальная работа');
+//       dropDownStepTwoInsertItem('Социальная работа');
 
-      dropDownStepTwoInsertItem('Экономика');
+//       dropDownStepTwoInsertItem('Экономика');
 
-      dropDownStepTwoInsertItem('Психология');
+//       dropDownStepTwoInsertItem('Психология');
 
-      dropDownStepTwoInsertItem('Педагогика');
+//       dropDownStepTwoInsertItem('Педагогика');
 
-      dropDownStepTwoInsertItem('Менеджмент');
-    }
+//       dropDownStepTwoInsertItem('Менеджмент');
+//     }
 
-    if (
-      selectedItemFromTheFirstStepText.innerText === 'Повышение квалификации'
-    ) {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (
+//       selectedItemFromTheFirstStepText.innerText === 'Повышение квалификации'
+//     ) {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('Гуманитарные науки');
+//       dropDownStepTwoInsertItem('Гуманитарные науки');
 
-      dropDownStepTwoInsertItem('Электроэнергетика');
+//       dropDownStepTwoInsertItem('Электроэнергетика');
 
-      dropDownStepTwoInsertItem('Строительство');
+//       dropDownStepTwoInsertItem('Строительство');
 
-      dropDownStepTwoInsertItem('Теплоэнергетика');
+//       dropDownStepTwoInsertItem('Теплоэнергетика');
 
-      dropDownStepTwoInsertItem('Безопасность дорожного движения');
+//       dropDownStepTwoInsertItem('Безопасность дорожного движения');
 
-      dropDownStepTwoInsertItem('Продукты питания - технология производства');
+//       dropDownStepTwoInsertItem('Продукты питания - технология производства');
 
-      dropDownStepTwoInsertItem('Юриспруденция');
+//       dropDownStepTwoInsertItem('Юриспруденция');
 
-      dropDownStepTwoInsertItem('Охрана труда');
+//       dropDownStepTwoInsertItem('Охрана труда');
 
-      dropDownStepTwoInsertItem('Информатика и вычислительная техника');
+//       dropDownStepTwoInsertItem('Информатика и вычислительная техника');
 
-      dropDownStepTwoInsertItem('Реклама и PR');
+//       dropDownStepTwoInsertItem('Реклама и PR');
 
-      dropDownStepTwoInsertItem('Журналистика');
+//       dropDownStepTwoInsertItem('Журналистика');
 
-      dropDownStepTwoInsertItem('Дизайн');
+//       dropDownStepTwoInsertItem('Дизайн');
 
-      dropDownStepTwoInsertItem('Маркетинг');
+//       dropDownStepTwoInsertItem('Маркетинг');
 
-      dropDownStepTwoInsertItem('Туризм');
+//       dropDownStepTwoInsertItem('Туризм');
 
-      dropDownStepTwoInsertItem('Медицина');
+//       dropDownStepTwoInsertItem('Медицина');
 
-      dropDownStepTwoInsertItem('Государственное и муниципальное управление');
+//       dropDownStepTwoInsertItem('Государственное и муниципальное управление');
 
-      dropDownStepTwoInsertItem('Логистика');
+//       dropDownStepTwoInsertItem('Логистика');
 
-      dropDownStepTwoInsertItem('Социальная работа​');
+//       dropDownStepTwoInsertItem('Социальная работа​');
 
-      dropDownStepTwoInsertItem('Экономика​​');
+//       dropDownStepTwoInsertItem('Экономика​​');
 
-      dropDownStepTwoInsertItem('Психология');
+//       dropDownStepTwoInsertItem('Психология');
 
-      dropDownStepTwoInsertItem('Педагогика');
+//       dropDownStepTwoInsertItem('Педагогика');
 
-      dropDownStepTwoInsertItem('Менеджмент');
-    }
+//       dropDownStepTwoInsertItem('Менеджмент');
+//     }
 
-    if (
-      selectedItemFromTheFirstStepText.innerText ===
-      'Master of Business Administration (МВА)'
-    ) {
-      const listItemsStepTwoArr = Array.prototype.slice.call(
-        listItemsStepTwo.childNodes
-      );
+//     if (
+//       selectedItemFromTheFirstStepText.innerText ===
+//       'Master of Business Administration (МВА)'
+//     ) {
+//       const listItemsStepTwoArr = Array.prototype.slice.call(
+//         listItemsStepTwo.childNodes
+//       );
 
-      listItemsStepTwoArr.forEach((item, index) => {
-        if (index > 3) {
-          item.remove();
-        }
-      });
+//       listItemsStepTwoArr.forEach((item, index) => {
+//         if (index > 3) {
+//           item.remove();
+//         }
+//       });
 
-      dropDownStepTwoInsertItem('Другое');
+//       dropDownStepTwoInsertItem('Другое');
 
-      dropDownStepTwoInsertItem('MBA Industry');
+//       dropDownStepTwoInsertItem('MBA Industry');
 
-      dropDownStepTwoInsertItem('MBA Professional');
+//       dropDownStepTwoInsertItem('MBA Professional');
 
-      dropDownStepTwoInsertItem('MBA Intensive');
+//       dropDownStepTwoInsertItem('MBA Intensive');
 
-      dropDownStepTwoInsertItem('Mini-MBA');
-    }
+//       dropDownStepTwoInsertItem('Mini-MBA');
+//     }
 
-    // Step back
-    selectedItemFromTheFirstStep.addEventListener('click', (e) => {
-      inputSelectChooseProgrammDropdownStepTwo.classList.remove(
-        'show-dropdown'
-      );
-      inputSelectChooseProgrammDropdown.classList.add('show-dropdown');
+//     // Step back
+//     selectedItemFromTheFirstStep.addEventListener('click', (e) => {
+//       inputSelectChooseProgrammDropdownStepTwo.classList.remove(
+//         'show-dropdown'
+//       );
+//       inputSelectChooseProgrammDropdown.classList.add('show-dropdown');
 
-      e.preventDefault();
-    });
+//       e.preventDefault();
+//     });
 
-    inputSelectChooseProgrammDropdownStepTwo.addEventListener('click', (e) => {
-      const dropDownProgrammItemsStepTwoArr = Array.from(
-        dropDownProgrammItemsStepTwo
-      );
-      const dropDownProgrammItemsPStepTwoArr = Array.from(
-        dropDownProgrammItemsPStepTwo
-      );
+//     inputSelectChooseProgrammDropdownStepTwo.addEventListener('click', (e) => {
+//       const dropDownProgrammItemsStepTwoArr = Array.from(
+//         dropDownProgrammItemsStepTwo
+//       );
+//       const dropDownProgrammItemsPStepTwoArr = Array.from(
+//         dropDownProgrammItemsPStepTwo
+//       );
 
-      dropDownProgrammItemsStepTwoArr.forEach((item) => {
-        item.classList.remove('text-highlight--color');
-      });
-      dropDownProgrammItemsPStepTwoArr.forEach((item) => {
-        item.classList.remove('text-highlight--color');
-      });
+//       dropDownProgrammItemsStepTwoArr.forEach((item) => {
+//         item.classList.remove('text-highlight--color');
+//       });
+//       dropDownProgrammItemsPStepTwoArr.forEach((item) => {
+//         item.classList.remove('text-highlight--color');
+//       });
 
-      // Change the inner text of the select to the selected text
-      if (e.target.tagName === 'svg') {
-        // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
-        inputSelectChooseProgrammInnerText.innerText ===
-        e.target.parentElement.innerText
-          ? inputSelectChooseProgrammInnerText.innerText
-          : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerHTML}, ${e.target.parentElement.innerText}`);
+//       // Change the inner text of the select to the selected text
+//       if (e.target.tagName === 'svg') {
+//         // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
+//         inputSelectChooseProgrammInnerText.innerText ===
+//         e.target.parentElement.innerText
+//           ? inputSelectChooseProgrammInnerText.innerText
+//           : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerHTML}, ${e.target.parentElement.innerText}`);
 
-        e.target.parentElement.classList.add('text-highlight--color');
-      } else if (e.target.tagName == 'path') {
-        // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
-        inputSelectChooseProgrammInnerText.innerText ===
-        e.target.parentElement.parentElement.innerText
-          ? inputSelectChooseProgrammInnerText.innerText
-          : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerText}, ${e.target.parentElement.parentElement.innerText}`);
+//         e.target.parentElement.classList.add('text-highlight--color');
+//       } else if (e.target.tagName == 'path') {
+//         // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
+//         inputSelectChooseProgrammInnerText.innerText ===
+//         e.target.parentElement.parentElement.innerText
+//           ? inputSelectChooseProgrammInnerText.innerText
+//           : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerText}, ${e.target.parentElement.parentElement.innerText}`);
 
-        e.target.parentElement.parentElement.classList.add(
-          'text-highlight--color'
-        );
-      } else {
-        // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
-        inputSelectChooseProgrammInnerText.innerText === e.target.innerText
-          ? (inputSelectChooseProgrammInnerText.innerText =
-              inputSelectChooseProgrammInnerText.innerText)
-          : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerText}, ${e.target.innerText}`);
+//         e.target.parentElement.parentElement.classList.add(
+//           'text-highlight--color'
+//         );
+//       } else {
+//         // Make sure we don't insert a step back btn inner text into the div (that looks kinda like select input)
+//         inputSelectChooseProgrammInnerText.innerText === e.target.innerText
+//           ? (inputSelectChooseProgrammInnerText.innerText =
+//               inputSelectChooseProgrammInnerText.innerText)
+//           : (inputSelectChooseProgrammInnerText.innerText = `${inputSelectChooseProgrammInnerText.innerText}, ${e.target.innerText}`);
 
-        e.target.classList.add('text-highlight--color');
-      }
+//         e.target.classList.add('text-highlight--color');
+//       }
 
-      inputSelectChooseProgrammInnerText.innerHTML = inputSelectChooseProgrammInnerText.innerHTML.replace(
-        /,\s*$/,
-        ''
-      );
+//       inputSelectChooseProgrammInnerText.innerHTML = inputSelectChooseProgrammInnerText.innerHTML.replace(
+//         /,\s*$/,
+//         ''
+//       );
 
-      if (document.body.clientWidth < 768) {
-        inputSelectChooseProgrammInnerText.scrollIntoView({
-          behavior: 'smooth',
-        });
-      }
+//       if (document.body.clientWidth < 768) {
+//         inputSelectChooseProgrammInnerText.scrollIntoView({
+//           behavior: 'smooth',
+//         });
+//       }
 
-      inputSelectChooseProgrammDropdownStepTwo.classList.remove(
-        'show-dropdown'
-      );
-    });
-  }
+//       inputSelectChooseProgrammDropdownStepTwo.classList.remove(
+//         'show-dropdown'
+//       );
+//     });
+//   }
 
-  // On select hide the module
-  inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
+//   // On select hide the module
+//   inputSelectChooseProgrammDropdown.classList.toggle('show-dropdown');
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
 // Show ask question btn on the scroll position
 // window.addEventListener('scroll', function showQuestionBtn(e) {
@@ -1395,6 +1395,7 @@ btnAskQuestion.addEventListener('click', (e) => {
         moduleStepTwo.classList.add('hidden');
         moduleStepOne.classList.add('hidden');
         moduleStepSuccess.classList.remove('hidden');
+        window.history.pushState({'page_id': 6}, '', '?thankyou=question');
 
         // Submit
         const question = moduleQuestionTextarea.value.trim();
@@ -1457,6 +1458,7 @@ btnAskQuestion.addEventListener('click', (e) => {
         moduleStepTwo.classList.add('hidden');
         moduleStepOne.classList.add('hidden');
         moduleStepSuccess.classList.remove('hidden');
+        window.history.pushState({'page_id': 7}, '', '?thankyou=question');
 
         moduleStepSuccess.classList.add('showed');
 
@@ -1579,95 +1581,96 @@ carouselBtnLeft.addEventListener('click', (e) => {
 });
 
 // On submit
-ctaSubmitBtn.addEventListener('click', (e) => {
-  const field = inputSelectChooseProgrammInnerText.innerText.trim();
-  const uni = inputSelectChooseUniInnerText.innerText.trim();
-  const number = phoneInputInnerText.value.trim();
-  const userName = userInputNameText.value.trim();
+// ctaSubmitBtn.addEventListener('click', (e) => {
+//   const field = inputSelectChooseProgrammInnerText.innerText.trim();
+//   const uni = inputSelectChooseUniInnerText.innerText.trim();
+//   const number = phoneInputInnerText.value.trim();
+//   const userName = userInputNameText.value.trim();
 
-  // const googleClientId = ga.getAll()[0].get('clientId');
+//   // const googleClientId = ga.getAll()[0].get('clientId');
 
-  const data = {
-    field,
-    uni,
-    number,
-    userName,
-    userCity,
-    userCountry,
-    // googleClientId,
-    userDevice,
-    utmSource,
-    utmMedium,
-    utmCampaign,
-    utmContent,
-    utmTerm,
-  };
+//   const data = {
+//     field,
+//     uni,
+//     number,
+//     userName,
+//     userCity,
+//     userCountry,
+//     // googleClientId,
+//     userDevice,
+//     utmSource,
+//     utmMedium,
+//     utmCampaign,
+//     utmContent,
+//     utmTerm,
+//   };
 
-  // console.log(data);
-  // console.log(JSON.stringify(data));
+//   // console.log(data);
+//   // console.log(JSON.stringify(data));
 
-  // Validate input number
-  if (number !== '' && number.match(numValidation)) {
-    const appIsSumbitted = document.getElementById('js-app-is-submitted');
+//   // Validate input number
+//   if (number !== '' && number.match(numValidation)) {
+//     const appIsSumbitted = document.getElementById('js-app-is-submitted');
 
-    appIsSumbitted.classList.add('showed');
+//     window.history.pushState({'page_id': 8}, '', '?thankyou=main');
+//     appIsSumbitted.classList.add('showed');
 
-    document
-      .getElementById('step-success-row__back-to-main')
-      .addEventListener('click', (e) => {
-        appIsSumbitted.classList.add('removing');
-        setTimeout(() => {
-          appIsSumbitted.classList.remove('showed');
-          appIsSumbitted.classList.remove('removing');
-        }, 300);
+//     document
+//       .getElementById('step-success-row__back-to-main')
+//       .addEventListener('click', (e) => {
+//         appIsSumbitted.classList.add('removing');
+//         setTimeout(() => {
+//           appIsSumbitted.classList.remove('showed');
+//           appIsSumbitted.classList.remove('removing');
+//         }, 300);
 
-        e.preventDefault();
-      });
+//         e.preventDefault();
+//       });
 
-    // console.log("correct");
-    sumbitData(data);
-  } else {
-    phoneInputInnerText.classList.add('bg-danger');
-    // console.log("wrong");
-    phoneInputInnerText.addEventListener('keyup', (e) => {
-      // console.log("event keyup");
-      if (
-        phoneInputInnerText.value.trim() !== '' &&
-        phoneInputInnerText.value.trim().match(numValidation)
-      ) {
-        // console.log("correct");
-        phoneInputInnerText.classList.remove('bg-danger');
-      } else {
-        // console.log("wrong");
-        phoneInputInnerText.classList.add('bg-danger');
-      }
+//     // console.log("correct");
+//     sumbitData(data);
+//   } else {
+//     phoneInputInnerText.classList.add('bg-danger');
+//     // console.log("wrong");
+//     phoneInputInnerText.addEventListener('keyup', (e) => {
+//       // console.log("event keyup");
+//       if (
+//         phoneInputInnerText.value.trim() !== '' &&
+//         phoneInputInnerText.value.trim().match(numValidation)
+//       ) {
+//         // console.log("correct");
+//         phoneInputInnerText.classList.remove('bg-danger');
+//       } else {
+//         // console.log("wrong");
+//         phoneInputInnerText.classList.add('bg-danger');
+//       }
 
-      e.preventDefault();
-    });
-  }
+//       e.preventDefault();
+//     });
+//   }
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
-phoneInputInnerText.addEventListener('input', (e) => {
-  const number = phoneInputInnerText.value.trim();
-  // Validate input number
-  if (number !== '' && number.match(numValidation) && number.length >= 3) {
-    // console.log(number.length);
-    userNameInput.classList.add('showed');
-  }
-});
+// phoneInputInnerText.addEventListener('input', (e) => {
+//   const number = phoneInputInnerText.value.trim();
+//   // Validate input number
+//   if (number !== '' && number.match(numValidation) && number.length >= 3) {
+//     // console.log(number.length);
+//     userNameInput.classList.add('showed');
+//   }
+// });
 
-phoneInputInnerText.addEventListener('click', (e) => {
-  const containerInputPhoneNum = document.getElementById(
-    'container-input-phone-num'
-  );
-  if (document.body.clientWidth < 768) {
-    containerInputPhoneNum.scrollIntoView({
-      behavior: 'smooth',
-    });
-  }
-});
+// phoneInputInnerText.addEventListener('click', (e) => {
+//   const containerInputPhoneNum = document.getElementById(
+//     'container-input-phone-num'
+//   );
+//   if (document.body.clientWidth < 768) {
+//     containerInputPhoneNum.scrollIntoView({
+//       behavior: 'smooth',
+//     });
+//   }
+// });
 
 
 // Pop up btns
@@ -1699,6 +1702,12 @@ function showPopUp(button = ''){
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
         popUpFormSubmit.dataset.form = 'what-to-do';
       break;
+      case 'main-popup-btn':
+        // console.log('Узнайте что делать если нет ЕГЭ');
+        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        popUpFormSubmit.dataset.form = 'main';
+      break;
       default:
         return;
     }
@@ -1713,6 +1722,7 @@ function showPopUp(button = ''){
   })
 }
 
+showPopUp('main-popup-btn');
 showPopUp('learn-more-btn');
 showPopUp('js-popup-choose-from-many');
 showPopUp('js-popup-what-to-do');
@@ -1729,9 +1739,10 @@ function closePopUpContant(){
   const learnMoreBtn = document.getElementById('learn-more-btn');
   const learnMoreBtn2 = document.getElementById('js-popup-choose-from-many');
   const learnMoreBtn3 = document.getElementById('js-popup-what-to-do');
+  const learnMoreBtn4 = document.getElementById('main-popup-btn');
   document.body.addEventListener('click', function closePopUpContactEvent(e){
     // console.log(e.target);
-    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target)){
+    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target) && e.target !== learnMoreBtn4 && !learnMoreBtn4.contains(e.target)){
       // console.log(e.target);
       moduleForm.classList.remove('show');
       btnAskQuestion.classList.remove('hidden');
@@ -1802,6 +1813,9 @@ function submitPopUpForm(){
       }else if(popUpFormSubmit.dataset.form === 'what-to-do'){
         // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
         window.history.pushState({'page_id': 3}, '', '?thankyou=what-to-do');
+      }else if(popUpFormSubmit.dataset.form === 'main'){
+        // appIsSumbitted.id = 'popup--is-submitted-main';
+        window.history.pushState({'page_id': 9}, '', '?thankyou=main');
       }
 
     appIsSumbitted.classList.add('showed');
@@ -1869,6 +1883,7 @@ function submitContactForm(){
     sumbitData(data);
     numberEl.value = '';
     userNameEl.value = '';
+    window.history.pushState({'page_id': 5}, '', '?thankyou=question');
   }else{
     numberEl.classList.add('bg-danger');
     numberEl.focus();
@@ -1915,6 +1930,7 @@ function submitQuestionsForm(){
     sumbitData(data);
     numberEl.value = '';
     userNameEl.value = '';
+    window.history.pushState({'page_id': 4}, '', '?thankyou=question');
   }else{
     numberEl.classList.add('bg-danger');
     numberEl.focus();
