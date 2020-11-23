@@ -2773,8 +2773,17 @@ navItemLinks[1].addEventListener('click', function (e) {
 });
 navItemLinks[2].addEventListener('click', function (e) {
   // window.location = "#trusted-by";
-  var trustedBySection = document.getElementById('trusted-by');
-  trustedBySection.scrollIntoView({
+  var chooseFromMany = document.getElementById('choose-from-many');
+  chooseFromMany.scrollIntoView({
+    behavior: 'smooth'
+  });
+  menuToggler.checked = false;
+  e.preventDefault();
+});
+navItemLinks[3].addEventListener('click', function (e) {
+  // window.location = "#trusted-by";
+  var whatToDo = document.getElementById('what-to-do');
+  whatToDo.scrollIntoView({
     behavior: 'smooth'
   });
   menuToggler.checked = false;
@@ -3752,8 +3761,15 @@ function showPopUp() {
 
       case 'main-popup-btn':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        popupFormTitle.innerHTML = 'Заявка на консультацию';
+        popupFormInfo.innerHTML = 'Менеджер расскажет о ВУЗах-партнерах, скидках и подберет программу обучения.';
+        popUpFormSubmit.dataset.form = 'main';
+        break;
+
+      case 'show-pop-up-bottom-mobile':
+        // console.log('Узнайте что делать если нет ЕГЭ');
+        popupFormTitle.innerHTML = 'Заявка на консультацию';
+        popupFormInfo.innerHTML = 'Менеджер расскажет о ВУЗах-партнерах, скидках и подберет программу обучения.';
         popUpFormSubmit.dataset.form = 'main';
         break;
 
@@ -3768,6 +3784,7 @@ function showPopUp() {
   });
 }
 
+showPopUp('show-pop-up-bottom-mobile');
 showPopUp('main-popup-btn');
 showPopUp('learn-more-btn');
 showPopUp('js-popup-choose-from-many');
@@ -3786,9 +3803,10 @@ function closePopUpContant() {
   var learnMoreBtn2 = document.getElementById('js-popup-choose-from-many');
   var learnMoreBtn3 = document.getElementById('js-popup-what-to-do');
   var learnMoreBtn4 = document.getElementById('main-popup-btn');
+  var learnMoreBtn5 = document.getElementById('show-pop-up-bottom-mobile');
   document.body.addEventListener('click', function closePopUpContactEvent(e) {
     // console.log(e.target);
-    if (moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target) && e.target !== learnMoreBtn4 && !learnMoreBtn4.contains(e.target)) {
+    if (moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target) && e.target !== learnMoreBtn4 && !learnMoreBtn4.contains(e.target) && e.target !== learnMoreBtn5 && !learnMoreBtn5.contains(e.target)) {
       // console.log(e.target);
       moduleForm.classList.remove('show');
       btnAskQuestion.classList.remove('hidden');
@@ -3846,26 +3864,24 @@ function submitPopUpForm() {
     };
 
     if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
-      var appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more');
+      var appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more'); // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
 
-      var _popUpFormSubmit = document.getElementById('pop-up-form-submit');
-
-      if (_popUpFormSubmit.dataset.form === 'choose-from-many') {
+      if (popUpFormSubmit.dataset.form === 'choose-from-many') {
         // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
         window.history.pushState({
           'page_id': 1
         }, '', '?thankyou=choose-from-many');
-      } else if (_popUpFormSubmit.dataset.form === 'learn-more') {
+      } else if (popUpFormSubmit.dataset.form === 'learn-more') {
         // appIsSumbitted.id = 'popup--is-submitted-learn-more';
         window.history.pushState({
           'page_id': 2
         }, '', '?thankyou=learn-more');
-      } else if (_popUpFormSubmit.dataset.form === 'what-to-do') {
+      } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
         // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
         window.history.pushState({
           'page_id': 3
         }, '', '?thankyou=what-to-do');
-      } else if (_popUpFormSubmit.dataset.form === 'main') {
+      } else if (popUpFormSubmit.dataset.form === 'main') {
         // appIsSumbitted.id = 'popup--is-submitted-main';
         window.history.pushState({
           'page_id': 9
@@ -3990,16 +4006,17 @@ submitQuestionsForm(); // Hide ask question on the top of the page and on the bo
 
 btnAskQuestion.classList.add('hidden');
 document.addEventListener('scroll', function (e) {
-  // moduleQuestions
+  var popUpForm = document.getElementById('module-popup-form'); // moduleQuestions
   // console.log(window.scrollY);
-  if (moduleQuestions.classList.contains('hidden')) {
+
+  if (moduleQuestions.classList.contains('hidden') && !popUpForm.classList.contains('show')) {
     // if (window.scrollY >= 300)
     // {
     //   btnAskQuestion.classList.remove('hidden');
     // }else{
     //   btnAskQuestion.classList.add('hidden');
     // }
-    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 300) {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 500 || window.scrollY < 300) {
       btnAskQuestion.classList.add('hidden');
     } else {
       btnAskQuestion.classList.remove('hidden');
@@ -4034,7 +4051,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65179" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65516" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

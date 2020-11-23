@@ -446,8 +446,18 @@ navItemLinks[1].addEventListener('click', (e) => {
 
 navItemLinks[2].addEventListener('click', (e) => {
   // window.location = "#trusted-by";
-  const trustedBySection = document.getElementById('trusted-by');
-  trustedBySection.scrollIntoView({
+  const chooseFromMany = document.getElementById('choose-from-many');
+  chooseFromMany.scrollIntoView({
+    behavior: 'smooth',
+  });
+  menuToggler.checked = false;
+  e.preventDefault();
+});
+
+navItemLinks[3].addEventListener('click', (e) => {
+  // window.location = "#trusted-by";
+  const whatToDo = document.getElementById('what-to-do');
+  whatToDo.scrollIntoView({
     behavior: 'smooth',
   });
   menuToggler.checked = false;
@@ -1704,8 +1714,14 @@ function showPopUp(button = ''){
       break;
       case 'main-popup-btn':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        popupFormTitle.innerHTML = 'Заявка на консультацию';
+        popupFormInfo.innerHTML = 'Менеджер расскажет о ВУЗах-партнерах, скидках и подберет программу обучения.';
+        popUpFormSubmit.dataset.form = 'main';
+      break;
+      case 'show-pop-up-bottom-mobile':
+        // console.log('Узнайте что делать если нет ЕГЭ');
+        popupFormTitle.innerHTML = 'Заявка на консультацию';
+        popupFormInfo.innerHTML = 'Менеджер расскажет о ВУЗах-партнерах, скидках и подберет программу обучения.';
         popUpFormSubmit.dataset.form = 'main';
       break;
       default:
@@ -1722,6 +1738,7 @@ function showPopUp(button = ''){
   })
 }
 
+showPopUp('show-pop-up-bottom-mobile');
 showPopUp('main-popup-btn');
 showPopUp('learn-more-btn');
 showPopUp('js-popup-choose-from-many');
@@ -1740,9 +1757,10 @@ function closePopUpContant(){
   const learnMoreBtn2 = document.getElementById('js-popup-choose-from-many');
   const learnMoreBtn3 = document.getElementById('js-popup-what-to-do');
   const learnMoreBtn4 = document.getElementById('main-popup-btn');
+  const learnMoreBtn5 = document.getElementById('show-pop-up-bottom-mobile');
   document.body.addEventListener('click', function closePopUpContactEvent(e){
     // console.log(e.target);
-    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target) && e.target !== learnMoreBtn4 && !learnMoreBtn4.contains(e.target)){
+    if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target) && e.target !== learnMoreBtn4 && !learnMoreBtn4.contains(e.target) && e.target !== learnMoreBtn5 && !learnMoreBtn5.contains(e.target)){
       // console.log(e.target);
       moduleForm.classList.remove('show');
       btnAskQuestion.classList.remove('hidden');
@@ -1802,7 +1820,7 @@ function submitPopUpForm(){
     if(number !== '' && number !== null && number !== undefined && number.match(numValidation)){
 
       const appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more');
-      const popUpFormSubmit = document.getElementById('pop-up-form-submit');
+      // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
 
       if(popUpFormSubmit.dataset.form === 'choose-from-many'){
         // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
@@ -1947,16 +1965,17 @@ submitQuestionsForm();
 // Hide ask question on the top of the page and on the bottom of the page
 btnAskQuestion.classList.add('hidden');
 document.addEventListener('scroll', (e) => {
+  const popUpForm = document.getElementById('module-popup-form');
   // moduleQuestions
   // console.log(window.scrollY);
-  if(moduleQuestions.classList.contains('hidden')){
+  if(moduleQuestions.classList.contains('hidden') && !popUpForm.classList.contains('show')){
     // if (window.scrollY >= 300)
     // {
     //   btnAskQuestion.classList.remove('hidden');
     // }else{
     //   btnAskQuestion.classList.add('hidden');
     // }
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300)
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 500 || window.scrollY < 300)
     {
       btnAskQuestion.classList.add('hidden');
     }else{

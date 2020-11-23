@@ -1757,6 +1757,11 @@ header {
   margin-right: auto;
   margin-bottom: 42px;
 }
+.section-what-to-do .content__icon img {
+  width: 100%;
+  max-width: 173px;
+  height: auto;
+}
 
 @media only screen and (min-width: 768px) {
   .section-what-to-do {
@@ -2369,6 +2374,13 @@ header {
   position: relative;
   overflow: hidden;
   transform: scale(1);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn:active {
   transform: scale(0.98);
