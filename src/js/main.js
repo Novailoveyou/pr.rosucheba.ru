@@ -1794,11 +1794,14 @@ function submitPopUpForm(){
       const popUpFormSubmit = document.getElementById('pop-up-form-submit');
 
       if(popUpFormSubmit.dataset.form === 'choose-from-many'){
-        appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+        // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+        window.history.pushState({'page_id': 1}, '', '?thankyou=choose-from-many');
       }else if(popUpFormSubmit.dataset.form === 'learn-more'){
-        appIsSumbitted.id = 'popup--is-submitted-learn-more';
+        // appIsSumbitted.id = 'popup--is-submitted-learn-more';
+        window.history.pushState({'page_id': 2}, '', '?thankyou=learn-more');
       }else if(popUpFormSubmit.dataset.form === 'what-to-do'){
-        appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+        // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+        window.history.pushState({'page_id': 3}, '', '?thankyou=what-to-do');
       }
 
     appIsSumbitted.classList.add('showed');
@@ -1806,7 +1809,7 @@ function submitPopUpForm(){
     document
       .getElementById('step-success-row__back-to-main--form-popup')
       .addEventListener('click', (e) => {
-        appIsSumbitted.id = 'js-app-is-submitted--learn-more';
+        // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
         appIsSumbitted.classList.add('removing');
         setTimeout(() => {
           appIsSumbitted.classList.remove('showed');

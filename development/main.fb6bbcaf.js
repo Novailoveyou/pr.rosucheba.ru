@@ -3627,7 +3627,7 @@ phoneInputInnerText.addEventListener('input', function (e) {
   var number = phoneInputInnerText.value.trim(); // Validate input number
 
   if (number !== '' && number.match(numValidation) && number.length >= 3) {
-    console.log(number.length);
+    // console.log(number.length);
     userNameInput.classList.add('showed');
   }
 });
@@ -3763,16 +3763,25 @@ function submitPopUpForm() {
       var _popUpFormSubmit = document.getElementById('pop-up-form-submit');
 
       if (_popUpFormSubmit.dataset.form === 'choose-from-many') {
-        appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+        // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+        window.history.pushState({
+          'page_id': 1
+        }, '', '?thankyou=choose-from-many');
       } else if (_popUpFormSubmit.dataset.form === 'learn-more') {
-        appIsSumbitted.id = 'popup--is-submitted-learn-more';
+        // appIsSumbitted.id = 'popup--is-submitted-learn-more';
+        window.history.pushState({
+          'page_id': 2
+        }, '', '?thankyou=learn-more');
       } else if (_popUpFormSubmit.dataset.form === 'what-to-do') {
-        appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+        // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+        window.history.pushState({
+          'page_id': 3
+        }, '', '?thankyou=what-to-do');
       }
 
       appIsSumbitted.classList.add('showed');
       document.getElementById('step-success-row__back-to-main--form-popup').addEventListener('click', function (e) {
-        appIsSumbitted.id = 'js-app-is-submitted--learn-more';
+        // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
         appIsSumbitted.classList.add('removing');
         setTimeout(function () {
           appIsSumbitted.classList.remove('showed');
@@ -3926,7 +3935,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57611" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60307" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
