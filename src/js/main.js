@@ -244,6 +244,42 @@ fetch((locationUrlAPI))
       'из Узбекистана',
       ''
     );
+
+    // Docs steps
+    const kzUzEls = document.querySelectorAll('.kz-uz-only');
+    const kzUzElsArr = Array.from(kzUzEls);
+    const ruEls = document.querySelectorAll('.ru-only');
+    const ruElsArr = Array.from(ruEls);
+    if (userCountryCode === 'RU') {
+      ruElsArr.forEach(el =>{
+        el.classList.add('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+    } else if (userCountryCode === 'KZ') {
+      ruElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.show('show');
+      })
+    } else if (userCountryCode === 'UZ') {
+      ruElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.show('show');
+      })
+    } else {
+      ruElsArr.forEach(el =>{
+        el.classList.add('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+    }
+    // /Docs needed
   })
   .catch((error) => {
     // `Can't access ${locationUrlAPI} :(`;
@@ -261,6 +297,43 @@ fetch((locationUrlAPI))
       'из Узбекистана',
       ''
     );
+
+    // Docs steps
+    const kzUzEls = document.querySelectorAll('.kz-uz-only');
+    const kzUzElsArr = Array.from(kzUzEls);
+    const ruEls = document.querySelectorAll('.ru-only');
+    const ruElsArr = Array.from(ruEls);
+    if (userCountryCode === 'RU') {
+      ruElsArr.forEach(el =>{
+        el.classList.add('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+    } else if (userCountryCode === 'KZ') {
+      ruElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.show('show');
+      })
+    } else if (userCountryCode === 'UZ') {
+      ruElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.show('show');
+      })
+    } else {
+      ruElsArr.forEach(el =>{
+        el.classList.add('show');
+      })
+      kzUzElsArr.forEach(el =>{
+        el.classList.remove('show');
+      })
+    }
+    // /Docs needed
+    
     return;
   });
 
@@ -443,27 +516,34 @@ inputSelectChooseUniDropdown.addEventListener('mousedown', (e) => {
   if (e.target.tagName === 'svg') {
     inputSelectChooseUniInnerText.innerText = e.target.parentElement.innerText;
 
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+    if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
       .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
       .slice(0, -1);
+    }
+    
 
     e.target.parentElement.classList.add('text-highlight--color');
   } else if (e.target.tagName == 'path') {
     inputSelectChooseUniInnerText.innerText =
       e.target.parentElement.parentElement.innerText;
 
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
-      .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
-      .slice(0, -1);
-
+      if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+        inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+        .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
+        .slice(0, -1);
+      }
+    
     e.target.parentElement.parentElement.classList.add('text-highlight--color');
   } else {
     inputSelectChooseUniInnerText.innerText = e.target.innerText;
 
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
+    if(inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации'){
+      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText
       .substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1)
       .slice(0, -1);
-
+    }
+    
     e.target.classList.add('text-highlight--color');
   }
 
@@ -679,7 +759,7 @@ inputSelectChooseProgrammDropdown.addEventListener('click', (e) => {
       });
 
       dropDownStepTwoInsertItem('Другое');
-      
+
       dropDownStepTwoInsertItem('Экономическая безопасность');
     }
 
@@ -1313,7 +1393,7 @@ btnAskQuestion.addEventListener('click', (e) => {
         const contactWay = moduleStepThreeTitle.innerText.trim();
         const contact = moduleInputContactInfo.value.trim();
 
-        const googleClientId = ga.getAll()[0].get('clientId');
+        // const googleClientId = ga.getAll()[0].get('clientId');
 
         let number;
 
@@ -1324,7 +1404,7 @@ btnAskQuestion.addEventListener('click', (e) => {
           contact,
           userCity,
           userCountry,
-          googleClientId,
+          // googleClientId,
           userDevice,
           utmSource,
           utmMedium,
@@ -1376,8 +1456,8 @@ btnAskQuestion.addEventListener('click', (e) => {
         const question = moduleQuestionTextarea.value.trim();
         const contactWay = moduleStepThreeTitle.innerText.trim();
         const contact = moduleInputContactInfo.value.trim();
-
-        const googleClientId = ga.getAll()[0].get('clientId');
+        
+        // const googleClientId = ga.getAll()[0].get('clientId');
 
         let number;
 
@@ -1388,7 +1468,7 @@ btnAskQuestion.addEventListener('click', (e) => {
           contact,
           userCity,
           userCountry,
-          googleClientId,
+          // googleClientId,
           userDevice,
           utmSource,
           utmMedium,
@@ -1497,7 +1577,7 @@ ctaSubmitBtn.addEventListener('click', (e) => {
   const number = phoneInputInnerText.value.trim();
   const userName = userInputNameText.value.trim();
 
-  const googleClientId = ga.getAll()[0].get('clientId');
+  // const googleClientId = ga.getAll()[0].get('clientId');
 
   const data = {
     field,
@@ -1506,7 +1586,7 @@ ctaSubmitBtn.addEventListener('click', (e) => {
     userName,
     userCity,
     userCountry,
-    googleClientId,
+    // googleClientId,
     userDevice,
     utmSource,
     utmMedium,
@@ -1561,10 +1641,11 @@ ctaSubmitBtn.addEventListener('click', (e) => {
   e.preventDefault();
 });
 
-phoneInputInnerText.addEventListener('keydown', (e) => {
+phoneInputInnerText.addEventListener('input', (e) => {
   const number = phoneInputInnerText.value.trim();
   // Validate input number
-  if (number !== '' && number.match(numValidation)) {
+  if (number !== '' && number.match(numValidation) && number.length >= 3) {
+    console.log(number.length);
     userNameInput.classList.add('showed');
   }
 });
@@ -1592,18 +1673,18 @@ function showPopUp(button = ''){
     switch(button){
       case 'learn-more-btn':
         // console.log('Узнайте подробнее о вузах');
-        popupFormTitle.innerHTML = 'Узнайте подробнее о вузах';
+        popupFormTitle.innerHTML = 'Узнайте больше о наших вузах-партнерах';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, консультант приемной комиссии подробно расскажет Вам о вузах и подберет программу!';
       break;
       case 'js-popup-choose-from-many':
         // console.log('Узнайте о наличии своего направления');
-        popupFormTitle.innerHTML = 'Узнайте о наличии своего направления';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет на какие направления сейчас идет набор';
+        popupFormTitle.innerHTML = `Узнайте о наличии <br />своего направления`;
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расcкажет на какие направления сейчас идет набор';
       break;
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет как можно поступить без ЕГЭ и диплома колледжа';
+        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ и диплома колледжа';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
       break;
       default:
         return;
@@ -1626,6 +1707,8 @@ showPopUp('js-popup-what-to-do');
 function showPopUpContant(){
   const moduleForm = document.getElementById('module-popup-form');
   moduleForm.classList.add('show');
+  btnAskQuestion.classList.add('hidden');
+  // Insert here
 }
 
 function closePopUpContant(){
@@ -1639,6 +1722,7 @@ function closePopUpContant(){
     if(moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target)){
       // console.log(e.target);
       moduleForm.classList.remove('show');
+      btnAskQuestion.classList.remove('hidden');
       document.body.removeEventListener('click', closePopUpContactEvent);
     }
   })
@@ -1676,14 +1760,14 @@ function submitPopUpForm(){
   const number = document.getElementById('pop-up-form-number').value.trim();
   const numberEl = document.getElementById('pop-up-form-number');
 
-  const googleClientId = ga.getAll()[0].get('clientId');
-
+  // const googleClientId = ga.getAll()[0].get('clientId');
+ 
   const data = {
     number,
     userName,
     userCity,
     userCountry,
-    googleClientId,
+    // googleClientId,
     userDevice,
     utmSource,
     utmMedium,
@@ -1738,14 +1822,14 @@ function submitContactForm(){
   const number = document.getElementById('number-contact-form').value.trim();
   const numberEl = document.getElementById('number-contact-form');
 
-  const googleClientId = ga.getAll()[0].get('clientId');
+  // const googleClientId = ga.getAll()[0].get('clientId');
 
   const data = {
     number,
     userName,
     userCity,
     userCountry,
-    googleClientId,
+    // googleClientId,
     userDevice,
     utmSource,
     utmMedium,
@@ -1771,3 +1855,49 @@ function submitContactForm(){
 }
 
 submitContactForm();
+
+// AreThereQuestions
+function submitQuestionsForm(){
+  const popUpFormSubmit = document.getElementById('submit-btn-contact-form-are-there-questions');
+  popUpFormSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+  // Submit
+  const userName = document.getElementById('user-name-are-there-questions').value.trim();
+  const userNameEl = document.getElementById('user-name-are-there-questions');
+  const number = document.getElementById('phone-are-there-questions').value.trim();
+  const numberEl = document.getElementById('phone-are-there-questions');
+
+  // const googleClientId = ga.getAll()[0].get('clientId');
+
+  const data = {
+    number,
+    userName,
+    userCity,
+    userCountry,
+    // googleClientId,
+    userDevice,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmContent,
+    utmTerm,
+  };
+
+  if(number !== '' && number !== null && number !== undefined && number.match(numValidation)){
+    const success = document.getElementById('are-there-questions-form-is-submitted');
+    success.classList.remove('hidden');
+    sumbitData(data);
+    numberEl.value = '';
+    userNameEl.value = '';
+  }else{
+    numberEl.classList.add('bg-danger');
+    numberEl.focus();
+    numberEl.addEventListener('keyup', (e) =>{
+      e.target.value !== '' ? numberEl.classList.remove('bg-danger') : numberEl.classList.add('bg-danger');
+    })
+  }
+  })
+}
+
+submitQuestionsForm();

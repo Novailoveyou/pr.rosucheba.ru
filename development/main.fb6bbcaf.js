@@ -2557,11 +2557,84 @@ fetch(locationUrlAPI).then(function (data) {
 
 
   changeLocationDependedHeading(locationDependedHeading, 'дистанционно в вузах Москвы', 'дистанционно в вузах Москвы без ЕГЭ и ЕНТ', 'дистанционно в вузах Москвы без ЕГЭ', 'дистанционно в вузах Москвы');
-  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', '');
+  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', ''); // Docs steps
+
+  var kzUzEls = document.querySelectorAll('.kz-uz-only');
+  var kzUzElsArr = (0, _from.default)(kzUzEls);
+  var ruEls = document.querySelectorAll('.ru-only');
+  var ruElsArr = (0, _from.default)(ruEls);
+
+  if (userCountryCode === 'RU') {
+    ruElsArr.forEach(function (el) {
+      el.classList.add('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+  } else if (userCountryCode === 'KZ') {
+    ruElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.show('show');
+    });
+  } else if (userCountryCode === 'UZ') {
+    ruElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.show('show');
+    });
+  } else {
+    ruElsArr.forEach(function (el) {
+      el.classList.add('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+  } // /Docs needed
+
 }).catch(function (error) {
   // `Can't access ${locationUrlAPI} :(`;
   changeLocationDependedHeading(locationDependedHeading, 'дистанционно в вузах Москвы', 'дистанционно в вузах Москвы без ЕГЭ и ЕНТ', 'дистанционно в вузах Москвы без ЕГЭ', 'дистанционно в вузах Москвы');
-  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', '');
+  changeCustomizedCountryText('', 'из Казахстана', 'из Узбекистана', ''); // Docs steps
+
+  var kzUzEls = document.querySelectorAll('.kz-uz-only');
+  var kzUzElsArr = (0, _from.default)(kzUzEls);
+  var ruEls = document.querySelectorAll('.ru-only');
+  var ruElsArr = (0, _from.default)(ruEls);
+
+  if (userCountryCode === 'RU') {
+    ruElsArr.forEach(function (el) {
+      el.classList.add('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+  } else if (userCountryCode === 'KZ') {
+    ruElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.show('show');
+    });
+  } else if (userCountryCode === 'UZ') {
+    ruElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.show('show');
+    });
+  } else {
+    ruElsArr.forEach(function (el) {
+      el.classList.add('show');
+    });
+    kzUzElsArr.forEach(function (el) {
+      el.classList.remove('show');
+    });
+  } // /Docs needed
+
+
   return;
 });
 
@@ -2750,15 +2823,27 @@ inputSelectChooseUniDropdown.addEventListener('mousedown', function (e) {
 
   if (e.target.tagName === 'svg') {
     inputSelectChooseUniInnerText.innerText = e.target.parentElement.innerText;
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+
+    if (inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации') {
+      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+    }
+
     e.target.parentElement.classList.add('text-highlight--color');
   } else if (e.target.tagName == 'path') {
     inputSelectChooseUniInnerText.innerText = e.target.parentElement.parentElement.innerText;
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+
+    if (inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации') {
+      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+    }
+
     e.target.parentElement.parentElement.classList.add('text-highlight--color');
   } else {
     inputSelectChooseUniInnerText.innerText = e.target.innerText;
-    inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+
+    if (inputSelectChooseUniInnerText.innerText !== 'Определюсь после консультации') {
+      inputSelectChooseUniInnerText.innerText = inputSelectChooseUniInnerText.innerText.substring(inputSelectChooseUniInnerText.innerText.indexOf('(') + 1).slice(0, -1);
+    }
+
     e.target.classList.add('text-highlight--color');
   } // Add the color to the selected text in the input
 
@@ -3328,8 +3413,8 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var question = moduleQuestionTextarea.value.trim();
         var contactWay = moduleStepThreeTitle.innerText.trim();
-        var contact = moduleInputContactInfo.value.trim();
-        var googleClientId = ga.getAll()[0].get('clientId');
+        var contact = moduleInputContactInfo.value.trim(); // const googleClientId = ga.getAll()[0].get('clientId');
+
         var number;
         var data = {
           number: number,
@@ -3338,7 +3423,7 @@ btnAskQuestion.addEventListener('click', function (e) {
           contact: contact,
           userCity: userCity,
           userCountry: userCountry,
-          googleClientId: googleClientId,
+          // googleClientId,
           userDevice: userDevice,
           utmSource: utmSource,
           utmMedium: utmMedium,
@@ -3382,9 +3467,8 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var _contactWay = moduleStepThreeTitle.innerText.trim();
 
-        var _contact = moduleInputContactInfo.value.trim();
+        var _contact = moduleInputContactInfo.value.trim(); // const googleClientId = ga.getAll()[0].get('clientId');
 
-        var _googleClientId = ga.getAll()[0].get('clientId');
 
         var _number;
 
@@ -3395,7 +3479,7 @@ btnAskQuestion.addEventListener('click', function (e) {
           contact: _contact,
           userCity: userCity,
           userCountry: userCountry,
-          googleClientId: _googleClientId,
+          // googleClientId,
           userDevice: userDevice,
           utmSource: utmSource,
           utmMedium: utmMedium,
@@ -3480,8 +3564,8 @@ ctaSubmitBtn.addEventListener('click', function (e) {
   var field = inputSelectChooseProgrammInnerText.innerText.trim();
   var uni = inputSelectChooseUniInnerText.innerText.trim();
   var number = phoneInputInnerText.value.trim();
-  var userName = userInputNameText.value.trim();
-  var googleClientId = ga.getAll()[0].get('clientId');
+  var userName = userInputNameText.value.trim(); // const googleClientId = ga.getAll()[0].get('clientId');
+
   var data = {
     field: field,
     uni: uni,
@@ -3489,7 +3573,7 @@ ctaSubmitBtn.addEventListener('click', function (e) {
     userName: userName,
     userCity: userCity,
     userCountry: userCountry,
-    googleClientId: googleClientId,
+    // googleClientId,
     userDevice: userDevice,
     utmSource: utmSource,
     utmMedium: utmMedium,
@@ -3532,10 +3616,11 @@ ctaSubmitBtn.addEventListener('click', function (e) {
 
   e.preventDefault();
 });
-phoneInputInnerText.addEventListener('keydown', function (e) {
+phoneInputInnerText.addEventListener('input', function (e) {
   var number = phoneInputInnerText.value.trim(); // Validate input number
 
-  if (number !== '' && number.match(numValidation)) {
+  if (number !== '' && number.match(numValidation) && number.length >= 3) {
+    console.log(number.length);
     userNameInput.classList.add('showed');
   }
 });
@@ -3559,20 +3644,20 @@ function showPopUp() {
     switch (button) {
       case 'learn-more-btn':
         // console.log('Узнайте подробнее о вузах');
-        popupFormTitle.innerHTML = 'Узнайте подробнее о вузах';
+        popupFormTitle.innerHTML = 'Узнайте больше о наших вузах-партнерах';
         popupFormInfo.innerHTML = 'Оставьте свои контакты, консультант приемной комиссии подробно расскажет Вам о вузах и подберет программу!';
         break;
 
       case 'js-popup-choose-from-many':
         // console.log('Узнайте о наличии своего направления');
-        popupFormTitle.innerHTML = 'Узнайте о наличии своего направления';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет на какие направления сейчас идет набор';
+        popupFormTitle.innerHTML = "\u0423\u0437\u043D\u0430\u0439\u0442\u0435 \u043E \u043D\u0430\u043B\u0438\u0447\u0438\u0438 <br />\u0441\u0432\u043E\u0435\u0433\u043E \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F";
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расcкажет на какие направления сейчас идет набор';
         break;
 
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ';
-        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и раскажет как можно поступить без ЕГЭ и диплома колледжа';
+        popupFormTitle.innerHTML = 'Узнайте что делать если нет ЕГЭ и диплома колледжа';
+        popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
         break;
 
       default:
@@ -3593,6 +3678,7 @@ showPopUp('js-popup-what-to-do');
 function showPopUpContant() {
   var moduleForm = document.getElementById('module-popup-form');
   moduleForm.classList.add('show');
+  btnAskQuestion.classList.add('hidden'); // Insert here
 }
 
 function closePopUpContant() {
@@ -3606,6 +3692,7 @@ function closePopUpContant() {
     if (moduleForm.classList.contains('show') && e.target !== popUpForm && !popUpForm.contains(e.target) && e.target !== learnMoreBtn && !learnMoreBtn.contains(e.target) && e.target !== learnMoreBtn2 && !learnMoreBtn2.contains(e.target) && e.target !== learnMoreBtn3 && !learnMoreBtn3.contains(e.target)) {
       // console.log(e.target);
       moduleForm.classList.remove('show');
+      btnAskQuestion.classList.remove('hidden');
       document.body.removeEventListener('click', closePopUpContactEvent);
     }
   });
@@ -3643,14 +3730,14 @@ function submitPopUpForm() {
     var userName = document.getElementById('pop-up-form-name').value.trim();
     var userNameEl = document.getElementById('pop-up-form-name');
     var number = document.getElementById('pop-up-form-number').value.trim();
-    var numberEl = document.getElementById('pop-up-form-number');
-    var googleClientId = ga.getAll()[0].get('clientId');
+    var numberEl = document.getElementById('pop-up-form-number'); // const googleClientId = ga.getAll()[0].get('clientId');
+
     var data = {
       number: number,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
-      googleClientId: googleClientId,
+      // googleClientId,
       userDevice: userDevice,
       utmSource: utmSource,
       utmMedium: utmMedium,
@@ -3694,14 +3781,14 @@ function submitContactForm() {
     var userName = document.getElementById('user-name-contact-from').value.trim();
     var userNameEl = document.getElementById('user-name-contact-from');
     var number = document.getElementById('number-contact-form').value.trim();
-    var numberEl = document.getElementById('number-contact-form');
-    var googleClientId = ga.getAll()[0].get('clientId');
+    var numberEl = document.getElementById('number-contact-form'); // const googleClientId = ga.getAll()[0].get('clientId');
+
     var data = {
       number: number,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
-      googleClientId: googleClientId,
+      // googleClientId,
       userDevice: userDevice,
       utmSource: utmSource,
       utmMedium: utmMedium,
@@ -3726,7 +3813,49 @@ function submitContactForm() {
   });
 }
 
-submitContactForm();
+submitContactForm(); // AreThereQuestions
+
+function submitQuestionsForm() {
+  var popUpFormSubmit = document.getElementById('submit-btn-contact-form-are-there-questions');
+  popUpFormSubmit.addEventListener('click', function (e) {
+    e.preventDefault(); // Submit
+
+    var userName = document.getElementById('user-name-are-there-questions').value.trim();
+    var userNameEl = document.getElementById('user-name-are-there-questions');
+    var number = document.getElementById('phone-are-there-questions').value.trim();
+    var numberEl = document.getElementById('phone-are-there-questions'); // const googleClientId = ga.getAll()[0].get('clientId');
+
+    var data = {
+      number: number,
+      userName: userName,
+      userCity: userCity,
+      userCountry: userCountry,
+      // googleClientId,
+      userDevice: userDevice,
+      utmSource: utmSource,
+      utmMedium: utmMedium,
+      utmCampaign: utmCampaign,
+      utmContent: utmContent,
+      utmTerm: utmTerm
+    };
+
+    if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
+      var success = document.getElementById('are-there-questions-form-is-submitted');
+      success.classList.remove('hidden');
+      sumbitData(data);
+      numberEl.value = '';
+      userNameEl.value = '';
+    } else {
+      numberEl.classList.add('bg-danger');
+      numberEl.focus();
+      numberEl.addEventListener('keyup', function (e) {
+        e.target.value !== '' ? numberEl.classList.remove('bg-danger') : numberEl.classList.add('bg-danger');
+      });
+    }
+  });
+}
+
+submitQuestionsForm();
 },{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../scss/main.scss":"scss/main.scss"}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -3755,7 +3884,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58232" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64209" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
