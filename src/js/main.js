@@ -1412,7 +1412,9 @@ btnAskQuestion.addEventListener('click', (e) => {
         const contactWay = moduleStepThreeTitle.innerText.trim();
         const contact = moduleInputContactInfo.value.trim();
 
-        const googleClientId = ga.getAll()[0].get('clientId');
+        // const googleClientId = ga.getAll()[0].get('clientId');
+        const googleClientId = '-';
+        
 
         let number;
 
@@ -1477,7 +1479,8 @@ btnAskQuestion.addEventListener('click', (e) => {
         const contactWay = moduleStepThreeTitle.innerText.trim();
         const contact = moduleInputContactInfo.value.trim();
         
-        const googleClientId = ga.getAll()[0].get('clientId');
+        // const googleClientId = ga.getAll()[0].get('clientId');
+        const googleClientId = '-';
 
         let number;
 
@@ -1801,7 +1804,8 @@ function submitPopUpForm(){
   const number = document.getElementById('pop-up-form-number').value.trim();
   const numberEl = document.getElementById('pop-up-form-number');
 
-  const googleClientId = ga.getAll()[0].get('clientId');
+  // const googleClientId = ga.getAll()[0].get('clientId');
+  const googleClientId = '-';
  
   const data = {
     number,
@@ -1879,7 +1883,8 @@ function submitContactForm(){
   const number = document.getElementById('number-contact-form').value.trim();
   const numberEl = document.getElementById('number-contact-form');
 
-  const googleClientId = ga.getAll()[0].get('clientId');
+  // const googleClientId = ga.getAll()[0].get('clientId');
+  const googleClientId = '-';
 
   const data = {
     number,
@@ -1926,7 +1931,8 @@ function submitQuestionsForm(){
   const number = document.getElementById('phone-are-there-questions').value.trim();
   const numberEl = document.getElementById('phone-are-there-questions');
 
-  const googleClientId = ga.getAll()[0].get('clientId');
+  // const googleClientId = ga.getAll()[0].get('clientId');
+  const googleClientId = '-';
 
   const data = {
     number,
