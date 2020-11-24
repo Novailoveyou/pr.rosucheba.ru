@@ -3500,8 +3500,8 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var question = moduleQuestionTextarea.value.trim();
         var contactWay = moduleStepThreeTitle.innerText.trim();
-        var contact = moduleInputContactInfo.value.trim(); // const googleClientId = ga.getAll()[0].get('clientId');
-
+        var contact = moduleInputContactInfo.value.trim();
+        var googleClientId = ga.getAll()[0].get('clientId');
         var number;
         var data = {
           number: number,
@@ -3510,7 +3510,7 @@ btnAskQuestion.addEventListener('click', function (e) {
           contact: contact,
           userCity: userCity,
           userCountry: userCountry,
-          // googleClientId,
+          googleClientId: googleClientId,
           userDevice: userDevice,
           utmSource: utmSource,
           utmMedium: utmMedium,
@@ -3557,8 +3557,9 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var _contactWay = moduleStepThreeTitle.innerText.trim();
 
-        var _contact = moduleInputContactInfo.value.trim(); // const googleClientId = ga.getAll()[0].get('clientId');
+        var _contact = moduleInputContactInfo.value.trim();
 
+        var _googleClientId = ga.getAll()[0].get('clientId');
 
         var _number;
 
@@ -3569,7 +3570,7 @@ btnAskQuestion.addEventListener('click', function (e) {
           contact: _contact,
           userCity: userCity,
           userCountry: userCountry,
-          // googleClientId,
+          googleClientId: _googleClientId,
           userDevice: userDevice,
           utmSource: utmSource,
           utmMedium: utmMedium,
@@ -3847,14 +3848,14 @@ function submitPopUpForm() {
     var userName = document.getElementById('pop-up-form-name').value.trim();
     var userNameEl = document.getElementById('pop-up-form-name');
     var number = document.getElementById('pop-up-form-number').value.trim();
-    var numberEl = document.getElementById('pop-up-form-number'); // const googleClientId = ga.getAll()[0].get('clientId');
-
+    var numberEl = document.getElementById('pop-up-form-number');
+    var googleClientId = ga.getAll()[0].get('clientId');
     var data = {
       number: number,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
-      // googleClientId,
+      googleClientId: googleClientId,
       userDevice: userDevice,
       utmSource: utmSource,
       utmMedium: utmMedium,
@@ -3922,14 +3923,14 @@ function submitContactForm() {
     var userName = document.getElementById('user-name-contact-from').value.trim();
     var userNameEl = document.getElementById('user-name-contact-from');
     var number = document.getElementById('number-contact-form').value.trim();
-    var numberEl = document.getElementById('number-contact-form'); // const googleClientId = ga.getAll()[0].get('clientId');
-
+    var numberEl = document.getElementById('number-contact-form');
+    var googleClientId = ga.getAll()[0].get('clientId');
     var data = {
       number: number,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
-      // googleClientId,
+      googleClientId: googleClientId,
       userDevice: userDevice,
       utmSource: utmSource,
       utmMedium: utmMedium,
@@ -3967,14 +3968,14 @@ function submitQuestionsForm() {
     var userName = document.getElementById('user-name-are-there-questions').value.trim();
     var userNameEl = document.getElementById('user-name-are-there-questions');
     var number = document.getElementById('phone-are-there-questions').value.trim();
-    var numberEl = document.getElementById('phone-are-there-questions'); // const googleClientId = ga.getAll()[0].get('clientId');
-
+    var numberEl = document.getElementById('phone-are-there-questions');
+    var googleClientId = ga.getAll()[0].get('clientId');
     var data = {
       number: number,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
-      // googleClientId,
+      googleClientId: googleClientId,
       userDevice: userDevice,
       utmSource: utmSource,
       utmMedium: utmMedium,
@@ -4051,7 +4052,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65516" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

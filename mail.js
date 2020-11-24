@@ -42,7 +42,7 @@ const sendMail = (
     2. Телефон: ${number},\n
     3. Почта: ${contact},\n
     4. Способ связи: ${contactWay},\n
-    5. Страница с которой отправлена заявка: pr.rosucheba.ru,\n
+    5. Страница с которой отправлена заявка: pr-rosucheba.ru,\n
     6. Город: ${userCity},\n
     7. Страна: ${userCountry},\n
     8. Направление: ${field},\n
