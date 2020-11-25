@@ -35,7 +35,7 @@ const sendMail = (
     from: process.env.FROMEMAIL,
     to: process.env.TOEMAIL,
     subject: `${
-      question === '-' ? 'Новая заявка с РосУчеба' : 'Новый вопрос с РосУчеба'
+      question === '-' ? 'Новая заявка с pr-rosucheba.ru' : 'Новый вопрос с pr-rosucheba.ru'
     } `,
     text: `
     1. Имя: ${userName},\n
