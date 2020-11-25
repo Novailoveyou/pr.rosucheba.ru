@@ -208,6 +208,7 @@
 .arrow-step-back {
   position: absolute;
   left: 2rem;
+  cursor: pointer;
 }
 
 .step-two-row__input-group {
@@ -217,6 +218,10 @@
   position: relative;
   // margin: 0 auto;
   margin-bottom: $_9px;
+  cursor: pointer;
+  & label{
+    cursor: pointer;
+  }
 }
 
 .square-radio-check {
@@ -227,6 +232,7 @@
 }
 
 .square-radio {
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;

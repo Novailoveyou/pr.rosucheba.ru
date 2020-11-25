@@ -1,6 +1,10 @@
 // import { Materialbox } from 'materialize-css';
 import '../scss/main.scss';
 
+import Glide from '@glidejs/glide'
+
+new Glide('.glide').mount()
+
 // CTA btns
 const ctaSubmitBtn = document.getElementById('cta-submit-application');
 
@@ -1560,38 +1564,38 @@ btnAskQuestion.addEventListener('click', (e) => {
 });
 
 // Carousel
-const carouselItems = [
-  carouselImgGroupOne,
-  carouselImgGroupTwo,
-  carouselImgGroupThree,
-];
+// const carouselItems = [
+//   carouselImgGroupOne,
+//   carouselImgGroupTwo,
+//   carouselImgGroupThree,
+// ];
 
 // Terrible solution for carousel, it works tho
-let i = 0;
-carouselBtnRight.addEventListener('click', (e) => {
-  i > 2 ? (i = 0) : i;
-  i < 0 ? (i = 2) : i;
+// let i = 0;
+// carouselBtnRight.addEventListener('click', (e) => {
+//   i > 2 ? (i = 0) : i;
+//   i < 0 ? (i = 2) : i;
 
-  carouselItems[i].classList.add('hidden');
-  carouselItems[i + 1 > 2 ? 0 : i + 1].classList.remove('hidden');
-  carouselItems[i - 1 < 0 ? 2 : i - 1].classList.add('hidden');
+//   carouselItems[i].classList.add('hidden');
+//   carouselItems[i + 1 > 2 ? 0 : i + 1].classList.remove('hidden');
+//   carouselItems[i - 1 < 0 ? 2 : i - 1].classList.add('hidden');
 
-  i++;
+//   i++;
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
 // Don't look below
-carouselBtnLeft.addEventListener('click', (e) => {
-  i < 0 ? (i = 2) : i;
-  i > 2 ? (i = 0) : i;
-  carouselItems[i].classList.add('hidden');
-  carouselItems[i + 1 > 2 ? 0 : i + 1].classList.add('hidden');
-  carouselItems[i - 1 < 0 ? 2 : i - 1].classList.remove('hidden');
-  i--;
+// carouselBtnLeft.addEventListener('click', (e) => {
+//   i < 0 ? (i = 2) : i;
+//   i > 2 ? (i = 0) : i;
+//   carouselItems[i].classList.add('hidden');
+//   carouselItems[i + 1 > 2 ? 0 : i + 1].classList.add('hidden');
+//   carouselItems[i - 1 < 0 ? 2 : i - 1].classList.remove('hidden');
+//   i--;
 
-  e.preventDefault();
-});
+//   e.preventDefault();
+// });
 
 // On submit
 // ctaSubmitBtn.addEventListener('click', (e) => {
@@ -1711,8 +1715,13 @@ function showPopUp(button = ''){
       break;
       case 'js-popup-what-to-do':
         // console.log('Узнайте что делать если нет ЕГЭ');
-        popupFormTitle.innerHTML = 'Узнайте что делать, если нет ЕГЭ и диплома колледжа';
+        
         popupFormInfo.innerHTML = 'Оставьте свои контакты, менеджер свяжется с Вами и расскажет как можно поступить без ЕГЭ и диплома колледжа ';
+        if(window.screen.width < 371){
+          popupFormTitle.innerHTML = 'Как поступить без ЕГЭ или диплома колледжа';
+        }else{
+          popupFormTitle.innerHTML = 'Узнайте, что делать, если нет ЕГЭ и диплома колледжа';
+        }
         popUpFormSubmit.dataset.form = 'what-to-do';
       break;
       case 'main-popup-btn':
@@ -1772,23 +1781,23 @@ function closePopUpContant(){
   })
 }
 
-function showMorePartnersDesktop(){
-  const partnersSecondRow = document.querySelector('.section-trust-boost .content__img-group:nth-child(2)')
-  if(document.body.clientWidth > 768){
-    partnersSecondRow.classList.remove('hidden');
-  }else{
-    partnersSecondRow.classList.add('hidden');
-  };
-  window.addEventListener('resize', () => {
-    if(document.body.clientWidth > 768){
-      partnersSecondRow.classList.remove('hidden');
-    }else{
-      partnersSecondRow.classList.add('hidden');
-    };
-  })
-}
+// function showMorePartnersDesktop(){
+//   const partnersSecondRow = document.querySelector('.section-trust-boost .content__img-group:nth-child(2)')
+//   if(document.body.clientWidth > 768){
+//     partnersSecondRow.classList.remove('hidden');
+//   }else{
+//     partnersSecondRow.classList.add('hidden');
+//   };
+//   window.addEventListener('resize', () => {
+//     if(document.body.clientWidth > 768){
+//       partnersSecondRow.classList.remove('hidden');
+//     }else{
+//       partnersSecondRow.classList.add('hidden');
+//     };
+//   })
+// }
 
-showMorePartnersDesktop();
+// showMorePartnersDesktop();
 
 
 // Submit Data from Forms
@@ -1974,7 +1983,7 @@ document.addEventListener('scroll', (e) => {
   const popUpForm = document.getElementById('module-popup-form');
   // moduleQuestions
   // console.log(window.scrollY);
-  if(moduleQuestions.classList.contains('hidden') && !popUpForm.classList.contains('show')){
+  if(moduleQuestions.classList.contains('hidden') && !popUpForm.classList.contains('show') && menuToggler.checked === false){
     // if (window.scrollY >= 300)
     // {
     //   btnAskQuestion.classList.remove('hidden');
@@ -1988,5 +1997,223 @@ document.addEventListener('scroll', (e) => {
       btnAskQuestion.classList.remove('hidden');
     }
   }
-  
 })
+
+const crossPopUpModule = document.getElementById('cross-close-popup-form');
+crossPopUpModule.addEventListener('click', () => {
+  document.getElementById('module-popup-form').classList.remove('show');
+})
+
+function retractableItems(){
+  const titles = Array.from(document.querySelectorAll('.section__content .step__title'))
+    titles[0].nextElementSibling.classList.add('show');
+    titles.forEach(title => {
+      title.addEventListener('click', () => {
+        if(title.nextElementSibling.classList.contains('show')){
+          title.nextElementSibling.classList.remove('show');
+        }else{
+          title.nextElementSibling.classList.add('show');
+        }
+      })
+    })
+}
+
+retractableItems();
+
+
+
+
+
+// Swiper
+/*!
+ * swiped-events.js - v@version@
+ * Pure JavaScript swipe events
+ * https://github.com/john-doherty/swiped-events
+ * @inspiration https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
+ * @author John Doherty <www.johndoherty.info>
+ * @license MIT
+ */
+(function (window, document) {
+
+  'use strict';
+
+  // patch CustomEvent to allow constructor creation (IE/Chrome)
+  if (typeof window.CustomEvent !== 'function') {
+
+      window.CustomEvent = function (event, params) {
+
+          params = params || { bubbles: false, cancelable: false, detail: undefined };
+
+          var evt = document.createEvent('CustomEvent');
+          evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+          return evt;
+      };
+
+      window.CustomEvent.prototype = window.Event.prototype;
+  }
+
+  document.addEventListener('touchstart', handleTouchStart, false);
+  document.addEventListener('touchmove', handleTouchMove, false);
+  document.addEventListener('touchend', handleTouchEnd, false);
+
+  var xDown = null;
+  var yDown = null;
+  var xDiff = null;
+  var yDiff = null;
+  var timeDown = null;
+  var startEl = null;
+
+  /**
+   * Fires swiped event if swipe detected on touchend
+   * @param {object} e - browser event object
+   * @returns {void}
+   */
+  function handleTouchEnd(e) {
+
+      // if the user released on a different target, cancel!
+      if (startEl !== e.target) return;
+
+      var swipeThreshold = parseInt(getNearestAttribute(startEl, 'data-swipe-threshold', '20'), 10); // default 20px
+      var swipeTimeout = parseInt(getNearestAttribute(startEl, 'data-swipe-timeout', '500'), 10);    // default 500ms
+      var timeDiff = Date.now() - timeDown;
+      var eventType = '';
+      var changedTouches = e.changedTouches || e.touches || [];
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) { // most significant
+          if (Math.abs(xDiff) > swipeThreshold && timeDiff < swipeTimeout) {
+              if (xDiff > 0) {
+                  eventType = 'swiped-left';
+              }
+              else {
+                  eventType = 'swiped-right';
+              }
+          }
+      }
+      else if (Math.abs(yDiff) > swipeThreshold && timeDiff < swipeTimeout) {
+          if (yDiff > 0) {
+              eventType = 'swiped-up';
+          }
+          else {
+              eventType = 'swiped-down';
+          }
+      }
+
+      if (eventType !== '') {
+
+          var eventData = {
+              dir: eventType.replace(/swiped-/, ''),
+              xStart: parseInt(xDown, 10),
+              xEnd: parseInt((changedTouches[0] || {}).clientX || -1, 10),
+              yStart: parseInt(yDown, 10),
+              yEnd: parseInt((changedTouches[0] || {}).clientY || -1, 10)
+          };
+
+          // fire `swiped` event event on the element that started the swipe
+          startEl.dispatchEvent(new CustomEvent('swiped', { bubbles: true, cancelable: true, detail: eventData }));
+
+          // fire `swiped-dir` event on the element that started the swipe
+          startEl.dispatchEvent(new CustomEvent(eventType, { bubbles: true, cancelable: true, detail: eventData }));
+      }
+
+      // reset values
+      xDown = null;
+      yDown = null;
+      timeDown = null;
+  }
+
+  /**
+   * Records current location on touchstart event
+   * @param {object} e - browser event object
+   * @returns {void}
+   */
+  function handleTouchStart(e) {
+
+      // if the element has data-swipe-ignore="true" we stop listening for swipe events
+      if (e.target.getAttribute('data-swipe-ignore') === 'true') return;
+
+      startEl = e.target;
+
+      timeDown = Date.now();
+      xDown = e.touches[0].clientX;
+      yDown = e.touches[0].clientY;
+      xDiff = 0;
+      yDiff = 0;
+  }
+
+  /**
+   * Records location diff in px on touchmove event
+   * @param {object} e - browser event object
+   * @returns {void}
+   */
+  function handleTouchMove(e) {
+
+      if (!xDown || !yDown) return;
+
+      var xUp = e.touches[0].clientX;
+      var yUp = e.touches[0].clientY;
+
+      xDiff = xDown - xUp;
+      yDiff = yDown - yUp;
+  }
+
+  /**
+   * Gets attribute off HTML element or nearest parent
+   * @param {object} el - HTML element to retrieve attribute from
+   * @param {string} attributeName - name of the attribute
+   * @param {any} defaultValue - default value to return if no match found
+   * @returns {any} attribute value or defaultValue
+   */
+  function getNearestAttribute(el, attributeName, defaultValue) {
+
+      // walk up the dom tree looking for data-action and data-trigger
+      while (el && el !== document.documentElement) {
+
+          var attributeValue = el.getAttribute(attributeName);
+
+          if (attributeValue) {
+              return attributeValue;
+          }
+
+          el = el.parentNode;
+      }
+
+      return defaultValue;
+  }
+
+}(window, document));
+
+// document.addEventListener('swiped-left', function(e) {
+//   // console.log(e.target); // the element that was swiped
+//   console.log('Влево');
+// });
+
+// document.addEventListener('swiped-right', function(e) {
+//   // console.log(e.target); // the element that was swiped
+//   console.log('Вправо');
+// });
+
+function coolCarousel(){
+  const carousel = document.querySelector('.section-trust-boost .content__img-group');
+  let i = 0;
+  let val = i+'rem';
+  carousel.addEventListener('swiped-right', (e) => {
+    const currentRightVal = Number(carousel.style.right.slice(0, -3));
+    if(currentRightVal > 0){
+      console.log(currentRightVal);
+      i -= 8;
+      val = i+'rem';
+      carousel.style.right = val;
+    }
+  })
+  carousel.addEventListener('swiped-left', (e) => {
+    const currentRightVal = Number(carousel.style.right.slice(0, -3));
+    if(currentRightVal < 80){
+      console.log(currentRightVal);
+      i += 8;
+      val = i+'rem';
+      carousel.style.right = val;
+    }
+  })
+}
+
+coolCarousel();
