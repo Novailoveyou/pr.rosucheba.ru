@@ -60,11 +60,17 @@
   }
   
   .icon-retractable-arrows{
-    display: none;
     position: absolute;
-    right: 0;
-    &.show{
-      display: block;
+    right: 2rem;
+    & .icon-retractable-arrows__up,
+    & .icon-retractable-arrows__down{
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      &.show{
+        display: block;
+      }
     }
   }
 }

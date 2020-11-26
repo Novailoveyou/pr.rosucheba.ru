@@ -18,7 +18,7 @@
     background: #eee;
     margin-right: 8px;
     border-radius: 50%;
-    &:nth-child(1){
+    &.active{
       background-color: $secondary-color;
     }
     &:nth-last-child(1){
