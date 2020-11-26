@@ -926,12 +926,30 @@
 
   .content__img-group {
     width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
+    position: relative;
   }
 
   .img-group__img-wrapper {
     flex: initial;
+    flex: 0 30%;
+    margin-top: 3rem;
+    justify-content: start;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3){
+      margin-top: 0;
+    }
+    &:nth-child(2),
+    &:nth-child(5),
+    &:nth-child(8),
+    &:nth-child(11){
+      justify-content: center;
+    }
+    &:nth-child(3n){
+      justify-content: flex-end;
+    }
   }
 
   .img-wrapper__img {

@@ -3440,13 +3440,26 @@ input {
 @media only screen and (min-width: 768px) {
   .content__img-group {
     width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
+    position: relative;
   }
 }
 @media only screen and (min-width: 768px) {
   .img-group__img-wrapper {
     flex: initial;
+    flex: 0 30%;
+    margin-top: 3rem;
+    justify-content: start;
+  }
+  .img-group__img-wrapper:nth-child(1), .img-group__img-wrapper:nth-child(2), .img-group__img-wrapper:nth-child(3) {
+    margin-top: 0;
+  }
+  .img-group__img-wrapper:nth-child(2), .img-group__img-wrapper:nth-child(5), .img-group__img-wrapper:nth-child(8), .img-group__img-wrapper:nth-child(11) {
+    justify-content: center;
+  }
+  .img-group__img-wrapper:nth-child(3n) {
+    justify-content: flex-end;
   }
 }
 @media only screen and (min-width: 768px) {
