@@ -1815,9 +1815,22 @@ function submitPopUpForm(){
 
   // const googleClientId = ga.getAll()[0].get('clientId');
   const googleClientId = '-';
+
+  let question = '';
+
+  if(popUpFormSubmit.dataset.form === 'choose-from-many'){
+    question = 'Огромный выбор специальностей';
+  }else if(popUpFormSubmit.dataset.form === 'learn-more'){
+    question = 'Узнайте подробнее о ВУЗах';
+  }else if(popUpFormSubmit.dataset.form === 'what-to-do'){
+    question = 'Нет ЕГЭ или диплома колледжа?';
+  }else if(popUpFormSubmit.dataset.form === 'main'){
+    question = 'Всплывающее окно в шапке';
+  }
  
   const data = {
     number,
+    question,
     userName,
     userCity,
     userCountry,
@@ -1895,8 +1908,11 @@ function submitContactForm(){
   // const googleClientId = ga.getAll()[0].get('clientId');
   const googleClientId = '-';
 
+  const question = 'Возникли вопросы? Поможем!';
+
   const data = {
     number,
+    question,
     userName,
     userCity,
     userCountry,
@@ -1943,8 +1959,11 @@ function submitQuestionsForm(){
   // const googleClientId = ga.getAll()[0].get('clientId');
   const googleClientId = '-';
 
+  const question = 'Возникли вопросы? Поможем!';
+
   const data = {
     number,
+    question,
     userName,
     userCity,
     userCountry,
@@ -2008,25 +2027,25 @@ function retractableItems(){
   const titles = Array.from(document.querySelectorAll('.section__content .step__title'))
     titles[0].nextElementSibling.classList.add('show');
     titles.forEach((title, index) => {
-      index === 0 ? Array.from(title.childNodes[1].childNodes)[3].classList.add('show') : Array.from(title.childNodes[1].childNodes)[1].classList.add('show');
+      index === 0 ? Array.from(title.childNodes[1].childNodes)[1].classList.add('show') : Array.from(title.childNodes[1].childNodes)[3].classList.add('show');
       
       title.addEventListener('click', () => {
         if(title.nextElementSibling.classList.contains('show')){
           title.nextElementSibling.classList.remove('show');
 
           // arrow up
-          Array.from(title.childNodes[1].childNodes)[1].classList.add('show');
-
-          // arrow down
-          Array.from(title.childNodes[1].childNodes)[3].classList.remove('show');
-        }else{
-          title.nextElementSibling.classList.add('show');
-
-          // arrow up
           Array.from(title.childNodes[1].childNodes)[1].classList.remove('show');
 
           // arrow down
           Array.from(title.childNodes[1].childNodes)[3].classList.add('show');
+        }else{
+          title.nextElementSibling.classList.add('show');
+
+          // arrow up
+          Array.from(title.childNodes[1].childNodes)[1].classList.add('show');
+
+          // arrow down
+          Array.from(title.childNodes[1].childNodes)[3].classList.remove('show');
         }
       })
     })

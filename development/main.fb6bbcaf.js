@@ -3934,8 +3934,21 @@ function submitPopUpForm() {
     var numberEl = document.getElementById('pop-up-form-number'); // const googleClientId = ga.getAll()[0].get('clientId');
 
     var googleClientId = '-';
+    var question = '';
+
+    if (popUpFormSubmit.dataset.form === 'choose-from-many') {
+      question = 'Огромный выбор специальностей';
+    } else if (popUpFormSubmit.dataset.form === 'learn-more') {
+      question = 'Узнайте подробнее о ВУЗах';
+    } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
+      question = 'Нет ЕГЭ или диплома колледжа?';
+    } else if (popUpFormSubmit.dataset.form === 'main') {
+      question = 'Всплывающее окно в шапке';
+    }
+
     var data = {
       number: number,
+      question: question,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
@@ -4010,8 +4023,10 @@ function submitContactForm() {
     var numberEl = document.getElementById('number-contact-form'); // const googleClientId = ga.getAll()[0].get('clientId');
 
     var googleClientId = '-';
+    var question = 'Возникли вопросы? Поможем!';
     var data = {
       number: number,
+      question: question,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
@@ -4056,8 +4071,10 @@ function submitQuestionsForm() {
     var numberEl = document.getElementById('phone-are-there-questions'); // const googleClientId = ga.getAll()[0].get('clientId');
 
     var googleClientId = '-';
+    var question = 'Возникли вопросы? Поможем!';
     var data = {
       number: number,
+      question: question,
       userName: userName,
       userCity: userCity,
       userCountry: userCountry,
@@ -4119,20 +4136,20 @@ function retractableItems() {
   var titles = (0, _from.default)(document.querySelectorAll('.section__content .step__title'));
   titles[0].nextElementSibling.classList.add('show');
   titles.forEach(function (title, index) {
-    index === 0 ? (0, _from.default)(title.childNodes[1].childNodes)[3].classList.add('show') : (0, _from.default)(title.childNodes[1].childNodes)[1].classList.add('show');
+    index === 0 ? (0, _from.default)(title.childNodes[1].childNodes)[1].classList.add('show') : (0, _from.default)(title.childNodes[1].childNodes)[3].classList.add('show');
     title.addEventListener('click', function () {
       if (title.nextElementSibling.classList.contains('show')) {
         title.nextElementSibling.classList.remove('show'); // arrow up
 
-        (0, _from.default)(title.childNodes[1].childNodes)[1].classList.add('show'); // arrow down
-
-        (0, _from.default)(title.childNodes[1].childNodes)[3].classList.remove('show');
-      } else {
-        title.nextElementSibling.classList.add('show'); // arrow up
-
         (0, _from.default)(title.childNodes[1].childNodes)[1].classList.remove('show'); // arrow down
 
         (0, _from.default)(title.childNodes[1].childNodes)[3].classList.add('show');
+      } else {
+        title.nextElementSibling.classList.add('show'); // arrow up
+
+        (0, _from.default)(title.childNodes[1].childNodes)[1].classList.add('show'); // arrow down
+
+        (0, _from.default)(title.childNodes[1].childNodes)[3].classList.remove('show');
       }
     });
   });
@@ -4388,7 +4405,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63340" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50946" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

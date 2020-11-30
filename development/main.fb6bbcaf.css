@@ -1599,7 +1599,7 @@ header {
   .icon-retractable-arrows .icon-retractable-arrows__up, .icon-retractable-arrows .icon-retractable-arrows__down {
     display: none;
     position: absolute;
-    top: 0;
+    top: -4px;
     left: 0;
   }
   .icon-retractable-arrows .icon-retractable-arrows__up.show, .icon-retractable-arrows .icon-retractable-arrows__down.show {
