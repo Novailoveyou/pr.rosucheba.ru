@@ -35,7 +35,16 @@ const sendMail = (
     from: process.env.FROMEMAIL,
     to: process.env.TOEMAIL,
     subject: `${
-      question === '-' ? 'Новая заявка с pr-rosucheba.ru' : 'Новый вопрос с pr-rosucheba.ru'
+      question === '-' || 
+      question === 'Возникли вопросы? Поможем!' || 
+      question === 'Огромный выбор специальностей' || 
+      question === 'Узнайте подробнее о ВУЗах' ||
+      question === 'Нет ЕГЭ или диплома колледжа?' || 
+      question === 'Главная' 
+      ? 
+      'Новая заявка с pr-rosucheba.ru' 
+      : 
+      'Новый вопрос с pr-rosucheba.ru'
     } `,
     text: `
     1. Имя: ${userName},\n

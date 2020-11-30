@@ -1825,7 +1825,7 @@ function submitPopUpForm(){
   }else if(popUpFormSubmit.dataset.form === 'what-to-do'){
     question = 'Нет ЕГЭ или диплома колледжа?';
   }else if(popUpFormSubmit.dataset.form === 'main'){
-    question = 'Всплывающее окно в шапке';
+    question = 'Главная';
   }
  
   const data = {
