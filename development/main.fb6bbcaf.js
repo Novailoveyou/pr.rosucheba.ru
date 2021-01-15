@@ -2766,7 +2766,32 @@ function insertAfter(referenceNode, newNode) {
 // }
 
 
-var isSumbitted = false; // Send to email
+var isSumbitted = false;
+
+function checkForUniqueUserNum() {
+  var userNum = document.getElementById('pop-up-form-number').value;
+  var userNum2 = document.getElementById('phone-are-there-questions').value;
+  var userNum3 = document.getElementById('number-contact-form').value;
+  var userNum4 = document.getElementById('module-input-contact-info').value;
+  var numArr = [userNum, userNum2, userNum3, userNum4];
+  var userNumCur;
+  numArr.forEach(function (num) {
+    if (num !== '') {
+      userNumCur = num;
+    }
+  });
+
+  if (localStorage.getItem('userNum') === null) {
+    localStorage.setItem('userNum', userNumCur);
+    return 'Нет';
+  } else if (localStorage.getItem('userNum') === userNumCur) {
+    return 'Да';
+  }
+
+  localStorage.setItem('userNum', userNum.value);
+} // console.log(checkForUniqueUserNum())
+// Send to email
+
 
 function sumbitData(_x) {
   return _sumbitData.apply(this, arguments);
@@ -2802,7 +2827,7 @@ function _sumbitData() {
 
           case 6:
             content = _context.sent;
-            isSumbitted = true; // Prevent spamming 
+            isSumbitted = true; // Prevent spamming
 
             setTimeout(function () {
               isSumbitted = false;
@@ -3572,7 +3597,7 @@ btnAskQuestion.addEventListener('click', function (e) {
         moduleStepOne.classList.add('hidden');
         moduleStepSuccess.classList.remove('hidden');
         window.history.pushState({
-          'page_id': 6
+          page_id: 6
         }, '', '?thankyou=question'); // Submit
 
         var question = moduleQuestionTextarea.value.trim();
@@ -3581,6 +3606,7 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var googleClientId = '-';
         var number;
+        var double;
         var data = {
           number: number,
           question: question,
@@ -3594,7 +3620,8 @@ btnAskQuestion.addEventListener('click', function (e) {
           utmMedium: utmMedium,
           utmCampaign: utmCampaign,
           utmContent: utmContent,
-          utmTerm: utmTerm
+          utmTerm: utmTerm,
+          double: double
         };
 
         if (data.contact !== '' && data.contact !== null && !data.contact.includes('@')) {
@@ -3627,7 +3654,7 @@ btnAskQuestion.addEventListener('click', function (e) {
         moduleStepOne.classList.add('hidden');
         moduleStepSuccess.classList.remove('hidden');
         window.history.pushState({
-          'page_id': 7
+          page_id: 7
         }, '', '?thankyou=question');
         moduleStepSuccess.classList.add('showed'); // Submit
 
@@ -3642,6 +3669,8 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var _number;
 
+        var _double;
+
         var _data = {
           number: _number,
           question: _question,
@@ -3655,7 +3684,8 @@ btnAskQuestion.addEventListener('click', function (e) {
           utmMedium: utmMedium,
           utmCampaign: utmCampaign,
           utmContent: utmContent,
-          utmTerm: utmTerm
+          utmTerm: utmTerm,
+          double: _double
         };
 
         if (_data.contact !== '' && _data.contact !== null && !_data.contact.includes('@')) {
@@ -3935,6 +3965,9 @@ function submitPopUpForm() {
 
     var googleClientId = '-';
     var question = '';
+    var double = checkForUniqueUserNum();
+    console.log(checkForUniqueUserNum());
+    console.log(double);
 
     if (popUpFormSubmit.dataset.form === 'choose-from-many') {
       question = 'Огромный выбор специальностей';
@@ -3943,7 +3976,7 @@ function submitPopUpForm() {
     } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
       question = 'Нет ЕГЭ или диплома колледжа?';
     } else if (popUpFormSubmit.dataset.form === 'main') {
-      question = 'Всплывающее окно в шапке';
+      question = 'Главная';
     }
 
     var data = {
@@ -3958,7 +3991,8 @@ function submitPopUpForm() {
       utmMedium: utmMedium,
       utmCampaign: utmCampaign,
       utmContent: utmContent,
-      utmTerm: utmTerm
+      utmTerm: utmTerm,
+      double: double
     };
 
     if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
@@ -3967,22 +4001,22 @@ function submitPopUpForm() {
       if (popUpFormSubmit.dataset.form === 'choose-from-many') {
         // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
         window.history.pushState({
-          'page_id': 1
+          page_id: 1
         }, '', '?thankyou=choose-from-many');
       } else if (popUpFormSubmit.dataset.form === 'learn-more') {
         // appIsSumbitted.id = 'popup--is-submitted-learn-more';
         window.history.pushState({
-          'page_id': 2
+          page_id: 2
         }, '', '?thankyou=learn-more');
       } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
         // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
         window.history.pushState({
-          'page_id': 3
+          page_id: 3
         }, '', '?thankyou=what-to-do');
       } else if (popUpFormSubmit.dataset.form === 'main') {
         // appIsSumbitted.id = 'popup--is-submitted-main';
         window.history.pushState({
-          'page_id': 9
+          page_id: 9
         }, '', '?thankyou=main');
       }
 
@@ -4023,6 +4057,7 @@ function submitContactForm() {
     var numberEl = document.getElementById('number-contact-form'); // const googleClientId = ga.getAll()[0].get('clientId');
 
     var googleClientId = '-';
+    var double;
     var question = 'Возникли вопросы? Поможем!';
     var data = {
       number: number,
@@ -4036,7 +4071,8 @@ function submitContactForm() {
       utmMedium: utmMedium,
       utmCampaign: utmCampaign,
       utmContent: utmContent,
-      utmTerm: utmTerm
+      utmTerm: utmTerm,
+      double: double
     };
 
     if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
@@ -4046,7 +4082,7 @@ function submitContactForm() {
       numberEl.value = '';
       userNameEl.value = '';
       window.history.pushState({
-        'page_id': 5
+        page_id: 5
       }, '', '?thankyou=question');
     } else {
       numberEl.classList.add('bg-danger');
@@ -4072,6 +4108,7 @@ function submitQuestionsForm() {
 
     var googleClientId = '-';
     var question = 'Возникли вопросы? Поможем!';
+    var double;
     var data = {
       number: number,
       question: question,
@@ -4084,7 +4121,8 @@ function submitQuestionsForm() {
       utmMedium: utmMedium,
       utmCampaign: utmCampaign,
       utmContent: utmContent,
-      utmTerm: utmTerm
+      utmTerm: utmTerm,
+      double: double
     };
 
     if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
@@ -4094,7 +4132,7 @@ function submitQuestionsForm() {
       numberEl.value = '';
       userNameEl.value = '';
       window.history.pushState({
-        'page_id': 4
+        page_id: 4
       }, '', '?thankyou=question');
     } else {
       numberEl.classList.add('bg-danger');
@@ -4155,7 +4193,7 @@ function retractableItems() {
   });
 }
 
-retractableItems(); // Swiper
+retractableItems() // Swiper
 
 /*!
  * swiped-events.js - v@version@
@@ -4165,6 +4203,7 @@ retractableItems(); // Swiper
  * @author John Doherty <www.johndoherty.info>
  * @license MIT
  */
+;
 
 (function (window, document) {
   'use strict'; // patch CustomEvent to allow constructor creation (IE/Chrome)
@@ -4405,7 +4444,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50946" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56910" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
