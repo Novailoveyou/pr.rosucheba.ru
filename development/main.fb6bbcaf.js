@@ -871,20 +871,7 @@ try {
 },{}],"../node_modules/@babel/runtime-corejs2/regenerator/index.js":[function(require,module,exports) {
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"../node_modules/core-js/library/modules/_core.js":[function(require,module,exports) {
-var core = module.exports = { version: '2.6.11' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-},{}],"../node_modules/core-js/library/fn/json/stringify.js":[function(require,module,exports) {
-var core = require('../../modules/_core');
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-},{"../../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":[function(require,module,exports) {
-module.exports = require("core-js/library/fn/json/stringify");
-},{"core-js/library/fn/json/stringify":"../node_modules/core-js/library/fn/json/stringify.js"}],"../node_modules/core-js/library/modules/_global.js":[function(require,module,exports) {
+},{"regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"../node_modules/core-js/library/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -892,6 +879,10 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
   // eslint-disable-next-line no-new-func
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+},{}],"../node_modules/core-js/library/modules/_core.js":[function(require,module,exports) {
+var core = module.exports = { version: '2.6.11' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 },{}],"../node_modules/core-js/library/modules/_a-function.js":[function(require,module,exports) {
 module.exports = function (it) {
@@ -2367,7 +2358,16 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{"../core-js/promise":"../node_modules/@babel/runtime-corejs2/core-js/promise.js"}],"../node_modules/core-js/library/modules/_create-property.js":[function(require,module,exports) {
+},{"../core-js/promise":"../node_modules/@babel/runtime-corejs2/core-js/promise.js"}],"../node_modules/core-js/library/fn/json/stringify.js":[function(require,module,exports) {
+var core = require('../../modules/_core');
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
+
+},{"../../modules/_core":"../node_modules/core-js/library/modules/_core.js"}],"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":[function(require,module,exports) {
+module.exports = require("core-js/library/fn/json/stringify");
+},{"core-js/library/fn/json/stringify":"../node_modules/core-js/library/fn/json/stringify.js"}],"../node_modules/core-js/library/modules/_create-property.js":[function(require,module,exports) {
 'use strict';
 var $defineProperty = require('./_object-dp');
 var createDesc = require('./_property-desc');
@@ -2500,13 +2500,13 @@ module.hot.accept(reloadCSS);
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime-corejs2/regenerator"));
 
-var _stringify = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/json/stringify"));
-
 var _now = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/date/now"));
 
 var _parseInt2 = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/parse-int"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime-corejs2/helpers/asyncToGenerator"));
+
+var _stringify = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/json/stringify"));
 
 var _from = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/array/from"));
 
@@ -2774,23 +2774,25 @@ function checkForUniqueUserNum() {
   var userNum3 = document.getElementById('number-contact-form').value;
   var userNum4 = document.getElementById('module-input-contact-info').value;
   var numArr = [userNum, userNum2, userNum3, userNum4];
+  var localStorageNum = JSON.parse(localStorage.getItem('userNum'));
   var userNumCur;
+  var output;
   numArr.forEach(function (num) {
     if (num !== '') {
       userNumCur = num;
     }
   });
 
-  if (localStorage.getItem('userNum') === null) {
-    localStorage.setItem('userNum', userNumCur);
-    return 'Нет';
-  } else if (localStorage.getItem('userNum') === userNumCur) {
-    return 'Да';
+  if (localStorageNum === null || localStorageNum.toString() !== userNumCur.toString()) {
+    localStorage.setItem('userNum', (0, _stringify.default)(userNumCur)); // console.log(userNumCur)
+
+    output = 'Нет';
+  } else if (localStorageNum.toString() === userNumCur.toString()) {
+    output = 'Да';
   }
 
-  localStorage.setItem('userNum', userNum.value);
-} // console.log(checkForUniqueUserNum())
-// Send to email
+  return output;
+} // Send to email
 
 
 function sumbitData(_x) {
@@ -3606,7 +3608,7 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var googleClientId = '-';
         var number;
-        var double;
+        var double = checkForUniqueUserNum();
         var data = {
           number: number,
           question: question,
@@ -3669,7 +3671,7 @@ btnAskQuestion.addEventListener('click', function (e) {
 
         var _number;
 
-        var _double;
+        var _double = checkForUniqueUserNum();
 
         var _data = {
           number: _number,
@@ -3949,101 +3951,103 @@ function closePopUpContant() {
 //   })
 // }
 // showMorePartnersDesktop();
-// Submit Data from Forms
+
+
+function popUpFormSubmitFunc(e) {
+  var popUpFormSubmit = document.getElementById('pop-up-form-submit');
+  var moduleForm = document.getElementById('module-popup-form');
+  e.preventDefault(); // Submit
+
+  var userName = document.getElementById('pop-up-form-name').value.trim();
+  var userNameEl = document.getElementById('pop-up-form-name');
+  var number = document.getElementById('pop-up-form-number').value.trim();
+  var numberEl = document.getElementById('pop-up-form-number'); // const googleClientId = ga.getAll()[0].get('clientId');
+
+  var googleClientId = '-';
+  var question = '';
+  var double = checkForUniqueUserNum();
+
+  if (popUpFormSubmit.dataset.form === 'choose-from-many') {
+    question = 'Огромный выбор специальностей';
+  } else if (popUpFormSubmit.dataset.form === 'learn-more') {
+    question = 'Узнайте подробнее о ВУЗах';
+  } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
+    question = 'Нет ЕГЭ или диплома колледжа?';
+  } else if (popUpFormSubmit.dataset.form === 'main') {
+    question = 'Главная';
+  }
+
+  var data = {
+    number: number,
+    question: question,
+    userName: userName,
+    userCity: userCity,
+    userCountry: userCountry,
+    googleClientId: googleClientId,
+    userDevice: userDevice,
+    utmSource: utmSource,
+    utmMedium: utmMedium,
+    utmCampaign: utmCampaign,
+    utmContent: utmContent,
+    utmTerm: utmTerm,
+    double: double
+  };
+
+  if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
+    var appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more'); // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
+
+    if (popUpFormSubmit.dataset.form === 'choose-from-many') {
+      // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+      window.history.pushState({
+        page_id: 1
+      }, '', '?thankyou=choose-from-many');
+    } else if (popUpFormSubmit.dataset.form === 'learn-more') {
+      // appIsSumbitted.id = 'popup--is-submitted-learn-more';
+      window.history.pushState({
+        page_id: 2
+      }, '', '?thankyou=learn-more');
+    } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
+      // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+      window.history.pushState({
+        page_id: 3
+      }, '', '?thankyou=what-to-do');
+    } else if (popUpFormSubmit.dataset.form === 'main') {
+      // appIsSumbitted.id = 'popup--is-submitted-main';
+      window.history.pushState({
+        page_id: 9
+      }, '', '?thankyou=main');
+    }
+
+    appIsSumbitted.classList.add('showed');
+    document.getElementById('step-success-row__back-to-main--form-popup').addEventListener('click', function (e) {
+      // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
+      appIsSumbitted.classList.add('removing');
+      setTimeout(function () {
+        appIsSumbitted.classList.remove('showed');
+        appIsSumbitted.classList.remove('removing');
+      }, 300);
+      e.preventDefault();
+    });
+    var success = document.getElementById('module-popup-is-submitted');
+    success.classList.remove('hidden');
+    sumbitData(data);
+    moduleForm.classList.remove('show');
+    userNameEl.value = '';
+    numberEl.value = '';
+  } else {
+    numberEl.classList.add('bg-danger');
+    numberEl.focus();
+    numberEl.addEventListener('keyup', function (e) {
+      e.target.value !== '' ? numberEl.classList.remove('bg-danger') : numberEl.classList.add('bg-danger');
+    });
+  }
+} // Submit Data from Forms
 
 
 function submitPopUpForm() {
   var popUpFormSubmit = document.getElementById('pop-up-form-submit');
   var moduleForm = document.getElementById('module-popup-form');
-  popUpFormSubmit.addEventListener('click', function (e) {
-    e.preventDefault(); // Submit
-
-    var userName = document.getElementById('pop-up-form-name').value.trim();
-    var userNameEl = document.getElementById('pop-up-form-name');
-    var number = document.getElementById('pop-up-form-number').value.trim();
-    var numberEl = document.getElementById('pop-up-form-number'); // const googleClientId = ga.getAll()[0].get('clientId');
-
-    var googleClientId = '-';
-    var question = '';
-    var double = checkForUniqueUserNum();
-    console.log(checkForUniqueUserNum());
-    console.log(double);
-
-    if (popUpFormSubmit.dataset.form === 'choose-from-many') {
-      question = 'Огромный выбор специальностей';
-    } else if (popUpFormSubmit.dataset.form === 'learn-more') {
-      question = 'Узнайте подробнее о ВУЗах';
-    } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
-      question = 'Нет ЕГЭ или диплома колледжа?';
-    } else if (popUpFormSubmit.dataset.form === 'main') {
-      question = 'Главная';
-    }
-
-    var data = {
-      number: number,
-      question: question,
-      userName: userName,
-      userCity: userCity,
-      userCountry: userCountry,
-      googleClientId: googleClientId,
-      userDevice: userDevice,
-      utmSource: utmSource,
-      utmMedium: utmMedium,
-      utmCampaign: utmCampaign,
-      utmContent: utmContent,
-      utmTerm: utmTerm,
-      double: double
-    };
-
-    if (number !== '' && number !== null && number !== undefined && number.match(numValidation)) {
-      var appIsSumbitted = document.getElementById('js-app-is-submitted--learn-more'); // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
-
-      if (popUpFormSubmit.dataset.form === 'choose-from-many') {
-        // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
-        window.history.pushState({
-          page_id: 1
-        }, '', '?thankyou=choose-from-many');
-      } else if (popUpFormSubmit.dataset.form === 'learn-more') {
-        // appIsSumbitted.id = 'popup--is-submitted-learn-more';
-        window.history.pushState({
-          page_id: 2
-        }, '', '?thankyou=learn-more');
-      } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
-        // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
-        window.history.pushState({
-          page_id: 3
-        }, '', '?thankyou=what-to-do');
-      } else if (popUpFormSubmit.dataset.form === 'main') {
-        // appIsSumbitted.id = 'popup--is-submitted-main';
-        window.history.pushState({
-          page_id: 9
-        }, '', '?thankyou=main');
-      }
-
-      appIsSumbitted.classList.add('showed');
-      document.getElementById('step-success-row__back-to-main--form-popup').addEventListener('click', function (e) {
-        // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
-        appIsSumbitted.classList.add('removing');
-        setTimeout(function () {
-          appIsSumbitted.classList.remove('showed');
-          appIsSumbitted.classList.remove('removing');
-        }, 300);
-        e.preventDefault();
-      });
-      var success = document.getElementById('module-popup-is-submitted');
-      success.classList.remove('hidden');
-      sumbitData(data);
-      moduleForm.classList.remove('show');
-      userNameEl.value = '';
-      numberEl.value = '';
-    } else {
-      numberEl.classList.add('bg-danger');
-      numberEl.focus();
-      numberEl.addEventListener('keyup', function (e) {
-        e.target.value !== '' ? numberEl.classList.remove('bg-danger') : numberEl.classList.add('bg-danger');
-      });
-    }
-  });
+  popUpFormSubmit.addEventListener('click', popUpFormSubmitFunc);
 }
 
 function submitContactForm() {
@@ -4057,7 +4061,7 @@ function submitContactForm() {
     var numberEl = document.getElementById('number-contact-form'); // const googleClientId = ga.getAll()[0].get('clientId');
 
     var googleClientId = '-';
-    var double;
+    var double = checkForUniqueUserNum();
     var question = 'Возникли вопросы? Поможем!';
     var data = {
       number: number,
@@ -4108,7 +4112,7 @@ function submitQuestionsForm() {
 
     var googleClientId = '-';
     var question = 'Возникли вопросы? Поможем!';
-    var double;
+    var double = checkForUniqueUserNum();
     var data = {
       number: number,
       question: question,
@@ -4416,7 +4420,7 @@ function coolCarousel() {
 }
 
 coolCarousel();
-},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/core-js/date/now":"../node_modules/@babel/runtime-corejs2/core-js/date/now.js","@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../scss/main.scss":"scss/main.scss"}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime-corejs2/regenerator":"../node_modules/@babel/runtime-corejs2/regenerator/index.js","@babel/runtime-corejs2/core-js/date/now":"../node_modules/@babel/runtime-corejs2/core-js/date/now.js","@babel/runtime-corejs2/core-js/parse-int":"../node_modules/@babel/runtime-corejs2/core-js/parse-int.js","@babel/runtime-corejs2/helpers/asyncToGenerator":"../node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js","@babel/runtime-corejs2/core-js/json/stringify":"../node_modules/@babel/runtime-corejs2/core-js/json/stringify.js","@babel/runtime-corejs2/core-js/array/from":"../node_modules/@babel/runtime-corejs2/core-js/array/from.js","../scss/main.scss":"scss/main.scss"}],"../../../Users/Nover/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

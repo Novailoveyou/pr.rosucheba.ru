@@ -2,16 +2,16 @@ const nodemailer = require('nodemailer')
 const mailGun = require('nodemailer-mailgun-transport')
 require('dotenv').config()
 
-// const auth = {
-//   auth: {
-//     api_key: process.env.APIKEY,
-//     domain: process.env.DOMAIN,
-//   },
-// }
+const auth = {
+  auth: {
+    api_key: process.env.APIKEY,
+    domain: process.env.DOMAIN,
+  },
+}
 
 const transporter = nodemailer.createTransport(mailGun(auth))
 
-// field, uni, number, userName // question, contactWay, contact // userCity, userCountry // googleClientId // userDevice // userDevice, utmSource, utmMedium, utmCampaign, utmContent, utmTerm
+// field, uni, number, userName // question, contactWay, contact // userCity, userCountry // googleClientId // userDevice // userDevice, utmSource, utmMedium, utmCampaign, utmContent, utmTerm // double
 const sendMail = (
   field = 'Не указано',
   uni = 'Не указано',

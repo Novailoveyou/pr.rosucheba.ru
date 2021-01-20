@@ -391,7 +391,9 @@ function checkForUniqueUserNum() {
   const userNum3 = document.getElementById('number-contact-form').value
   const userNum4 = document.getElementById('module-input-contact-info').value
   const numArr = [userNum, userNum2, userNum3, userNum4]
+  const localStorageNum = JSON.parse(localStorage.getItem('userNum'))
   let userNumCur
+  let output
 
   numArr.forEach((num) => {
     if (num !== '') {
@@ -399,16 +401,19 @@ function checkForUniqueUserNum() {
     }
   })
 
-  if (localStorage.getItem('userNum') === null) {
-    localStorage.setItem('userNum', userNumCur)
-    return 'Нет'
-  } else if (localStorage.getItem('userNum') === userNumCur) {
-    return 'Да'
+  if (
+    localStorageNum === null ||
+    localStorageNum.toString() !== userNumCur.toString()
+  ) {
+    localStorage.setItem('userNum', JSON.stringify(userNumCur))
+    // console.log(userNumCur)
+    output = 'Нет'
+  } else if (localStorageNum.toString() === userNumCur.toString()) {
+    output = 'Да'
   }
-  localStorage.setItem('userNum', userNum.value)
-}
 
-// console.log(checkForUniqueUserNum())
+  return output
+}
 
 // Send to email
 async function sumbitData(data) {
@@ -1434,7 +1439,7 @@ btnAskQuestion.addEventListener('click', (e) => {
 
         let number
 
-        let double
+        let double = checkForUniqueUserNum()
 
         const data = {
           number,
@@ -1507,7 +1512,7 @@ btnAskQuestion.addEventListener('click', (e) => {
 
         let number
 
-        let double
+        let double = checkForUniqueUserNum()
 
         const data = {
           number,
@@ -1844,114 +1849,112 @@ function closePopUpContant() {
 
 // showMorePartnersDesktop();
 
+function popUpFormSubmitFunc(e) {
+  const popUpFormSubmit = document.getElementById('pop-up-form-submit')
+  const moduleForm = document.getElementById('module-popup-form')
+  e.preventDefault()
+
+  // Submit
+  const userName = document.getElementById('pop-up-form-name').value.trim()
+  const userNameEl = document.getElementById('pop-up-form-name')
+  const number = document.getElementById('pop-up-form-number').value.trim()
+  const numberEl = document.getElementById('pop-up-form-number')
+
+  // const googleClientId = ga.getAll()[0].get('clientId');
+  const googleClientId = '-'
+
+  let question = ''
+  let double = checkForUniqueUserNum()
+
+  if (popUpFormSubmit.dataset.form === 'choose-from-many') {
+    question = 'Огромный выбор специальностей'
+  } else if (popUpFormSubmit.dataset.form === 'learn-more') {
+    question = 'Узнайте подробнее о ВУЗах'
+  } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
+    question = 'Нет ЕГЭ или диплома колледжа?'
+  } else if (popUpFormSubmit.dataset.form === 'main') {
+    question = 'Главная'
+  }
+
+  const data = {
+    number,
+    question,
+    userName,
+    userCity,
+    userCountry,
+    googleClientId,
+    userDevice,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmContent,
+    utmTerm,
+    double,
+  }
+
+  if (
+    number !== '' &&
+    number !== null &&
+    number !== undefined &&
+    number.match(numValidation)
+  ) {
+    const appIsSumbitted = document.getElementById(
+      'js-app-is-submitted--learn-more'
+    )
+    // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
+
+    if (popUpFormSubmit.dataset.form === 'choose-from-many') {
+      // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
+      window.history.pushState({ page_id: 1 }, '', '?thankyou=choose-from-many')
+    } else if (popUpFormSubmit.dataset.form === 'learn-more') {
+      // appIsSumbitted.id = 'popup--is-submitted-learn-more';
+      window.history.pushState({ page_id: 2 }, '', '?thankyou=learn-more')
+    } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
+      // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
+      window.history.pushState({ page_id: 3 }, '', '?thankyou=what-to-do')
+    } else if (popUpFormSubmit.dataset.form === 'main') {
+      // appIsSumbitted.id = 'popup--is-submitted-main';
+      window.history.pushState({ page_id: 9 }, '', '?thankyou=main')
+    }
+
+    appIsSumbitted.classList.add('showed')
+
+    document
+      .getElementById('step-success-row__back-to-main--form-popup')
+      .addEventListener('click', (e) => {
+        // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
+        appIsSumbitted.classList.add('removing')
+        setTimeout(() => {
+          appIsSumbitted.classList.remove('showed')
+          appIsSumbitted.classList.remove('removing')
+        }, 300)
+
+        e.preventDefault()
+      })
+
+    const success = document.getElementById('module-popup-is-submitted')
+    success.classList.remove('hidden')
+    sumbitData(data)
+    moduleForm.classList.remove('show')
+    userNameEl.value = ''
+    numberEl.value = ''
+  } else {
+    numberEl.classList.add('bg-danger')
+    numberEl.focus()
+    numberEl.addEventListener('keyup', (e) => {
+      e.target.value !== ''
+        ? numberEl.classList.remove('bg-danger')
+        : numberEl.classList.add('bg-danger')
+    })
+  }
+}
+
 // Submit Data from Forms
 function submitPopUpForm() {
   const popUpFormSubmit = document.getElementById('pop-up-form-submit')
   const moduleForm = document.getElementById('module-popup-form')
-  popUpFormSubmit.addEventListener('click', (e) => {
-    e.preventDefault()
 
-    // Submit
-    const userName = document.getElementById('pop-up-form-name').value.trim()
-    const userNameEl = document.getElementById('pop-up-form-name')
-    const number = document.getElementById('pop-up-form-number').value.trim()
-    const numberEl = document.getElementById('pop-up-form-number')
-
-    // const googleClientId = ga.getAll()[0].get('clientId');
-    const googleClientId = '-'
-
-    let question = ''
-    let double = checkForUniqueUserNum()
-    console.log(checkForUniqueUserNum())
-
-    console.log(double)
-
-    if (popUpFormSubmit.dataset.form === 'choose-from-many') {
-      question = 'Огромный выбор специальностей'
-    } else if (popUpFormSubmit.dataset.form === 'learn-more') {
-      question = 'Узнайте подробнее о ВУЗах'
-    } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
-      question = 'Нет ЕГЭ или диплома колледжа?'
-    } else if (popUpFormSubmit.dataset.form === 'main') {
-      question = 'Главная'
-    }
-
-    const data = {
-      number,
-      question,
-      userName,
-      userCity,
-      userCountry,
-      googleClientId,
-      userDevice,
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      utmContent,
-      utmTerm,
-      double,
-    }
-
-    if (
-      number !== '' &&
-      number !== null &&
-      number !== undefined &&
-      number.match(numValidation)
-    ) {
-      const appIsSumbitted = document.getElementById(
-        'js-app-is-submitted--learn-more'
-      )
-      // const popUpFormSubmit = document.getElementById('pop-up-form-submit');
-
-      if (popUpFormSubmit.dataset.form === 'choose-from-many') {
-        // appIsSumbitted.id = 'popup--is-submitted-choose-from-many';
-        window.history.pushState(
-          { page_id: 1 },
-          '',
-          '?thankyou=choose-from-many'
-        )
-      } else if (popUpFormSubmit.dataset.form === 'learn-more') {
-        // appIsSumbitted.id = 'popup--is-submitted-learn-more';
-        window.history.pushState({ page_id: 2 }, '', '?thankyou=learn-more')
-      } else if (popUpFormSubmit.dataset.form === 'what-to-do') {
-        // appIsSumbitted.id = 'popup--is-submitted-what-to-do';
-        window.history.pushState({ page_id: 3 }, '', '?thankyou=what-to-do')
-      } else if (popUpFormSubmit.dataset.form === 'main') {
-        // appIsSumbitted.id = 'popup--is-submitted-main';
-        window.history.pushState({ page_id: 9 }, '', '?thankyou=main')
-      }
-
-      appIsSumbitted.classList.add('showed')
-
-      document
-        .getElementById('step-success-row__back-to-main--form-popup')
-        .addEventListener('click', (e) => {
-          // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
-          appIsSumbitted.classList.add('removing')
-          setTimeout(() => {
-            appIsSumbitted.classList.remove('showed')
-            appIsSumbitted.classList.remove('removing')
-          }, 300)
-
-          e.preventDefault()
-        })
-
-      const success = document.getElementById('module-popup-is-submitted')
-      success.classList.remove('hidden')
-      sumbitData(data)
-      moduleForm.classList.remove('show')
-      userNameEl.value = ''
-      numberEl.value = ''
-    } else {
-      numberEl.classList.add('bg-danger')
-      numberEl.focus()
-      numberEl.addEventListener('keyup', (e) => {
-        e.target.value !== ''
-          ? numberEl.classList.remove('bg-danger')
-          : numberEl.classList.add('bg-danger')
-      })
-    }
-  })
+  popUpFormSubmit.addEventListener('click', popUpFormSubmitFunc)
 }
 
 function submitContactForm() {
@@ -1969,7 +1972,7 @@ function submitContactForm() {
 
     // const googleClientId = ga.getAll()[0].get('clientId');
     const googleClientId = '-'
-    let double
+    let double = checkForUniqueUserNum()
 
     const question = 'Возникли вопросы? Поможем!'
 
@@ -2038,7 +2041,7 @@ function submitQuestionsForm() {
 
     const question = 'Возникли вопросы? Поможем!'
 
-    let double
+    let double = checkForUniqueUserNum()
 
     const data = {
       number,

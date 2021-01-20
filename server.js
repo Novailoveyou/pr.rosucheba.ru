@@ -31,7 +31,7 @@ app.use(
 );
 app.use(express.json());
 
-// field, uni, number, userName // question, contactWay, contact // userCity, userCountry // googleClientId // userDevice // utmSource, utmMedium, utmCampaign, utmContent, utmTerm
+// field, uni, number, userName // question, contactWay, contact // userCity, userCountry // googleClientId // userDevice // utmSource, utmMedium, utmCampaign, utmContent, utmTerm // double
 app.post('/email', (req, res) => {
   const ipInfo = req.ipInfo;
   console.log(ipInfo);
@@ -54,6 +54,7 @@ app.post('/email', (req, res) => {
     utmCampaign,
     utmContent,
     utmTerm,
+    double
   } = req.body;
   console.log('Data: ', req.body);
 
@@ -74,6 +75,7 @@ app.post('/email', (req, res) => {
     utmCampaign,
     utmContent,
     utmTerm,
+    double,
     function (err, data) {
       if (err) {
         res.status(500).json({
