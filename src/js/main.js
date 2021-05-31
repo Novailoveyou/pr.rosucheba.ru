@@ -5,8 +5,6 @@ import '../scss/main.scss'
 
 // new Glide('.glide').mount()
 
-
-
 // CTA btns
 const ctaSubmitBtn = document.getElementById('cta-submit-application')
 
@@ -198,6 +196,23 @@ const utmCampaign = urlParams.get('utm_campaign')
 const utmContent = urlParams.get('utm_content')
 const utmTerm = urlParams.get('utm_term')
 
+// Convert price
+const convertPriceTo = cntr => {
+  const regularPrices = document.querySelectorAll('.price-regular')
+  const discountPrices = document.querySelectorAll('.price-discount')
+  let currencySign = 'р.'
+
+  if (cntr === 'kz') {
+    currencySign = '₸'
+    regularPrices.forEach(price => {
+      price.innerHTML = `205 000 ${currencySign}`
+    })
+    discountPrices.forEach(price => {
+      price.innerHTML = `110 000 ${currencySign}`
+    })
+  }
+}
+
 // Track IP
 
 // let user_location;
@@ -214,13 +229,14 @@ const locationUrlAPI = 'https://ipinfo.io?token=b16e76b622236e'
 // let locationUrlAPI = 'https://ipapi.co/8.8.8.8/json/';
 // let locationUrlAPI = 'http://ip-api.com/json'; // no https
 // let locationUrlAPI = 'https://api.ipify.org/?format=json';
+convertPriceTo('kz')
 
 let userCity
 let userCountry
 let userCountryCode // KZ, RU, UZ
 fetch(locationUrlAPI)
-  .then((data) => data.json())
-  .then((data) => {
+  .then(data => data.json())
+  .then(data => {
     // console.log(data);
     userCity = data.city
     userCountry = data.country
@@ -229,6 +245,7 @@ fetch(locationUrlAPI)
       userCountry = 'Russia'
     } else if (userCountry === 'KZ') {
       userCountry = 'Kazakhstan'
+      convertPriceTo('kz')
     } else if (userCountry == 'UZ') {
       userCountry = 'Uzbekistan'
     }
@@ -252,37 +269,37 @@ fetch(locationUrlAPI)
     const ruEls = document.querySelectorAll('.ru-only')
     const ruElsArr = Array.from(ruEls)
     if (userCountryCode === 'RU') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.add('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.remove('show')
       })
     } else if (userCountryCode === 'KZ') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.remove('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.show('show')
       })
     } else if (userCountryCode === 'UZ') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.remove('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.show('show')
       })
     } else {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.add('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.remove('show')
       })
     }
     // /Docs needed
   })
-  .catch((error) => {
+  .catch(error => {
     // `Can't access ${locationUrlAPI} :(`;
     changeLocationDependedHeading(
       locationDependedHeading,
@@ -300,31 +317,31 @@ fetch(locationUrlAPI)
     const ruEls = document.querySelectorAll('.ru-only')
     const ruElsArr = Array.from(ruEls)
     if (userCountryCode === 'RU') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.add('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.remove('show')
       })
     } else if (userCountryCode === 'KZ') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.remove('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.show('show')
       })
     } else if (userCountryCode === 'UZ') {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.remove('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.show('show')
       })
     } else {
-      ruElsArr.forEach((el) => {
+      ruElsArr.forEach(el => {
         el.classList.add('show')
       })
-      kzUzElsArr.forEach((el) => {
+      kzUzElsArr.forEach(el => {
         el.classList.remove('show')
       })
     }
@@ -397,7 +414,7 @@ function checkForUniqueUserNum() {
   let userNumCur
   let output
 
-  numArr.forEach((num) => {
+  numArr.forEach(num => {
     if (num !== '') {
       userNumCur = num
     }
@@ -424,9 +441,9 @@ async function sumbitData(data) {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
     const content = await res.json()
     isSumbitted = true
@@ -449,41 +466,41 @@ menuToggler.addEventListener('click', () => {
   }
 })
 
-navItemLinks[0].addEventListener('click', (e) => {
+navItemLinks[0].addEventListener('click', e => {
   // window.location = "#about";
   const aboutSection = document.getElementById('about')
   aboutSection.scrollIntoView({
-    behavior: 'smooth',
+    behavior: 'smooth'
   })
   menuToggler.checked = false
   e.preventDefault()
 })
 
-navItemLinks[1].addEventListener('click', (e) => {
+navItemLinks[1].addEventListener('click', e => {
   // window.location = "#partners";
   const partnersSection = document.getElementById('partners')
   partnersSection.scrollIntoView({
-    behavior: 'smooth',
+    behavior: 'smooth'
   })
   menuToggler.checked = false
   e.preventDefault()
 })
 
-navItemLinks[2].addEventListener('click', (e) => {
+navItemLinks[2].addEventListener('click', e => {
   // window.location = "#trusted-by";
   const chooseFromMany = document.getElementById('choose-from-many')
   chooseFromMany.scrollIntoView({
-    behavior: 'smooth',
+    behavior: 'smooth'
   })
   menuToggler.checked = false
   e.preventDefault()
 })
 
-navItemLinks[3].addEventListener('click', (e) => {
+navItemLinks[3].addEventListener('click', e => {
   // window.location = "#trusted-by";
   const whatToDo = document.getElementById('what-to-do')
   whatToDo.scrollIntoView({
-    behavior: 'smooth',
+    behavior: 'smooth'
   })
   menuToggler.checked = false
   e.preventDefault()
@@ -1071,7 +1088,7 @@ navItemLinks[3].addEventListener('click', (e) => {
 // });
 
 // Ask question clicked
-btnAskQuestion.addEventListener('click', (e) => {
+btnAskQuestion.addEventListener('click', e => {
   // window.removeEventListener("scroll", showQuestionBtn);
   btnAskQuestion.classList.add('hidden')
   moduleQuestions.classList.remove('hidden')
@@ -1100,7 +1117,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Telegram clicked
-  telegramBtn.addEventListener('click', (e) => {
+  telegramBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1120,7 +1137,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // Telegram -> Call clicked
-    moduleBtnCall.addEventListener('click', (e) => {
+    moduleBtnCall.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1132,7 +1149,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Telegram -> Message clicked
-    moduleBtnMessage.addEventListener('click', (e) => {
+    moduleBtnMessage.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1144,7 +1161,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) => {
+    moduleStepTwoArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1152,7 +1169,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepTwo.classList.remove('hidden')
       moduleStepOne.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1163,7 +1180,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Whatsapp clicked
-  whatsappBtn.addEventListener('click', (e) => {
+  whatsappBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1182,7 +1199,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // Whatsapp -> Call clicked
-    moduleBtnCall.addEventListener('click', (e) => {
+    moduleBtnCall.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1194,7 +1211,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Whatsapp -> Message clicked
-    moduleBtnMessage.addEventListener('click', (e) => {
+    moduleBtnMessage.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1206,7 +1223,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) => {
+    moduleStepTwoArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1214,7 +1231,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepTwo.classList.remove('hidden')
       moduleStepOne.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1225,7 +1242,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Viber clicked
-  viberBtn.addEventListener('click', (e) => {
+  viberBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1244,7 +1261,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // Viber -> Call clicked
-    moduleBtnCall.addEventListener('click', (e) => {
+    moduleBtnCall.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1256,7 +1273,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Viber -> Message clicked
-    moduleBtnMessage.addEventListener('click', (e) => {
+    moduleBtnMessage.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1268,7 +1285,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) => {
+    moduleStepTwoArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1276,7 +1293,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepTwo.classList.remove('hidden')
       moduleStepOne.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1287,7 +1304,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Vk clicked
-  vkBtn.addEventListener('click', (e) => {
+  vkBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1306,7 +1323,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // VK -> Call clicked
-    moduleBtnCall.addEventListener('click', (e) => {
+    moduleBtnCall.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1318,7 +1335,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // VK -> Message clicked
-    moduleBtnMessage.addEventListener('click', (e) => {
+    moduleBtnMessage.addEventListener('click', e => {
       moduleStepThree.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1330,7 +1347,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 2 -> Arrow back
-    moduleStepTwoArrowBack.addEventListener('click', (e) => {
+    moduleStepTwoArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
 
@@ -1338,7 +1355,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     })
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepTwo.classList.remove('hidden')
       moduleStepOne.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1349,7 +1366,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Phone button clicked
-  phoneBtn.addEventListener('click', (e) => {
+  phoneBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1370,7 +1387,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1381,7 +1398,7 @@ btnAskQuestion.addEventListener('click', (e) => {
   })
 
   // Email button clicked
-  emailBtn.addEventListener('click', (e) => {
+  emailBtn.addEventListener('click', e => {
     if (moduleQuestionTextarea.value === '') {
       moduleQuestionTextarea.classList.add('bg-danger')
       moduleQuestionTextarea.focus()
@@ -1404,7 +1421,7 @@ btnAskQuestion.addEventListener('click', (e) => {
     }
 
     // Step 3 -> Arrow Back
-    moduleStepThreeArrowBack.addEventListener('click', (e) => {
+    moduleStepThreeArrowBack.addEventListener('click', e => {
       moduleStepOne.classList.remove('hidden')
       moduleStepTwo.classList.add('hidden')
       moduleStepThree.classList.add('hidden')
@@ -1457,7 +1474,7 @@ btnAskQuestion.addEventListener('click', (e) => {
           utmCampaign,
           utmContent,
           utmTerm,
-          double,
+          double
         }
 
         if (
@@ -1530,7 +1547,7 @@ btnAskQuestion.addEventListener('click', (e) => {
           utmCampaign,
           utmContent,
           utmTerm,
-          double,
+          double
         }
 
         if (
@@ -1571,7 +1588,7 @@ btnAskQuestion.addEventListener('click', (e) => {
         if (moduleInputContactInfo.type === 'email') {
           // todo: validate email
         } else {
-          moduleInputContactInfo.addEventListener('keyup', (e) => {
+          moduleInputContactInfo.addEventListener('keyup', e => {
             // console.log("event keyup");
             if (
               moduleInputContactInfo.value.trim() !== '' &&
@@ -1725,7 +1742,7 @@ btnAskQuestion.addEventListener('click', (e) => {
 // Pop up btns
 function showPopUp(button = '') {
   const buttonSelected = document.getElementById(button)
-  buttonSelected.addEventListener('click', (e) => {
+  buttonSelected.addEventListener('click', e => {
     const popupFormTitle = document.getElementById('pop-up-form-title')
     const popupFormInfo = document.getElementById('popup-form-info')
 
@@ -1891,7 +1908,7 @@ function popUpFormSubmitFunc(e) {
     utmCampaign,
     utmContent,
     utmTerm,
-    double,
+    double
   }
 
   if (
@@ -1923,7 +1940,7 @@ function popUpFormSubmitFunc(e) {
 
     document
       .getElementById('step-success-row__back-to-main--form-popup')
-      .addEventListener('click', (e) => {
+      .addEventListener('click', e => {
         // appIsSumbitted.id = 'js-app-is-submitted--learn-more';
         appIsSumbitted.classList.add('removing')
         setTimeout(() => {
@@ -1943,7 +1960,7 @@ function popUpFormSubmitFunc(e) {
   } else {
     numberEl.classList.add('bg-danger')
     numberEl.focus()
-    numberEl.addEventListener('keyup', (e) => {
+    numberEl.addEventListener('keyup', e => {
       e.target.value !== ''
         ? numberEl.classList.remove('bg-danger')
         : numberEl.classList.add('bg-danger')
@@ -1961,7 +1978,7 @@ function submitPopUpForm() {
 
 function submitContactForm() {
   const popUpFormSubmit = document.getElementById('submit-btn-contact-form')
-  popUpFormSubmit.addEventListener('click', (e) => {
+  popUpFormSubmit.addEventListener('click', e => {
     e.preventDefault()
 
     // Submit
@@ -1991,7 +2008,7 @@ function submitContactForm() {
       utmCampaign,
       utmContent,
       utmTerm,
-      double,
+      double
     }
 
     if (
@@ -2009,7 +2026,7 @@ function submitContactForm() {
     } else {
       numberEl.classList.add('bg-danger')
       numberEl.focus()
-      numberEl.addEventListener('keyup', (e) => {
+      numberEl.addEventListener('keyup', e => {
         e.target.value !== ''
           ? numberEl.classList.remove('bg-danger')
           : numberEl.classList.add('bg-danger')
@@ -2025,7 +2042,7 @@ function submitQuestionsForm() {
   const popUpFormSubmit = document.getElementById(
     'submit-btn-contact-form-are-there-questions'
   )
-  popUpFormSubmit.addEventListener('click', (e) => {
+  popUpFormSubmit.addEventListener('click', e => {
     e.preventDefault()
 
     // Submit
@@ -2058,7 +2075,7 @@ function submitQuestionsForm() {
       utmCampaign,
       utmContent,
       utmTerm,
-      double,
+      double
     }
 
     if (
@@ -2078,7 +2095,7 @@ function submitQuestionsForm() {
     } else {
       numberEl.classList.add('bg-danger')
       numberEl.focus()
-      numberEl.addEventListener('keyup', (e) => {
+      numberEl.addEventListener('keyup', e => {
         e.target.value !== ''
           ? numberEl.classList.remove('bg-danger')
           : numberEl.classList.add('bg-danger')
@@ -2091,7 +2108,7 @@ submitQuestionsForm()
 
 // Hide ask question on the top of the page and on the bottom of the page
 btnAskQuestion.classList.add('hidden')
-document.addEventListener('scroll', (e) => {
+document.addEventListener('scroll', e => {
   const popUpForm = document.getElementById('module-popup-form')
   // moduleQuestions
   // console.log(window.scrollY);
@@ -2175,7 +2192,7 @@ retractableItems()
       params = params || {
         bubbles: false,
         cancelable: false,
-        detail: undefined,
+        detail: undefined
       }
 
       var evt = document.createEvent('CustomEvent')
@@ -2246,7 +2263,7 @@ retractableItems()
         xStart: parseInt(xDown, 10),
         xEnd: parseInt((changedTouches[0] || {}).clientX || -1, 10),
         yStart: parseInt(yDown, 10),
-        yEnd: parseInt((changedTouches[0] || {}).clientY || -1, 10),
+        yEnd: parseInt((changedTouches[0] || {}).clientY || -1, 10)
       }
 
       // fire `swiped` event event on the element that started the swipe
@@ -2254,7 +2271,7 @@ retractableItems()
         new CustomEvent('swiped', {
           bubbles: true,
           cancelable: true,
-          detail: eventData,
+          detail: eventData
         })
       )
 
@@ -2263,7 +2280,7 @@ retractableItems()
         new CustomEvent(eventType, {
           bubbles: true,
           cancelable: true,
-          detail: eventData,
+          detail: eventData
         })
       )
     }
@@ -2359,7 +2376,7 @@ function coolCarousel() {
 
   firstDot.classList.add('active')
 
-  carousel.addEventListener('swiped-right', (e) => {
+  carousel.addEventListener('swiped-right', e => {
     const currentRightVal = Number(carousel.style.right.slice(0, -3))
     if (currentRightVal > 0) {
       i -= 8
@@ -2383,7 +2400,7 @@ function coolCarousel() {
       }
     }
   })
-  carousel.addEventListener('swiped-left', (e) => {
+  carousel.addEventListener('swiped-left', e => {
     const currentRightVal = Number(carousel.style.right.slice(0, -3))
     if (currentRightVal < 80) {
       i += 8
