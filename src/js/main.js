@@ -5,6 +5,8 @@ import '../scss/main.scss'
 
 // new Glide('.glide').mount()
 
+
+
 // CTA btns
 const ctaSubmitBtn = document.getElementById('cta-submit-application')
 
