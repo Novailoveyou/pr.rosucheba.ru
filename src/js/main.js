@@ -229,7 +229,6 @@ const locationUrlAPI = 'https://ipinfo.io?token=b16e76b622236e'
 // let locationUrlAPI = 'https://ipapi.co/8.8.8.8/json/';
 // let locationUrlAPI = 'http://ip-api.com/json'; // no https
 // let locationUrlAPI = 'https://api.ipify.org/?format=json';
-convertPriceTo('kz')
 
 let userCity
 let userCountry
