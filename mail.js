@@ -5,8 +5,8 @@ require('dotenv').config()
 const auth = {
   auth: {
     api_key: process.env.APIKEY,
-    domain: process.env.DOMAIN,
-  },
+    domain: process.env.DOMAIN
+  }
 }
 
 const transporter = nodemailer.createTransport(mailGun(auth))
@@ -33,8 +33,8 @@ const sendMail = (
   cb
 ) => {
   const mailOptions = {
-    from: process.env.FROMEMAIL,
-    to: process.env.TOEMAIL,
+    from: 'contact@pr-rosucheba.ru',
+    to: 'rosuchebaa@yandex.ru, marketing@rosucheba.ru',
     subject: `${
       question === '-' ||
       question === 'Возникли вопросы? Поможем!' ||
@@ -64,7 +64,7 @@ const sendMail = (
     16. Объявление: ${utmContent},\n
     17. Ключевое слово: ${utmTerm},\n
     18. Дубль: ${double}
-    `,
+    `
   }
 
   // • Гражданство: заполните вручную,\n
