@@ -344,7 +344,7 @@ const email = async (req, res) => {
 
   try {
     const emailRes = await transporter.sendMail({
-      from: 'contact@pr-rosucheba.ru',
+      from: 'contact@pr.rosucheba.ru',
       to: `${
         dev
           ? 'nova@ipo.msk.ru, novailoveyou3@gmail.com'
