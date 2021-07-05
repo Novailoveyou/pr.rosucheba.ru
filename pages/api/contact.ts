@@ -55,7 +55,6 @@ const email = async (req, res) => {
   const getUserLocation = async () => {
     try {
       const res = await geoip2.city(ip.toString())
-      console.log(res)
       const output = {
         continent: {
           code: res.continent.code,
@@ -308,7 +307,7 @@ const email = async (req, res) => {
       4. Способ связи: ${data.contactWay}, <br /><br />
       5. Страница с которой отправлена заявка: ${data.root}, <br /><br />
       6. Город: ${data.cityEn}, <br /><br />
-      7. Страна: ${data.countryRu}, <br /><br />
+      7. Страна: ${data.countryEn}, <br /><br />
       8. Направление: ${data.field}, <br /><br />
       9. Университет: ${data.uni}, <br /><br />
       10. Вопрос: ${data.question}, <br /><br />
