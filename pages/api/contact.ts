@@ -55,6 +55,7 @@ const email = async (req, res) => {
   const getUserLocation = async () => {
     try {
       const res = await geoip2.city(ip.toString())
+      console.log(res)
       const output = {
         continent: {
           code: res.continent.code,
